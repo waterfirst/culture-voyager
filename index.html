@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture Voyager — 주말의 문화예술 매거진</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-bg: #faf7f2;
+            --warm-card: #ffffff;
+            --warm-accent: #c4703f;
+            --warm-accent2: #7b6b5a;
+            --warm-gold: #b8860b;
+            --warm-sage: #6b8f71;
+            --warm-blue: #4a7c9b;
+            --warm-plum: #8b5e83;
+            --text-primary: #2c2c2c;
+            --text-secondary: #5a5a5a;
+            --text-light: #8a8a8a;
+            --border: #e8e2d9;
+            --shadow: 0 4px 20px rgba(0,0,0,0.06);
+            --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--warm-bg);
+            color: var(--text-primary);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Header */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #2c1810 0%, #4a3728 30%, #1a2332 70%, #0d1b2a 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(196,112,63,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(74,124,155,0.1) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 80%, rgba(139,94,131,0.08) 0%, transparent 40%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', 'Noto Serif KR', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: #fff;
+            font-weight: 400;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--warm-accent);
+        }
+
+        .hero-subtitle {
+            font-family: 'Noto Serif KR', serif;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: rgba(255,255,255,0.6);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.4);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 0.8; transform: translateX(-50%) translateY(5px); }
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(250,247,242,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 1rem 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--warm-accent); }
+
+        /* Sections */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header .axis-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', 'Noto Serif KR', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--warm-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #e8e2d9, #d4ccc0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-tag {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .card-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .status-new { background: var(--warm-accent); }
+        .status-soon { background: var(--text-light); }
+
+        /* Color themes per axis */
+        .tag-cinema { background: rgba(196,112,63,0.1); color: var(--warm-accent); }
+        .tag-book { background: rgba(107,143,113,0.1); color: var(--warm-sage); }
+        .tag-ott { background: rgba(74,124,155,0.1); color: var(--warm-blue); }
+        .tag-history { background: rgba(123,107,90,0.1); color: var(--warm-accent2); }
+        .tag-travel { background: rgba(184,134,11,0.1); color: var(--warm-gold); }
+        .tag-artist { background: rgba(139,94,131,0.1); color: var(--warm-plum); }
+
+        .axis-cinema { background: rgba(196,112,63,0.1); color: var(--warm-accent); }
+        .axis-book { background: rgba(107,143,113,0.1); color: var(--warm-sage); }
+        .axis-ott { background: rgba(74,124,155,0.1); color: var(--warm-blue); }
+        .axis-history { background: rgba(123,107,90,0.1); color: var(--warm-accent2); }
+        .axis-travel { background: rgba(184,134,11,0.1); color: var(--warm-gold); }
+        .axis-artist { background: rgba(139,94,131,0.1); color: var(--warm-plum); }
+
+        /* Divider */
+        .section-divider {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .footer-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Audio player hint */
+        .audio-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.2rem 0.5rem;
+            background: rgba(196,112,63,0.08);
+            border-radius: 10px;
+            font-size: 0.65rem;
+            color: var(--warm-accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .section { padding: 3rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">Weekend Culture Magazine</div>
+        <h1>Culture <em>Voyager</em></h1>
+        <p class="hero-subtitle">
+            시대를 관통하는 영화, 삶을 바꾸는 책, 언젠가 떠날 여행.<br>
+            주말, 한 편의 이야기로 쉬어가세요.
+        </p>
+    </div>
+    <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-inner">
+        <div class="nav-logo">Culture Voyager</div>
+        <ul class="nav-links">
+            <li><a href="#cinema">Cinema</a></li>
+            <li><a href="#books">Books</a></li>
+            <li><a href="#ott">OTT</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#travel">Travel</a></li>
+            <li><a href="#artists">Artists</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- A. Cinema -->
+<section class="section" id="cinema">
+    <div class="section-header">
+        <div class="axis-tag axis-cinema">Axis A</div>
+        <h2>시대를 관통하는 영화</h2>
+        <p>한 편의 영화가 인생을 바꾸기도 합니다</p>
+    </div>
+    <div class="cards-grid">
+        <a class="card" href="#">
+            <div class="card-image">🎬</div>
+            <div class="card-body">
+                <span class="card-tag tag-cinema">Cinema Review</span>
+                <div class="card-title">쇼생크 탈출 — 희망의 물리학</div>
+                <div class="card-desc">감옥이라는 닫힌 계에서 엔트로피를 거스르는 한 남자. 희망은 정말 좋은 것이다.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                    <span class="audio-badge">🎧 팟캐스트</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🌌</div>
+            <div class="card-body">
+                <span class="card-tag tag-cinema">Cinema Review</span>
+                <div class="card-title">인터스텔라 — 시간과 사랑의 상대성</div>
+                <div class="card-desc">중력이 시간을 왜곡할 때, 사랑만이 차원을 초월한다. 놀란의 가장 따뜻한 SF.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🪜</div>
+            <div class="card-body">
+                <span class="card-tag tag-cinema">Cinema Review</span>
+                <div class="card-title">기생충 — 계단의 사회학</div>
+                <div class="card-desc">반지하에서 지하로. 봉준호가 설계한 수직적 공간의 의미를 해부한다.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🎞️</div>
+            <div class="card-body">
+                <span class="card-tag tag-cinema">Cinema Review</span>
+                <div class="card-title">시네마 천국 — 기억과 향수의 화학</div>
+                <div class="card-desc">필름 위에 새겨진 유년의 빛. 엔니오 모리코네의 선율이 기억을 되감는다.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                    <span class="audio-badge">🎵 OST</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🤖</div>
+            <div class="card-body">
+                <span class="card-tag tag-cinema">Cinema Review</span>
+                <div class="card-title">2001 스페이스 오디세이 — AI의 철학적 기원</div>
+                <div class="card-desc">HAL 9000이 던진 질문은 60년이 지난 지금 ChatGPT 시대에 더 날카롭다.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🖼️</div>
+            <div class="card-body">
+                <span class="card-tag tag-cinema">Cinema Review</span>
+                <div class="card-title">그랜드 부다페스트 호텔 — 스타일의 건축학</div>
+                <div class="card-desc">웨스 앤더슨의 대칭 구도 안에 담긴 유럽 문명의 황혼.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- B. Books -->
+<section class="section" id="books">
+    <div class="section-header">
+        <div class="axis-tag axis-book">Axis B</div>
+        <h2>인생을 바꾸는 책</h2>
+        <p>한 권의 책이 세상을 보는 렌즈를 바꿉니다</p>
+    </div>
+    <div class="cards-grid">
+        <a class="card" href="#">
+            <div class="card-image">📖</div>
+            <div class="card-body">
+                <span class="card-tag tag-book">Book Review</span>
+                <div class="card-title">사피엔스 — 인류 서사의 재구성</div>
+                <div class="card-desc">7만 년 전 인지혁명부터 AI까지. 유발 하라리가 그린 호모 사피엔스의 대서사시.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                    <span class="audio-badge">🎧 오디오북</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🌠</div>
+            <div class="card-body">
+                <span class="card-tag tag-book">Book Review</span>
+                <div class="card-title">코스모스 — 우주적 겸손</div>
+                <div class="card-desc">칼 세이건이 선물한 우주의 시선. 창백한 푸른 점 위의 우리를 돌아본다.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🌍</div>
+            <div class="card-body">
+                <span class="card-tag tag-book">Book Review</span>
+                <div class="card-title">총, 균, 쇠 — 문명의 지리학</div>
+                <div class="card-desc">왜 유라시아가 아메리카를 정복했는가? 재레드 다이아몬드의 문명 방정식.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🦊</div>
+            <div class="card-body">
+                <span class="card-tag tag-book">Book Review</span>
+                <div class="card-title">어린 왕자 — 본질의 광학</div>
+                <div class="card-desc">"가장 중요한 것은 눈에 보이지 않아." 어른이 된 후 다시 읽는 생텍쥐페리.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">📊</div>
+            <div class="card-body">
+                <span class="card-tag tag-book">Book Review</span>
+                <div class="card-title">팩트풀니스 — 세상을 보는 렌즈 교정</div>
+                <div class="card-desc">데이터로 증명하는 세상은 당신이 생각하는 것보다 나아지고 있다.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">📬</div>
+            <div class="card-body">
+                <span class="card-tag tag-book">Book Review</span>
+                <div class="card-title">나미야 잡화점의 기적 — 시간의 편지</div>
+                <div class="card-desc">히가시노 게이고의 가장 따뜻한 이야기. 과거와 미래를 잇는 우편함.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- C. OTT -->
+<section class="section" id="ott">
+    <div class="section-header">
+        <div class="axis-tag axis-ott">Axis C</div>
+        <h2>OTT 필수 시청</h2>
+        <p>넷플릭스, 애플TV+, 디즈니+ 정주행 가이드</p>
+    </div>
+    <div class="cards-grid">
+        <a class="card" href="#">
+            <div class="card-image">🪞</div>
+            <div class="card-body">
+                <span class="card-tag tag-ott">Netflix</span>
+                <div class="card-title">블랙미러 — 기술이 인간을 만나는 경계</div>
+                <div class="card-desc">시즌별 핵심 에피소드 가이드. 가장 충격적인 5편과 가장 따뜻한 2편.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">✂️</div>
+            <div class="card-body">
+                <span class="card-tag tag-ott">Apple TV+</span>
+                <div class="card-title">세버런스 — 일과 삶의 완전한 분리</div>
+                <div class="card-desc">기억을 수술로 분리한다면? 워라밸의 극단적 사고실험.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🍃</div>
+            <div class="card-body">
+                <span class="card-tag tag-ott">Netflix</span>
+                <div class="card-title">나의 해방일지 — 해방을 찾는 사람들</div>
+                <div class="card-desc">K-드라마 힐링의 정점. 느리지만 깊은 대사가 마음을 두드린다.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                    <span class="audio-badge">🎵 OST</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">⚽</div>
+            <div class="card-body">
+                <span class="card-tag tag-ott">Apple TV+</span>
+                <div class="card-title">테드 래소 — 긍정의 리더십</div>
+                <div class="card-desc">축구를 모르는 코치가 가르치는 인생 수업. 웃음과 감동의 3시즌.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🌏</div>
+            <div class="card-body">
+                <span class="card-tag tag-ott">Netflix</span>
+                <div class="card-title">Our Planet — 지구의 숨결</div>
+                <div class="card-desc">데이비드 아텐보로의 내레이션으로 만나는 경이로운 자연 다큐멘터리.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                    <span class="audio-badge">🎧 ASMR</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">⚔️</div>
+            <div class="card-body">
+                <span class="card-tag tag-ott">Disney+</span>
+                <div class="card-title">숄군 — 동서양이 충돌하는 역사 서사시</div>
+                <div class="card-desc">1600년 일본. 에미상 18관왕의 압도적 스케일과 디테일.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- D. History -->
+<section class="section" id="history">
+    <div class="section-header">
+        <div class="axis-tag axis-history">Axis D</div>
+        <h2>역사 다큐멘터리</h2>
+        <p>과거를 알아야 미래가 보입니다</p>
+    </div>
+    <div class="cards-grid">
+        <a class="card" href="#">
+            <div class="card-image">🏛️</div>
+            <div class="card-body">
+                <span class="card-tag tag-history">Documentary</span>
+                <div class="card-title">로마 제국의 흥망 — 반복되는 패턴</div>
+                <div class="card-desc">1000년 제국은 왜 무너졌는가. 현대 문명에 주는 경고를 읽는다.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🐪</div>
+            <div class="card-body">
+                <span class="card-tag tag-history">Documentary</span>
+                <div class="card-title">실크로드 — 무역이 만든 세계</div>
+                <div class="card-desc">장안에서 로마까지. 비단길 위에 문명, 종교, 전염병이 함께 흘렀다.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">👑</div>
+            <div class="card-body">
+                <span class="card-tag tag-history">Documentary</span>
+                <div class="card-title">조선왕조 500년 — 제도의 힘</div>
+                <div class="card-desc">한 왕조가 500년을 유지한 비결. 사관제도, 경연, 언론삼사의 시스템.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🎨</div>
+            <div class="card-body">
+                <span class="card-tag tag-history">Documentary</span>
+                <div class="card-title">르네상스 — 예술과 과학의 융합점</div>
+                <div class="card-desc">피렌체에서 시작된 문화혁명. 다빈치, 미켈란젤로, 갈릴레오의 시대.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">⚙️</div>
+            <div class="card-body">
+                <span class="card-tag tag-history">Documentary</span>
+                <div class="card-title">산업혁명에서 AI혁명까지</div>
+                <div class="card-desc">증기기관 → 전기 → 컴퓨터 → AI. 기술 전환기의 공통 법칙을 찾는다.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🧊</div>
+            <div class="card-body">
+                <span class="card-tag tag-history">Documentary</span>
+                <div class="card-title">냉전 — 두 체제의 실험</div>
+                <div class="card-desc">자본주의 vs 공산주의 45년간의 대결. 우주경쟁부터 베를린 장벽까지.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- E. Travel -->
+<section class="section" id="travel">
+    <div class="section-header">
+        <div class="axis-tag axis-travel">Axis E</div>
+        <h2>언젠가 가볼 곳</h2>
+        <p>읽는 것만으로도 떠나는 기분이 드는 여행지</p>
+    </div>
+    <div class="cards-grid">
+        <a class="card" href="#">
+            <div class="card-image">⛩️</div>
+            <div class="card-body">
+                <span class="card-tag tag-travel">Asia</span>
+                <div class="card-title">교토 — 천년 고도의 미학</div>
+                <div class="card-desc">이끼 정원, 대나무 숲, 게이샤 거리. 일본 미의식의 원형을 걷는다.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                    <span class="audio-badge">🎵 Ambient</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🏰</div>
+            <div class="card-body">
+                <span class="card-tag tag-travel">Europe</span>
+                <div class="card-title">프라하 — 카프카의 도시를 걷다</div>
+                <div class="card-desc">골목마다 문학이 살아있는 보헤미아의 수도. 맥주 한 잔과 함께.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🌋</div>
+            <div class="card-body">
+                <span class="card-tag tag-travel">Nordic</span>
+                <div class="card-title">아이슬란드 — 지구의 날것</div>
+                <div class="card-desc">빙하, 화산, 오로라, 간헐천. 가장 원시적이고 가장 경이로운 풍경.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🍷</div>
+            <div class="card-body">
+                <span class="card-tag tag-travel">Europe</span>
+                <div class="card-title">포르투 — 유럽의 숨은 보석</div>
+                <div class="card-desc">포트와인의 고장. 아줄레주 타일과 도우루 강이 만드는 색채.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🪷</div>
+            <div class="card-body">
+                <span class="card-tag tag-travel">Korea</span>
+                <div class="card-title">경주 — 천년 왕국의 흔적</div>
+                <div class="card-desc">벚꽃 아래 고분군, 석굴암의 미소. 자전거로 신라 천년을 달린다.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🏔️</div>
+            <div class="card-body">
+                <span class="card-tag tag-travel">South America</span>
+                <div class="card-title">파타고니아 — 세상의 끝에서</div>
+                <div class="card-desc">바람과 빙하의 땅. 인생에서 한 번은 가야 할 지구 최남단의 절경.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- F. Artists -->
+<section class="section" id="artists">
+    <div class="section-header">
+        <div class="axis-tag axis-artist">Axis F</div>
+        <h2>아티스트 스토리</h2>
+        <p>감독, 배우, 음악가 — 창작의 비밀을 엿보다</p>
+    </div>
+    <div class="cards-grid">
+        <a class="card" href="#">
+            <div class="card-image">⏰</div>
+            <div class="card-body">
+                <span class="card-tag tag-artist">Director</span>
+                <div class="card-title">크리스토퍼 놀란 — 시간을 조각하는 감독</div>
+                <div class="card-desc">메멘토부터 오펜하이머까지. 비선형 서사의 거장이 시간을 다루는 법.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🎭</div>
+            <div class="card-body">
+                <span class="card-tag tag-artist">Director</span>
+                <div class="card-title">봉준호 — 장르의 경계를 허물다</div>
+                <div class="card-desc">플란다스의 개부터 기생충까지. 한국 영화를 세계에 각인시킨 스토리텔러.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">💫</div>
+            <div class="card-body">
+                <span class="card-tag tag-artist">K-POP</span>
+                <div class="card-title">K-POP 4세대 — 뉴진스, 르세라핌의 전략</div>
+                <div class="card-desc">Y2K 감성, 팬덤 구조, 글로벌 마케팅. K-POP은 어떻게 세계를 정복했나.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                    <span class="audio-badge">🎵 Playlist</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🎹</div>
+            <div class="card-body">
+                <span class="card-tag tag-artist">Composer</span>
+                <div class="card-title">한스 짐머 — 영화음악의 건축가</div>
+                <div class="card-desc">인셉션의 저음, 듄의 사막 울림. 소리로 공간을 짓는 작곡가.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                    <span class="audio-badge">🎧 OST</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🎤</div>
+            <div class="card-body">
+                <span class="card-tag tag-artist">Global Artist</span>
+                <div class="card-title">테일러 스위프트 — 음악 산업의 게임체인저</div>
+                <div class="card-desc">컨트리에서 팝으로. 앨범 재녹음으로 업계를 뒤흔든 아티스트 파워.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                </div>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image">🎶</div>
+            <div class="card-body">
+                <span class="card-tag tag-artist">Musician</span>
+                <div class="card-title">사카모토 류이치 — 소리의 철학자</div>
+                <div class="card-desc">YMO부터 마지막 콘서트까지. 전자음악과 클래식의 경계를 녹인 거장.</div>
+                <div class="card-meta">
+                    <span class="card-status"><span class="status-dot status-soon"></span> 예정</span>
+                    <span class="audio-badge">🎵 추모 앨범</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p class="footer-quote">"The world is a book, and those who do not travel read only one page."<br>— Saint Augustine</p>
+    <p>Culture Voyager &copy; 2026 | Nakcho Choi</p>
+    <p style="margin-top:0.5rem;">주말마다 한 편의 이야기를 전합니다</p>
+</footer>
+
+</body>
+</html>
