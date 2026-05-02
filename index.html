@@ -1362,22 +1362,577 @@ function toggleTheme() {
     }
 })();
 
-// Language switcher
+// Language switcher — full translation dictionary
 const CV_TRANS = {
-    ko: { navCinema:'Cinema', navBooks:'Books', navOtt:'OTT', navHistory:'History', navScience:'Science', navTravel:'Travel', navArtists:'Artists' },
-    en: { navCinema:'Cinema', navBooks:'Books', navOtt:'OTT', navHistory:'History', navScience:'Science', navTravel:'Travel', navArtists:'Artists' },
-    ja: { navCinema:'映画', navBooks:'本', navOtt:'OTT', navHistory:'歴史', navScience:'科学', navTravel:'旅行', navArtists:'アーティスト' },
-    zh: { navCinema:'电影', navBooks:'图书', navOtt:'OTT', navHistory:'历史', navScience:'科学', navTravel:'旅行', navArtists:'艺术家' },
-    es: { navCinema:'Cine', navBooks:'Libros', navOtt:'OTT', navHistory:'Historia', navScience:'Ciencia', navTravel:'Viajes', navArtists:'Artistas' },
-    fr: { navCinema:'Cinéma', navBooks:'Livres', navOtt:'OTT', navHistory:'Histoire', navScience:'Science', navTravel:'Voyage', navArtists:'Artistes' },
-    de: { navCinema:'Kino', navBooks:'Bücher', navOtt:'OTT', navHistory:'Geschichte', navScience:'Wissenschaft', navTravel:'Reisen', navArtists:'Künstler' }
+    ko: {
+        navCinema:'Cinema', navBooks:'Books', navOtt:'OTT', navHistory:'History', navScience:'Science', navTravel:'Travel', navArtists:'Artists',
+        heroBadge:'Weekend Culture Magazine',
+        heroSubtitle:'영화 · 책 · OTT · 역사 · 과학 순례 · 여행 · 아티스트',
+        heroVolLabel:'Vol.01 — 창간호',
+        secCinemaTag:'Axis A', secCinemaH2:'시대를 관통하는 영화', secCinemaP:'한 편의 영화가 인생을 바꾸기도 합니다',
+        secBooksTag:'Axis B', secBooksH2:'인생을 바꾸는 책', secBooksP:'한 권의 책이 세상을 보는 렌즈를 바꿉니다',
+        secOttTag:'Axis C', secOttH2:'OTT 필수 시청', secOttP:'넷플릭스, 애플TV+, 디즈니+ 정주행 가이드',
+        secHistoryTag:'Axis D', secHistoryH2:'역사 다큐멘터리', secHistoryP:'과거를 알아야 미래가 보입니다',
+        secScienceTag:'Axis G — Special', secScienceH2:'과학 순례 여행', secScienceP:'위대한 과학자의 발자취를 따라 세계를 걷는다 — 박문호 스타일',
+        secTravelTag:'Axis E', secTravelH2:'언젠가 가볼 곳', secTravelP:'읽는 것만으로도 떠나는 기분이 드는 여행지',
+        secArtistsTag:'Axis F', secArtistsH2:'아티스트 스토리', secArtistsP:'감독, 배우, 음악가 — 창작의 비밀을 엿보다',
+        statusNew:'NEW', statusSoon:'예정',
+        footerQuote:'"The world is a book, and those who do not travel read only one page." — Saint Augustine',
+        footerCopy:'Culture Voyager © 2026 | Nakcho Choi',
+        footerTagline:'주말마다 한 편의 이야기를 전합니다',
+        // Cinema cards
+        c1title:'쇼생크 탈출 — 희망의 물리학', c1desc:'감옥이라는 닫힌 계에서 엔트로피를 거스르는 한 남자. 희망은 정말 좋은 것이다.',
+        c2title:'인터스텔라 — 시간과 사랑의 상대성', c2desc:'중력이 시간을 왜곡할 때, 사랑만이 차원을 초월한다. 놀란의 가장 따뜻한 SF.',
+        c3title:'기생충 — 계단의 사회학', c3desc:'반지하에서 지하로. 봉준호가 설계한 수직적 공간의 의미를 해부한다.',
+        c4title:'시네마 천국 — 기억과 향수의 화학', c4desc:'필름 위에 새겨진 유년의 빛. 엔니오 모리코네의 선율이 기억을 되감는다.',
+        c5title:'2001 스페이스 오디세이 — AI의 철학적 기원', c5desc:'HAL 9000이 던진 질문은 60년이 지난 지금 ChatGPT 시대에 더 날카롭다.',
+        c6title:'그랜드 부다페스트 호텔 — 스타일의 건축학', c6desc:'웨스 앤더슨의 대칭 구도 안에 담긴 유럽 문명의 황혼.',
+        // Books cards
+        b1title:'사피엔스 — 인류 서사의 재구성', b1desc:'7만 년 전 인지혁명부터 AI까지. 유발 하라리가 그린 호모 사피엔스의 대서사시.',
+        b2title:'코스모스 — 우주적 겸손', b2desc:'칼 세이건이 선물한 우주의 시선. 창백한 푸른 점 위의 우리를 돌아본다.',
+        b3title:'총, 균, 쇠 — 문명의 지리학', b3desc:'왜 유라시아가 아메리카를 정복했는가? 재레드 다이아몬드의 문명 방정식.',
+        b4title:'어린 왕자 — 본질의 광학', b4desc:'"가장 중요한 것은 눈에 보이지 않아." 어른이 된 후 다시 읽는 생텍쥐페리.',
+        b5title:'팩트풀니스 — 세상을 보는 렌즈 교정', b5desc:'데이터로 증명하는 세상은 당신이 생각하는 것보다 나아지고 있다.',
+        b6title:'나미야 잡화점의 기적 — 시간의 편지', b6desc:'히가시노 게이고의 가장 따뜻한 이야기. 과거와 미래를 잇는 우편함.',
+        // OTT cards
+        o1title:'블랙미러 — 기술이 인간을 만나는 경계', o1desc:'시즌별 핵심 에피소드 가이드. 가장 충격적인 5편과 가장 따뜻한 2편.',
+        o2title:'세버런스 — 일과 삶의 완전한 분리', o2desc:'기억을 수술로 분리한다면? 워라밸의 극단적 사고실험.',
+        o3title:'나의 해방일지 — 해방을 찾는 사람들', o3desc:'K-드라마 힐링의 정점. 느리지만 깊은 대사가 마음을 두드린다.',
+        o4title:'테드 래소 — 긍정의 리더십', o4desc:'축구를 모르는 코치가 가르치는 인생 수업. 웃음과 감동의 3시즌.',
+        o5title:'Our Planet — 지구의 숨결', o5desc:'데이비드 아텐보로의 내레이션으로 만나는 경이로운 자연 다큐멘터리.',
+        o6title:'숄군 — 동서양이 충돌하는 역사 서사시', o6desc:'1600년 일본. 에미상 18관왕의 압도적 스케일과 디테일.',
+        // History cards
+        h1title:'로마 제국의 흥망 — 반복되는 패턴', h1desc:'1000년 제국은 왜 무너졌는가. 현대 문명에 주는 경고를 읽는다.',
+        h2title:'실크로드 — 무역이 만든 세계', h2desc:'장안에서 로마까지. 비단길 위에 문명, 종교, 전염병이 함께 흘렀다.',
+        h3title:'조선왕조 500년 — 제도의 힘', h3desc:'한 왕조가 500년을 유지한 비결. 사관제도, 경연, 언론삼사의 시스템.',
+        h4title:'르네상스 — 예술과 과학의 융합점', h4desc:'피렌체에서 시작된 문화혁명. 다빈치, 미켈란젤로, 갈릴레오의 시대.',
+        h5title:'산업혁명에서 AI혁명까지', h5desc:'증기기관 → 전기 → 컴퓨터 → AI. 기술 전환기의 공통 법칙을 찾는다.',
+        h6title:'냉전 — 두 체제의 실험', h6desc:'자본주의 vs 공산주의 45년간의 대결. 우주경쟁부터 베를린 장벽까지.',
+        // Science cards
+        s1title:'뉴턴의 영국 — 울스소프에서 케임브리지까지', s1desc:'사과나무가 있던 울스소프 매너, 트리니티 칼리지의 서재, 왕립조폐국장실. 중력을 발견한 남자의 고독한 여정을 따라간다.',
+        s2title:'아인슈타인의 스위스 — 베른 특허국에서 시공간으로', s2desc:'베른 크람가세 49번지 아파트, 특허국 3등 심사관의 책상. 26세 무명 청년이 시공간을 뒤집은 1905년 기적의 해를 추적한다.',
+        s3title:'다윈의 항해 — 비글호에서 다운하우스까지', s3desc:'갈라파고스의 핀치새, 런던 자연사박물관, 다운하우스의 산책로 \'생각의 길\'. 진화론이 탄생하기까지 20년의 망설임.',
+        s4title:'퀴리 부인의 파리 — 라듐을 발견한 창고 실험실', s4desc:'바르샤바의 소녀에서 노벨상 2회 수상까지. 리피유 거리의 낡은 창고, 팡테옹의 관, 방사능에 물든 노트북의 이야기.',
+        s5title:'갈릴레오의 이탈리아 — 피사에서 피렌체, 그리고 연금', s5desc:'피사의 사탑 실험(은 전설), 파도바 대학의 강의실, 피렌체 과학사박물관의 망원경. 종교재판 앞에서도 "그래도 지구는 돈다".',
+        s6title:'보어와 하이젠베르크 — 코펜하겐 해석의 현장', s6desc:'닐스 보어 연구소, 1941년 코펜하겐의 밤산책. 양자역학을 완성한 천재들의 우정과 배신, 원자폭탄의 그림자.',
+        s7title:'허블과 NASA — 윌슨산에서 케네디 우주센터까지', s7desc:'윌슨산 천문대의 100인치 망원경, 팔로마 천문대, 케이프 커내버럴. 우주가 팽창한다는 사실을 발견한 밤하늘의 역사.',
+        s8title:'막스 플랑크의 베를린 — 양자의 탄생', s8desc:'1900년 12월 14일, 물리학회 강연장. "에너지는 연속이 아니라 덩어리다." 고전물리학이 무너진 순간을 현장에서 느낀다.',
+        s9title:'파스퇴르와 제너 — 백신의 탄생지를 찾아서', s9desc:'버클리의 제너 박물관, 파리 파스퇴르 연구소. 우유 짜는 아낙네의 관찰에서 mRNA 백신까지, 면역학 300년의 길을 걷는다.',
+        s10title:'장영실과 세종 — 조선 과학의 현장', s10desc:'경복궁 간의대, 보루각 자격루, 여주 영릉. 15세기 동아시아 최고 수준의 천문·기상 관측 시스템을 만든 군주와 기술자.',
+        s11title:'튜링에서 폰 노이만까지 — 컴퓨터의 탄생', s11desc:'블레츨리 파크의 에니그마 해독실, 프린스턴 고등연구소, 실리콘밸리 차고. 0과 1로 세상을 재창조한 사람들의 흔적.',
+        s12title:'볼츠만과 슈뢰딩거 — 빈 학파의 물리학', s12desc:'빈 대학교 아치 아래 S=k log W 묘비, 솔베이 회의 단체사진의 현장. 열역학과 양자역학이 만난 세기말 빈의 지적 풍경.',
+        // Travel cards
+        t1title:'교토 — 천년 고도의 미학', t1desc:'이끼 정원, 대나무 숲, 게이샤 거리. 일본 미의식의 원형을 걷는다.',
+        t2title:'프라하 — 카프카의 도시를 걷다', t2desc:'골목마다 문학이 살아있는 보헤미아의 수도. 맥주 한 잔과 함께.',
+        t3title:'아이슬란드 — 지구의 날것', t3desc:'빙하, 화산, 오로라, 간헐천. 가장 원시적이고 가장 경이로운 풍경.',
+        t4title:'포르투 — 유럽의 숨은 보석', t4desc:'포트와인의 고장. 아줄레주 타일과 도우루 강이 만드는 색채.',
+        t5title:'경주 — 천년 왕국의 흔적', t5desc:'벚꽃 아래 고분군, 석굴암의 미소. 자전거로 신라 천년을 달린다.',
+        t6title:'파타고니아 — 세상의 끝에서', t6desc:'바람과 빙하의 땅. 인생에서 한 번은 가야 할 지구 최남단의 절경.',
+        // Artists cards
+        a1title:'크리스토퍼 놀란 — 시간을 조각하는 감독', a1desc:'메멘토부터 오펜하이머까지. 비선형 서사의 거장이 시간을 다루는 법.',
+        a2title:'봉준호 — 장르의 경계를 허물다', a2desc:'플란다스의 개부터 기생충까지. 한국 영화를 세계에 각인시킨 스토리텔러.',
+        a3title:'K-POP 4세대 — 뉴진스, 르세라핌의 전략', a3desc:'Y2K 감성, 팬덤 구조, 글로벌 마케팅. K-POP은 어떻게 세계를 정복했나.',
+        a4title:'한스 짐머 — 영화음악의 건축가', a4desc:'인셉션의 저음, 듄의 사막 울림. 소리로 공간을 짓는 작곡가.',
+        a5title:'테일러 스위프트 — 음악 산업의 게임체인저', a5desc:'컨트리에서 팝으로. 앨범 재녹음으로 업계를 뒤흔든 아티스트 파워.',
+        a6title:'사카모토 류이치 — 소리의 철학자', a6desc:'YMO부터 마지막 콘서트까지. 전자음악과 클래식의 경계를 녹인 거장.',
+        splashEnter:'매거진 열기'
+    },
+    en: {
+        navCinema:'Cinema', navBooks:'Books', navOtt:'OTT', navHistory:'History', navScience:'Science', navTravel:'Travel', navArtists:'Artists',
+        heroBadge:'Weekend Culture Magazine',
+        heroSubtitle:'Cinema · Books · OTT · History · Science Pilgrimage · Travel · Artists',
+        heroVolLabel:'Vol.01 — Inaugural Issue',
+        secCinemaTag:'Axis A', secCinemaH2:'Films That Define an Era', secCinemaP:'One film can change a life',
+        secBooksTag:'Axis B', secBooksH2:'Books That Change Lives', secBooksP:'One book can change how you see the world',
+        secOttTag:'Axis C', secOttH2:'Essential OTT Viewing', secOttP:'Netflix, Apple TV+, Disney+ binge guide',
+        secHistoryTag:'Axis D', secHistoryH2:'History Documentaries', secHistoryP:'Knowing the past reveals the future',
+        secScienceTag:'Axis G — Special', secScienceH2:'Science Pilgrimage', secScienceP:'Walking in the footsteps of great scientists around the world',
+        secTravelTag:'Axis E', secTravelH2:'Places to Visit Someday', secTravelP:'Destinations that make you feel like you\'ve already departed',
+        secArtistsTag:'Axis F', secArtistsH2:'Artist Stories', secArtistsP:'Directors, actors, musicians — glimpsing the secret of creation',
+        statusNew:'NEW', statusSoon:'Coming Soon',
+        footerQuote:'"The world is a book, and those who do not travel read only one page." — Saint Augustine',
+        footerCopy:'Culture Voyager © 2026 | Nakcho Choi',
+        footerTagline:'One story every weekend',
+        c1title:'The Shawshank Redemption — Physics of Hope', c1desc:'One man defying entropy in the closed system of a prison. Hope is a good thing.',
+        c2title:'Interstellar — Relativity of Time and Love', c2desc:'When gravity warps time, only love transcends dimensions. Nolan\'s warmest sci-fi.',
+        c3title:'Parasite — Sociology of the Staircase', c3desc:'From semi-basement to underground. Dissecting the vertical spaces Bong Joon-ho designed.',
+        c4title:'Cinema Paradiso — Chemistry of Memory and Nostalgia', c4desc:'The light of childhood etched on film. Ennio Morricone\'s melody rewinds memory.',
+        c5title:'2001: A Space Odyssey — The Philosophical Origins of AI', c5desc:'HAL 9000\'s question cuts deeper now in the ChatGPT era, 60 years later.',
+        c6title:'The Grand Budapest Hotel — Architecture of Style', c6desc:'The twilight of European civilization within Wes Anderson\'s symmetrical compositions.',
+        b1title:'Sapiens — Reconstructing the Human Narrative', b1desc:'From the cognitive revolution 70,000 years ago to AI. Yuval Harari\'s epic of Homo sapiens.',
+        b2title:'Cosmos — Cosmic Humility', b2desc:'Carl Sagan\'s gift of a cosmic perspective. Reflecting on ourselves on a pale blue dot.',
+        b3title:'Guns, Germs, and Steel — Geography of Civilization', b3desc:'Why did Eurasia conquer the Americas? Jared Diamond\'s equation of civilization.',
+        b4title:'The Little Prince — Optics of Essence', b4desc:'"What is essential is invisible to the eye." Saint-Exupéry reread as an adult.',
+        b5title:'Factfulness — Correcting the Lens on the World', b5desc:'Data proves the world is improving more than you think.',
+        b6title:'The Miracles of the Namiya General Store — Letters Through Time', b6desc:'Keigo Higashino\'s warmest story. A mailbox connecting past and future.',
+        o1title:'Black Mirror — Where Technology Meets Humanity', o1desc:'Episode guide by season. The 5 most shocking and the 2 most touching episodes.',
+        o2title:'Severance — Complete Separation of Work and Life', o2desc:'What if memories could be surgically divided? The ultimate thought experiment on work-life balance.',
+        o3title:'My Liberation Notes — Searching for Liberation', o3desc:'The peak of K-drama healing. Slow but deeply resonant dialogue.',
+        o4title:'Ted Lasso — Leadership Through Positivity', o4desc:'Life lessons from a coach who doesn\'t know soccer. Three seasons of laughs and heart.',
+        o5title:'Our Planet — The Breath of Earth', o5desc:'A breathtaking nature documentary narrated by David Attenborough.',
+        o6title:'Shōgun — Epic East-West Historical Clash', o6desc:'Japan, 1600. Emmy Award winner\'s overwhelming scale and detail.',
+        h1title:'The Rise and Fall of the Roman Empire — Repeating Patterns', h1desc:'Why did a 1,000-year empire collapse? Reading the warning for modern civilization.',
+        h2title:'The Silk Road — A World Made by Trade', h2desc:'From Chang\'an to Rome. Civilization, religion, and plague flowed together on the Silk Road.',
+        h3title:'500 Years of the Joseon Dynasty — The Power of Institutions', h3desc:'The secret behind a dynasty lasting 500 years. The historian system, royal lectures, and censorate.',
+        h4title:'The Renaissance — Where Art and Science Converge', h4desc:'A cultural revolution starting in Florence. The age of da Vinci, Michelangelo, and Galileo.',
+        h5title:'From Industrial Revolution to AI Revolution', h5desc:'Steam → Electricity → Computer → AI. Finding the common laws of technological transitions.',
+        h6title:'The Cold War — An Experiment of Two Systems', h6desc:'45 years of capitalism vs communism. From the space race to the Berlin Wall.',
+        s1title:'Newton\'s England — From Woolsthorpe to Cambridge', s1desc:'Woolsthorpe Manor with its apple tree, Trinity College library, Master of the Royal Mint. Following the solitary journey of the man who discovered gravity.',
+        s2title:'Einstein\'s Switzerland — From Bern Patent Office to Spacetime', s2desc:'Apartment at Kramgasse 49, Bern; the desk of a third-class patent examiner. Tracing the miraculous year 1905 when a 26-year-old nobody overturned spacetime.',
+        s3title:'Darwin\'s Voyage — From the Beagle to Down House', s3desc:'Galapagos finches, the Natural History Museum in London, the "Thinking Path" at Down House. Twenty years of hesitation before the theory of evolution was born.',
+        s4title:'Marie Curie\'s Paris — The Shed Lab Where Radium Was Discovered', s4desc:'From a Warsaw girl to two Nobel Prizes. The crumbling shed on Rue Lhomond, the sarcophagus in the Panthéon, notebooks stained with radioactivity.',
+        s5title:'Galileo\'s Italy — From Pisa to Florence, and House Arrest', s5desc:'The Leaning Tower experiment (a legend), the lecture hall at Padua, the telescopes at the Museo Galileo. "And yet it moves," even before the Inquisition.',
+        s6title:'Bohr and Heisenberg — The Scene of the Copenhagen Interpretation', s6desc:'Niels Bohr Institute, the night walk in Copenhagen in 1941. The friendship and betrayal of geniuses who completed quantum mechanics, and the shadow of the atomic bomb.',
+        s7title:'Hubble and NASA — From Mount Wilson to Kennedy Space Center', s7desc:'The 100-inch telescope at Mount Wilson Observatory, Palomar Observatory, Cape Canaveral. The nocturnal history of discovering that the universe is expanding.',
+        s8title:'Max Planck\'s Berlin — The Birth of the Quantum', s8desc:'December 14, 1900, the physics lecture hall. "Energy comes in discrete chunks, not a continuum." Experiencing the moment classical physics collapsed.',
+        s9title:'Pasteur and Jenner — In Search of the Birthplaces of Vaccines', s9desc:'Jenner Museum in Berkeley, Institut Pasteur in Paris. Walking 300 years of immunology from a milkmaid\'s observation to mRNA vaccines.',
+        s10title:'Jang Yeong-sil and King Sejong — The Science of Joseon', s10desc:'Gyeongbokgung Ganuidae, the Borugak clepsydra, Royal Tomb of King Sejong in Yeoju. The monarch and technician who built East Asia\'s finest astronomical observation system in the 15th century.',
+        s11title:'From Turing to Von Neumann — The Birth of the Computer', s11desc:'Enigma decryption room at Bletchley Park, Princeton\'s Institute for Advanced Study, Silicon Valley garages. The traces of people who recreated the world in 0s and 1s.',
+        s12title:'Boltzmann and Schrödinger — Physics of the Vienna School', s12desc:'The gravestone S=k log W under Vienna University\'s arch, the scene of the Solvay Conference photograph. The intellectual landscape of fin-de-siècle Vienna where thermodynamics met quantum mechanics.',
+        t1title:'Kyoto — Aesthetics of a Millennial Capital', t1desc:'Moss gardens, bamboo forests, geisha districts. Walking the archetype of Japanese aesthetics.',
+        t2title:'Prague — Walking Kafka\'s City', t2desc:'The Bohemian capital where literature lives in every alley. Best enjoyed with a pint of beer.',
+        t3title:'Iceland — The Raw Earth', t3desc:'Glaciers, volcanoes, auroras, geysers. The most primal and awe-inspiring landscape.',
+        t4title:'Porto — Europe\'s Hidden Gem', t4desc:'Home of port wine. The colors created by azulejo tiles and the Douro River.',
+        t5title:'Gyeongju — Traces of a Millennial Kingdom', t5desc:'Ancient tombs under cherry blossoms, the smile of Seokguram. Cycling through a thousand years of Silla.',
+        t6title:'Patagonia — At the End of the World', t6desc:'Land of wind and glaciers. The southernmost scenery you must see at least once in your life.',
+        a1title:'Christopher Nolan — Director Who Sculpts Time', a1desc:'From Memento to Oppenheimer. How the master of nonlinear narrative handles time.',
+        a2title:'Bong Joon-ho — Erasing Genre Boundaries', a2desc:'From Barking Dogs Never Bite to Parasite. The storyteller who stamped Korean cinema on the world.',
+        a3title:'K-POP 4th Gen — The Strategy of NewJeans and Le Sserafim', a3desc:'Y2K aesthetics, fandom structures, global marketing. How K-POP conquered the world.',
+        a4title:'Hans Zimmer — Architect of Film Music', a4desc:'The bass of Inception, the desert resonance of Dune. A composer who builds spaces with sound.',
+        a5title:'Taylor Swift — Game Changer of the Music Industry', a5desc:'From country to pop. The artist power that shook the industry with re-recorded albums.',
+        a6title:'Ryuichi Sakamoto — Philosopher of Sound', a6desc:'From YMO to his final concert. The maestro who dissolved the boundary between electronic music and classical.',
+        splashEnter:'Enter Magazine'
+    },
+    ja: {
+        navCinema:'映画', navBooks:'本', navOtt:'OTT', navHistory:'歴史', navScience:'科学', navTravel:'旅行', navArtists:'アーティスト',
+        heroBadge:'週末カルチャーマガジン',
+        heroSubtitle:'映画 · 本 · OTT · 歴史 · 科学巡礼 · 旅行 · アーティスト',
+        heroVolLabel:'Vol.01 — 創刊号',
+        secCinemaTag:'軸A', secCinemaH2:'時代を貫く映画', secCinemaP:'一本の映画が人生を変えることもある',
+        secBooksTag:'軸B', secBooksH2:'人生を変える本', secBooksP:'一冊の本が世界を見るレンズを変える',
+        secOttTag:'軸C', secOttH2:'OTT必見作品', secOttP:'Netflix、Apple TV+、Disney+ 完全視聴ガイド',
+        secHistoryTag:'軸D', secHistoryH2:'歴史ドキュメンタリー', secHistoryP:'過去を知れば未来が見える',
+        secScienceTag:'軸G — スペシャル', secScienceH2:'科学巡礼の旅', secScienceP:'偉大な科学者の足跡をたどって世界を歩く',
+        secTravelTag:'軸E', secTravelH2:'いつか行きたい場所', secTravelP:'読むだけで旅立った気分になる場所',
+        secArtistsTag:'軸F', secArtistsH2:'アーティストストーリー', secArtistsP:'監督、俳優、音楽家 — 創作の秘密を覗く',
+        statusNew:'NEW', statusSoon:'予定',
+        footerQuote:'"世界は一冊の本であり、旅をしない人はその一ページしか読まない。" — 聖アウグスティヌス',
+        footerCopy:'Culture Voyager © 2026 | Nakcho Choi',
+        footerTagline:'毎週末、一つの物語をお届けします',
+        c1title:'ショーシャンクの空に — 希望の物理学', c1desc:'刑務所という閉じた系でエントロピーに逆らう一人の男。希望は本当に良いものだ。',
+        c2title:'インターステラー — 時間と愛の相対性', c2desc:'重力が時間を歪めるとき、愛だけが次元を超える。ノーランの最も温かいSF。',
+        c3title:'パラサイト — 階段の社会学', c3desc:'半地下から地下へ。ポン・ジュノが設計した垂直空間の意味を解剖する。',
+        c4title:'ニュー・シネマ・パラダイス — 記憶と郷愁の化学', c4desc:'フィルムに刻まれた幼年の光。エンニオ・モリコーネの旋律が記憶を巻き戻す。',
+        c5title:'2001年宇宙の旅 — AIの哲学的起源', c5desc:'HAL 9000が投げかけた問いは、60年後のChatGPT時代にさらに鋭い。',
+        c6title:'グランド・ブダペスト・ホテル — スタイルの建築学', c6desc:'ウェス・アンダーソンの対称構図に込められた欧州文明の黄昏。',
+        b1title:'サピエンス全史 — 人類の物語の再構成', b1desc:'7万年前の認知革命からAIまで。ユヴァル・ノア・ハラリが描くホモ・サピエンスの大叙事詩。',
+        b2title:'コスモス — 宇宙的謙虚さ', b2desc:'カール・セーガンが贈る宇宙の視点。青白い点の上の私たちを振り返る。',
+        b3title:'銃・病原菌・鉄 — 文明の地理学', b3desc:'なぜユーラシアがアメリカを征服したのか？ジャレド・ダイアモンドの文明方程式。',
+        b4title:'星の王子さま — 本質の光学', b4desc:'"大切なことは目に見えない。"大人になってから再び読むサン＝テグジュペリ。',
+        b5title:'ファクトフルネス — 世界を見るレンズの矯正', b5desc:'データが証明する：世界はあなたが思うよりも良くなっている。',
+        b6title:'ナミヤ雑貨店の奇蹟 — 時間の手紙', b6desc:'東野圭吾の最も温かい物語。過去と未来をつなぐ郵便受け。',
+        o1title:'ブラック・ミラー — テクノロジーが人間に出会う境界', o1desc:'シーズン別必見エピソードガイド。最も衝撃的な5本と最も温かい2本。',
+        o2title:'セバランス — 仕事と人生の完全な分離', o2desc:'記憶を手術で切り分けたら？ワークライフバランスの極端な思考実験。',
+        o3title:'私の解放日誌 — 解放を求める人々', o3desc:'K-ドラマ癒し系の頂点。ゆっくりだが深いセリフが心を打つ。',
+        o4title:'テッド・ラッソ — ポジティブなリーダーシップ', o4desc:'サッカーを知らないコーチが教える人生の授業。笑いと感動の3シーズン。',
+        o5title:'Our Planet — 地球の息吹', o5desc:'デイヴィッド・アッテンボローのナレーションで出会う驚異の自然ドキュメンタリー。',
+        o6title:'SHOGUN 将軍 — 東西文明が衝突する歴史叙事詩', o6desc:'1600年の日本。エミー賞18冠の圧倒的スケールとディテール。',
+        h1title:'ローマ帝国の興亡 — 繰り返すパターン', h1desc:'なぜ1000年の帝国は崩壊したのか。現代文明への警告を読む。',
+        h2title:'シルクロード — 貿易が作った世界', h2desc:'長安からローマまで。絹の道に文明・宗教・疫病が共に流れた。',
+        h3title:'朝鮮王朝500年 — 制度の力', h3desc:'一つの王朝が500年続いた秘訣。史官制度・経筵・言論三司のシステム。',
+        h4title:'ルネサンス — 芸術と科学の融合点', h4desc:'フィレンツェから始まった文化革命。ダ・ヴィンチ・ミケランジェロ・ガリレオの時代。',
+        h5title:'産業革命からAI革命まで', h5desc:'蒸気機関 → 電気 → コンピュータ → AI。技術転換期の共通法則を探す。',
+        h6title:'冷戦 — 二つの体制の実験', h6desc:'資本主義vs共産主義45年間の対決。宇宙競争からベルリンの壁まで。',
+        s1title:'ニュートンの英国 — ウールスソープからケンブリッジへ', s1desc:'リンゴの木があったウールスソープ荘園・トリニティカレッジの書斎・王立造幣局長室。重力を発見した男の孤独な旅をたどる。',
+        s2title:'アインシュタインのスイス — ベルン特許局から時空間へ', s2desc:'ベルン・クラムガッセ49番地のアパート、特許局3等審査官の机。26歳の無名青年が時空間をひっくり返した1905年の奇跡を追う。',
+        s3title:'ダーウィンの航海 — ビーグル号からダウンハウスへ', s3desc:'ガラパゴスのフィンチ・ロンドン自然史博物館・ダウンハウスの「思索の小道」。進化論が生まれるまでの20年間の躊躇。',
+        s4title:'キュリー夫人のパリ — ラジウムを発見した納屋の実験室', s4desc:'ワルシャワの少女からノーベル賞2回受賞まで。リューモン通りの古い納屋・パンテオンの棺・放射能で汚染されたノートの物語。',
+        s5title:'ガリレオのイタリア — ピサからフィレンツェ、そして軟禁へ', s5desc:'ピサの斜塔の実験（は伝説）、パドヴァ大学の講義室、ガリレオ博物館の望遠鏡。宗教裁判の前でも「それでも地球は動く」。',
+        s6title:'ボーアとハイゼンベルク — コペンハーゲン解釈の現場', s6desc:'ニールス・ボーア研究所、1941年コペンハーゲンの夜の散歩。量子力学を完成させた天才たちの友情と裏切り、原子爆弾の影。',
+        s7title:'ハッブルとNASA — ウィルソン山からケネディ宇宙センターへ', s7desc:'ウィルソン山天文台の100インチ望遠鏡・パロマー天文台・ケープ・カナベラル。宇宙が膨張しているという事実を発見した夜空の歴史。',
+        s8title:'マックス・プランクのベルリン — 量子の誕生', s8desc:'1900年12月14日、物理学会の講演会場。「エネルギーは連続でなく塊だ。」古典物理学が崩れた瞬間を現場で感じる。',
+        s9title:'パスツールとジェンナー — ワクチン誕生地を訪ねて', s9desc:'バークレーのジェンナー博物館・パリのパスツール研究所。乳搾り女の観察からmRNAワクチンまで、免疫学300年の道を歩く。',
+        s10title:'張英実と世宗大王 — 朝鮮科学の現場', s10desc:'景福宮簡儀台・報漏閣自撃漏・驪州英陵。15世紀東アジア最高レベルの天文・気象観測システムを作った君主と技術者。',
+        s11title:'チューリングからフォン・ノイマンまで — コンピュータの誕生', s11desc:'ブレッチリー・パークのエニグマ解読室・プリンストン高等研究所・シリコンバレーのガレージ。0と1で世界を再創造した人々の痕跡。',
+        s12title:'ボルツマンとシュレーディンガー — ウィーン学派の物理学', s12desc:'ウィーン大学のアーチ下のS=k log W 墓碑・ソルヴェー会議の集合写真の現場。熱力学と量子力学が出会った世紀末ウィーンの知的風景。',
+        t1title:'京都 — 千年古都の美学', t1desc:'苔庭・竹林・祇園。日本の美意識の原型を歩く。',
+        t2title:'プラハ — カフカの街を歩く', t2desc:'路地ごとに文学が生きるボヘミアの首都。ビール一杯と共に。',
+        t3title:'アイスランド — 地球の生のまま', t3desc:'氷河・火山・オーロラ・間欠泉。最も原始的で最も神秘的な風景。',
+        t4title:'ポルト — ヨーロッパの隠れた宝石', t4desc:'ポートワインの故郷。アズレージョタイルとドウロ川が作る色彩。',
+        t5title:'慶州 — 千年王国の痕跡', t5desc:'桜の下の古墳群・石窟庵の微笑み。自転車で新羅の千年を駆ける。',
+        t6title:'パタゴニア — 世界の果てで', t6desc:'風と氷河の大地。人生で一度は行くべき地球最南端の絶景。',
+        a1title:'クリストファー・ノーラン — 時間を彫刻する監督', a1desc:'メメントからオッペンハイマーまで。非線形叙事の巨匠が時間を扱う方法。',
+        a2title:'ポン・ジュノ — ジャンルの壁を壊す', a2desc:'フランダースの犬からパラサイトまで。韓国映画を世界に刻み込んだストーリーテラー。',
+        a3title:'K-POP 4世代 — NewJeans、LE SSERAFIMの戦略', a3desc:'Y2K感性・ファンダム構造・グローバルマーケティング。K-POPはどうやって世界を征服したか。',
+        a4title:'ハンス・ジマー — 映画音楽の建築家', a4desc:'インセプションの低音・デューンの砂漠の響き。音で空間を作る作曲家。',
+        a5title:'テイラー・スウィフト — 音楽産業のゲームチェンジャー', a5desc:'カントリーからポップへ。アルバム再録音で業界を揺るがしたアーティストパワー。',
+        a6title:'坂本龍一 — 音の哲学者', a6desc:'YMOから最後のコンサートまで。電子音楽とクラシックの境界を溶かした巨匠。',
+        splashEnter:'マガジンを開く'
+    },
+    zh: {
+        navCinema:'电影', navBooks:'图书', navOtt:'OTT', navHistory:'历史', navScience:'科学', navTravel:'旅行', navArtists:'艺术家',
+        heroBadge:'周末文化艺术杂志',
+        heroSubtitle:'电影 · 图书 · OTT · 历史 · 科学朝圣 · 旅行 · 艺术家',
+        heroVolLabel:'Vol.01 — 创刊号',
+        secCinemaTag:'轴A', secCinemaH2:'穿越时代的电影', secCinemaP:'一部电影也能改变人生',
+        secBooksTag:'轴B', secBooksH2:'改变人生的书', secBooksP:'一本书能改变看世界的视角',
+        secOttTag:'轴C', secOttH2:'OTT必看作品', secOttP:'Netflix、Apple TV+、Disney+ 追剧指南',
+        secHistoryTag:'轴D', secHistoryH2:'历史纪录片', secHistoryP:'了解过去才能看见未来',
+        secScienceTag:'轴G — 特别', secScienceH2:'科学朝圣之旅', secScienceP:'追随伟大科学家的足迹，走遍世界',
+        secTravelTag:'轴E', secTravelH2:'总有一天要去的地方', secTravelP:'光是阅读就让人感觉已经出发的目的地',
+        secArtistsTag:'轴F', secArtistsH2:'艺术家故事', secArtistsP:'导演、演员、音乐家 — 窥探创作的秘密',
+        statusNew:'新上线', statusSoon:'即将推出',
+        footerQuote:'"世界是一本书，不旅行的人只读了一页。" — 圣奥古斯丁',
+        footerCopy:'Culture Voyager © 2026 | Nakcho Choi',
+        footerTagline:'每个周末，为您讲述一个故事',
+        c1title:'肖申克的救赎 — 希望的物理学', c1desc:'一个男人在监狱这个封闭系统中对抗熵增。希望确实是好东西。',
+        c2title:'星际穿越 — 时间与爱的相对论', c2desc:'当引力扭曲时间，只有爱能超越维度。诺兰最温暖的科幻片。',
+        c3title:'寄生虫 — 阶梯的社会学', c3desc:'从半地下到地下。解剖奉俊昊设计的垂直空间意义。',
+        c4title:'天堂电影院 — 记忆与乡愁的化学', c4desc:'刻在胶片上的童年之光。莫里康内的旋律倒带记忆。',
+        c5title:'2001太空漫游 — AI的哲学起源', c5desc:'HAL 9000提出的问题，60年后的ChatGPT时代更加犀利。',
+        c6title:'布达佩斯大饭店 — 风格的建筑学', c6desc:'韦斯·安德森对称构图中蕴含的欧洲文明黄昏。',
+        b1title:'人类简史 — 人类叙事的重构', b1desc:'从7万年前的认知革命到AI。尤瓦尔·赫拉利描绘的智人大史诗。',
+        b2title:'宇宙 — 宇宙的谦逊', b2desc:'卡尔·萨根赠予的宇宙视角。在这颗苍白蓝点上反思自我。',
+        b3title:'枪炮、病菌与钢铁 — 文明的地理学', b3desc:'为何欧亚大陆征服了美洲？贾雷德·戴蒙德的文明方程式。',
+        b4title:'小王子 — 本质的光学', b4desc:'"重要的东西用眼睛是看不见的。"成年后重读圣埃克苏佩里。',
+        b5title:'事实 — 矫正看世界的视角', b5desc:'数据证明：世界比你想象的更美好。',
+        b6title:'解忧杂货店 — 时间的信', b6desc:'东野圭吾最温暖的故事。连接过去与未来的邮箱。',
+        o1title:'黑镜 — 技术与人类相遇的边界', o1desc:'各季必看剧集指南。最震撼的5集与最温情的2集。',
+        o2title:'离断 — 工作与生活的完全分离', o2desc:'如果记忆可以手术分离？工作与生活的极端思想实验。',
+        o3title:'我的解放日记 — 寻找解放的人们', o3desc:'韩剧治愈系巅峰。缓慢而深刻的台词触动人心。',
+        o4title:'泰德·拉索 — 积极的领导力', o4desc:'不懂足球的教练传授的人生课。笑与感动的3季。',
+        o5title:'我们的星球 — 地球的呼吸', o5desc:'大卫·爱登堡旁白的震撼自然纪录片。',
+        o6title:'将军 — 东西方文明碰撞的历史史诗', o6desc:'1600年的日本。艾美奖18项大奖的压倒性规模与细节。',
+        h1title:'罗马帝国的兴衰 — 重复的模式', h1desc:'为何千年帝国最终崩溃？读懂对现代文明的警示。',
+        h2title:'丝绸之路 — 贸易造就的世界', h2desc:'从长安到罗马。文明、宗教与瘟疫共同流淌在丝绸之路上。',
+        h3title:'朝鲜王朝500年 — 制度的力量', h3desc:'一个王朝延续500年的秘诀。史官制度、经筵、言论三司的体系。',
+        h4title:'文艺复兴 — 艺术与科学的融合点', h4desc:'从佛罗伦萨开始的文化革命。达芬奇、米开朗基罗、伽利略的时代。',
+        h5title:'从工业革命到AI革命', h5desc:'蒸汽机→电力→计算机→AI。寻找技术转型期的共同规律。',
+        h6title:'冷战 — 两种体制的实验', h6desc:'资本主义vs共产主义45年对决。从太空竞赛到柏林墙。',
+        s1title:'牛顿的英国 — 从乌尔斯索普到剑桥', s1desc:'有苹果树的乌尔斯索普庄园、三一学院书房、皇家铸币局局长室。追随发现引力的男人的孤独旅程。',
+        s2title:'爱因斯坦的瑞士 — 从伯尔尼专利局到时空', s2desc:'伯尔尼克拉姆加塞49号公寓，专利局三级审查员的书桌。追踪26岁无名小卒在1905年奇迹之年颠覆时空的历程。',
+        s3title:'达尔文的航行 — 从小猎犬号到唐恩庄园', s3desc:'加拉帕戈斯的雀鸟、伦敦自然史博物馆、唐恩庄园的"思考小径"。进化论诞生前20年的犹豫。',
+        s4title:'居里夫人的巴黎 — 发现镭的棚屋实验室', s4desc:'从华沙少女到两度诺贝尔奖。吕伊蒙街破旧棚屋、先贤祠的棺椁、被放射性污染的笔记本的故事。',
+        s5title:'伽利略的意大利 — 从比萨到佛罗伦萨，再到软禁', s5desc:'比萨斜塔实验（是传说）、帕多瓦大学讲堂、佛罗伦萨科学史博物馆的望远镜。即使在宗教法庭面前也"它确实在动"。',
+        s6title:'玻尔与海森堡 — 哥本哈根诠释的现场', s6desc:'尼尔斯·玻尔研究所，1941年哥本哈根的夜间散步。完成量子力学的天才们的友谊与背叛，原子弹的阴影。',
+        s7title:'哈勃与NASA — 从威尔逊山到肯尼迪航天中心', s7desc:'威尔逊山天文台的100英寸望远镜、帕洛玛天文台、卡纳维拉尔角。发现宇宙膨胀这一事实的星空历史。',
+        s8title:'马克斯·普朗克的柏林 — 量子的诞生', s8desc:'1900年12月14日，物理学会讲演厅。"能量不是连续的，是一份一份的。"在现场感受古典物理学崩溃的那一刻。',
+        s9title:'巴斯德与詹纳 — 寻访疫苗诞生地', s9desc:'伯克利的詹纳博物馆、巴黎巴斯德研究所。从挤奶女工的观察到mRNA疫苗，走过免疫学300年之路。',
+        s10title:'蒋英实与世宗 — 朝鲜科学的现场', s10desc:'景福宫简仪台、报漏阁自击漏、骊州英陵。打造15世纪东亚最高水平天文气象观测系统的君主与技术者。',
+        s11title:'从图灵到冯·诺依曼 — 计算机的诞生', s11desc:'布莱切利庄园的恩尼格玛解码室、普林斯顿高等研究院、硅谷车库。用0和1重塑世界的人们的痕迹。',
+        s12title:'玻尔兹曼与薛定谔 — 维也纳学派的物理学', s12desc:'维也纳大学拱廊下的S=k log W 墓碑、索尔维会议集体照的现场。热力学与量子力学相遇的世纪末维也纳知识风景。',
+        t1title:'京都 — 千年古都的美学', t1desc:'苔藓花园、竹林、艺妓街道。漫步日本美学的原型。',
+        t2title:'布拉格 — 漫步卡夫卡的城市', t2desc:'每条小巷都充满文学气息的波希米亚之都。配上一杯啤酒。',
+        t3title:'冰岛 — 原始的地球', t3desc:'冰川、火山、极光、间歇泉。最原始、最壮观的风景。',
+        t4title:'波尔图 — 欧洲的隐藏宝石', t4desc:'波特酒的故乡。蓝白瓷砖与杜罗河创造的色彩。',
+        t5title:'庆州 — 千年王国的痕迹', t5desc:'樱花下的古墓群、石窟庵的微笑。骑自行车穿越新罗千年。',
+        t6title:'巴塔哥尼亚 — 在世界尽头', t6desc:'风与冰川之地。此生必游的地球最南端绝景。',
+        a1title:'克里斯托弗·诺兰 — 雕刻时间的导演', a1desc:'从记忆碎片到奥本海默。非线性叙事大师驾驭时间的方式。',
+        a2title:'奉俊昊 — 打破类型边界', a2desc:'从绑架门口的狗到寄生虫。将韩国电影烙印在世界上的故事大师。',
+        a3title:'K-POP第四代 — NewJeans、LE SSERAFIM的战略', a3desc:'Y2K美学、粉丝团结构、全球营销。K-POP如何征服世界。',
+        a4title:'汉斯·季默 — 电影音乐的建筑师', a4desc:'盗梦空间的低音、沙丘的沙漠回响。用声音构筑空间的作曲家。',
+        a5title:'泰勒·斯威夫特 — 音乐产业的游戏规则改变者', a5desc:'从乡村到流行。以重新录制专辑震撼业界的艺人力量。',
+        a6title:'坂本龙一 — 声音的哲学家', a6desc:'从YMO到最后的音乐会。融合电子音乐与古典音乐边界的大师。',
+        splashEnter:'打开杂志'
+    },
+    es: {
+        navCinema:'Cine', navBooks:'Libros', navOtt:'OTT', navHistory:'Historia', navScience:'Ciencia', navTravel:'Viajes', navArtists:'Artistas',
+        heroBadge:'Revista Cultural de Fin de Semana',
+        heroSubtitle:'Cine · Libros · OTT · Historia · Peregrinación Científica · Viajes · Artistas',
+        heroVolLabel:'Vol.01 — Número Inaugural',
+        secCinemaTag:'Eje A', secCinemaH2:'Películas que Definen una Época', secCinemaP:'Una película puede cambiar una vida',
+        secBooksTag:'Eje B', secBooksH2:'Libros que Cambian Vidas', secBooksP:'Un libro puede cambiar cómo ves el mundo',
+        secOttTag:'Eje C', secOttH2:'OTT Imprescindible', secOttP:'Guía de maratón Netflix, Apple TV+, Disney+',
+        secHistoryTag:'Eje D', secHistoryH2:'Documentales Históricos', secHistoryP:'Conocer el pasado revela el futuro',
+        secScienceTag:'Eje G — Especial', secScienceH2:'Peregrinación Científica', secScienceP:'Caminando en los pasos de los grandes científicos por el mundo',
+        secTravelTag:'Eje E', secTravelH2:'Lugares para Visitar Algún Día', secTravelP:'Destinos que te hacen sentir que ya has partido',
+        secArtistsTag:'Eje F', secArtistsH2:'Historias de Artistas', secArtistsP:'Directores, actores, músicos — vislumbrando el secreto de la creación',
+        statusNew:'NUEVO', statusSoon:'Próximamente',
+        footerQuote:'"El mundo es un libro, y los que no viajan solo leen una página." — San Agustín',
+        footerCopy:'Culture Voyager © 2026 | Nakcho Choi',
+        footerTagline:'Una historia cada fin de semana',
+        c1title:'Cadena perpetua — La Física de la Esperanza', c1desc:'Un hombre desafiando la entropía en el sistema cerrado de una prisión. La esperanza es una buena cosa.',
+        c2title:'Interestelar — Relatividad del Tiempo y el Amor', c2desc:'Cuando la gravedad distorsiona el tiempo, solo el amor trasciende las dimensiones. La sci-fi más cálida de Nolan.',
+        c3title:'Parásitos — Sociología de la Escalera', c3desc:'Del semisótano al sótano. Diseccionando los espacios verticales diseñados por Bong Joon-ho.',
+        c4title:'Cinema Paradiso — Química de la Memoria y la Nostalgia', c4desc:'La luz de la infancia grabada en el celuloide. La melodía de Ennio Morricone rebobina la memoria.',
+        c5title:'2001: Una odisea del espacio — Los Orígenes Filosóficos de la IA', c5desc:'La pregunta de HAL 9000 es más aguda hoy en la era de ChatGPT, 60 años después.',
+        c6title:'El gran hotel Budapest — Arquitectura del Estilo', c6desc:'El crepúsculo de la civilización europea en las composiciones simétricas de Wes Anderson.',
+        b1title:'Sapiens — Reconstruyendo la Narrativa Humana', b1desc:'Desde la revolución cognitiva hace 70.000 años hasta la IA. La epopeya del Homo sapiens de Yuval Harari.',
+        b2title:'Cosmos — Humildad Cósmica', b2desc:'El regalo de Carl Sagan de una perspectiva cósmica. Reflexionando sobre nosotros en un punto azul pálido.',
+        b3title:'Armas, gérmenes y acero — Geografía de la Civilización', b3desc:'¿Por qué Eurasia conquistó las Américas? La ecuación de la civilización de Jared Diamond.',
+        b4title:'El principito — Óptica de la Esencia', b4desc:'"Lo esencial es invisible a los ojos." Saint-Exupéry releído como adulto.',
+        b5title:'Factfulness — Corrigiendo el Lente del Mundo', b5desc:'Los datos demuestran que el mundo mejora más de lo que crees.',
+        b6title:'La tienda de los milagros Namiya — Cartas a través del Tiempo', b6desc:'La historia más cálida de Keigo Higashino. Un buzón que conecta pasado y futuro.',
+        o1title:'Black Mirror — Donde la Tecnología Encuentra a la Humanidad', o1desc:'Guía de episodios esenciales por temporada. Los 5 más impactantes y los 2 más entrañables.',
+        o2title:'Ruptura — Separación Completa de Trabajo y Vida', o2desc:'¿Y si los recuerdos pudieran dividirse quirúrgicamente? El experimento mental extremo sobre el equilibrio trabajo-vida.',
+        o3title:'Mi diario de liberación — En Busca de la Liberación', o3desc:'El pico del k-drama sanador. Diálogos lentos pero profundamente resonantes.',
+        o4title:'Ted Lasso — Liderazgo a través de la Positividad', o4desc:'Lecciones de vida de un entrenador que no sabe de fútbol. Tres temporadas de risas y emoción.',
+        o5title:'Nuestro planeta — El Aliento de la Tierra', o5desc:'Un impresionante documental de naturaleza narrado por David Attenborough.',
+        o6title:'Shōgun — Épica Choque Histórico Este-Oeste', o6desc:'Japón, 1600. Ganador de 18 Emmy con escala y detalle abrumadores.',
+        h1title:'El auge y caída del Imperio Romano — Patrones Repetidos', h1desc:'¿Por qué colapsó un imperio de 1.000 años? Leyendo la advertencia para la civilización moderna.',
+        h2title:'La Ruta de la Seda — Un Mundo Hecho por el Comercio', h2desc:'De Chang\'an a Roma. Civilización, religión y peste fluyeron juntas por la Ruta de la Seda.',
+        h3title:'500 Años de la Dinastía Joseon — El Poder de las Instituciones', h3desc:'El secreto detrás de una dinastía que duró 500 años. El sistema de historiadores, lecturas reales y censura.',
+        h4title:'El Renacimiento — Donde Arte y Ciencia Convergen', h4desc:'Una revolución cultural que comenzó en Florencia. La época de Da Vinci, Miguel Ángel y Galileo.',
+        h5title:'De la Revolución Industrial a la Revolución de la IA', h5desc:'Vapor → Electricidad → Ordenador → IA. Encontrando las leyes comunes de las transiciones tecnológicas.',
+        h6title:'La Guerra Fría — Un Experimento de Dos Sistemas', h6desc:'45 años de capitalismo vs comunismo. Desde la carrera espacial hasta el Muro de Berlín.',
+        s1title:'La Inglaterra de Newton — De Woolsthorpe a Cambridge', s1desc:'La mansión de Woolsthorpe con su manzano, la biblioteca del Trinity College, la Casa de la Moneda Real. Siguiendo el solitario viaje del hombre que descubrió la gravedad.',
+        s2title:'La Suiza de Einstein — De la Oficina de Patentes de Berna al Espacio-Tiempo', s2desc:'Apartamento en Kramgasse 49, Berna; el escritorio de un examinador de patentes de tercer rango. Rastreando el milagroso año 1905 en que un joven de 26 años desconocido transformó el espacio-tiempo.',
+        s3title:'El Viaje de Darwin — Del Beagle a Down House', s3desc:'Los pinzones de Galápagos, el Museo de Historia Natural de Londres, el "Camino del Pensamiento" en Down House. Veinte años de vacilación antes del nacimiento de la teoría de la evolución.',
+        s4title:'El París de Marie Curie — El Cobertizo Donde se Descubrió el Radio', s4desc:'De niña de Varsovia a dos Premios Nobel. El destartalado cobertizo de la Rue Lhomond, el sarcófago en el Panteón, cuadernos manchados de radiactividad.',
+        s5title:'La Italia de Galileo — De Pisa a Florencia y el Arresto Domiciliario', s5desc:'El experimento de la Torre de Pisa (una leyenda), el aula de Padua, los telescopios del Museo Galileo. "Y sin embargo, se mueve", incluso ante la Inquisición.',
+        s6title:'Bohr y Heisenberg — La Escena de la Interpretación de Copenhague', s6desc:'Instituto Niels Bohr, el paseo nocturno por Copenhague en 1941. La amistad y traición de los genios que completaron la mecánica cuántica, y la sombra de la bomba atómica.',
+        s7title:'Hubble y la NASA — Del Monte Wilson al Centro Espacial Kennedy', s7desc:'El telescopio de 100 pulgadas del Observatorio Monte Wilson, el Observatorio Palomar, Cabo Cañaveral. La historia nocturna del descubrimiento de que el universo se expande.',
+        s8title:'El Berlín de Max Planck — El Nacimiento del Cuanto', s8desc:'14 de diciembre de 1900, la sala de conferencias de física. "La energía viene en bloques discretos, no en un continuo." Experimentando el momento en que la física clásica colapsó.',
+        s9title:'Pasteur y Jenner — En Busca de los Lugares de Nacimiento de las Vacunas', s9desc:'Museo Jenner en Berkeley, Instituto Pasteur de París. Recorriendo 300 años de inmunología, desde la observación de una lechera hasta las vacunas de ARNm.',
+        s10title:'Jang Yeong-sil y el Rey Sejong — La Ciencia de Joseon', s10desc:'Ganuidae de Gyeongbokgung, el clepsidra de Borugak, Tumba Real del Rey Sejong en Yeoju. El monarca y tecnólogo que construyó el mejor sistema de observación astronómica del Asia Oriental del siglo XV.',
+        s11title:'De Turing a Von Neumann — El Nacimiento del Ordenador', s11desc:'Sala de descifrado de Enigma en Bletchley Park, Instituto de Estudios Avanzados de Princeton, garajes del Silicon Valley. Las huellas de personas que recrearon el mundo en 0s y 1s.',
+        s12title:'Boltzmann y Schrödinger — Física de la Escuela de Viena', s12desc:'La lápida S=k log W bajo el arco de la Universidad de Viena, la escena de la fotografía de la Conferencia Solvay. El paisaje intelectual de la Viena de fin de siglo donde la termodinámica encontró la mecánica cuántica.',
+        t1title:'Kioto — Estética de una Capital Milenaria', t1desc:'Jardines de musgo, bosques de bambú, barrios de geishas. Caminando por el arquetipo de la estética japonesa.',
+        t2title:'Praga — Caminando por la Ciudad de Kafka', t2desc:'La capital bohemia donde la literatura vive en cada callejón. Mejor disfrutada con una cerveza.',
+        t3title:'Islandia — La Tierra Cruda', t3desc:'Glaciares, volcanes, auroras, géiseres. El paisaje más primitivo y asombroso.',
+        t4title:'Oporto — La Joya Oculta de Europa', t4desc:'Hogar del vino de Oporto. Los colores creados por los azulejos y el río Duero.',
+        t5title:'Gyeongju — Huellas de un Reino Milenario', t5desc:'Túmulos bajo cerezos en flor, la sonrisa de Seokguram. Ciclando por mil años de Silla.',
+        t6title:'Patagonia — Al Fin del Mundo', t6desc:'Tierra de viento y glaciares. El paisaje más austral que debes ver al menos una vez en la vida.',
+        a1title:'Christopher Nolan — Director que Esculpe el Tiempo', a1desc:'De Memento a Oppenheimer. Cómo el maestro de la narrativa no lineal maneja el tiempo.',
+        a2title:'Bong Joon-ho — Borrando las Fronteras del Género', a2desc:'De Barking Dogs Never Bite a Parásitos. El narrador que imprimió el cine coreano en el mundo.',
+        a3title:'K-POP 4ª Generación — La Estrategia de NewJeans y Le Sserafim', a3desc:'Estética Y2K, estructuras de fandom, marketing global. Cómo el K-POP conquistó el mundo.',
+        a4title:'Hans Zimmer — Arquitecto de la Música Cinematográfica', a4desc:'El bajo de Inception, la resonancia del desierto de Dune. Un compositor que construye espacios con sonido.',
+        a5title:'Taylor Swift — Agente del Cambio en la Industria Musical', a5desc:'Del country al pop. El poder artístico que sacudió la industria con álbumes regrabados.',
+        a6title:'Ryuichi Sakamoto — Filósofo del Sonido', a6desc:'Desde YMO hasta su concierto final. El maestro que disolvió la frontera entre la música electrónica y la clásica.',
+        splashEnter:'Abrir Revista'
+    },
+    fr: {
+        navCinema:'Cinéma', navBooks:'Livres', navOtt:'OTT', navHistory:'Histoire', navScience:'Science', navTravel:'Voyage', navArtists:'Artistes',
+        heroBadge:'Magazine Culturel du Week-end',
+        heroSubtitle:'Cinéma · Livres · OTT · Histoire · Pèlerinage Scientifique · Voyage · Artistes',
+        heroVolLabel:'Vol.01 — Numéro Inaugural',
+        secCinemaTag:'Axe A', secCinemaH2:'Films qui Définissent une Époque', secCinemaP:'Un film peut changer une vie',
+        secBooksTag:'Axe B', secBooksH2:'Livres qui Changent des Vies', secBooksP:'Un livre peut changer votre façon de voir le monde',
+        secOttTag:'Axe C', secOttH2:'OTT Incontournables', secOttP:'Guide de marathon Netflix, Apple TV+, Disney+',
+        secHistoryTag:'Axe D', secHistoryH2:'Documentaires Historiques', secHistoryP:'Connaître le passé révèle l\'avenir',
+        secScienceTag:'Axe G — Spécial', secScienceH2:'Pèlerinage Scientifique', secScienceP:'Marcher dans les pas des grands scientifiques à travers le monde',
+        secTravelTag:'Axe E', secTravelH2:'Endroits à Visiter un Jour', secTravelP:'Destinations qui vous font sentir que vous êtes déjà parti',
+        secArtistsTag:'Axe F', secArtistsH2:'Histoires d\'Artistes', secArtistsP:'Réalisateurs, acteurs, musiciens — entrevoir le secret de la création',
+        statusNew:'NOUVEAU', statusSoon:'À venir',
+        footerQuote:'"Le monde est un livre, et ceux qui ne voyagent pas n\'en lisent qu\'une page." — Saint Augustin',
+        footerCopy:'Culture Voyager © 2026 | Nakcho Choi',
+        footerTagline:'Une histoire chaque week-end',
+        c1title:'Les Évadés — La Physique de l\'Espoir', c1desc:'Un homme défiant l\'entropie dans le système fermé d\'une prison. L\'espoir est vraiment une bonne chose.',
+        c2title:'Interstellar — Relativité du Temps et de l\'Amour', c2desc:'Quand la gravité déforme le temps, seul l\'amour transcende les dimensions. La sci-fi la plus chaleureuse de Nolan.',
+        c3title:'Parasite — Sociologie de l\'Escalier', c3desc:'Du sous-sol au sous-sol. Disséquer les espaces verticaux conçus par Bong Joon-ho.',
+        c4title:'Cinema Paradiso — Chimie de la Mémoire et de la Nostalgie', c4desc:'La lumière de l\'enfance gravée sur pellicule. La mélodie d\'Ennio Morricone rembobine la mémoire.',
+        c5title:'2001 : L\'Odyssée de l\'espace — Les Origines Philosophiques de l\'IA', c5desc:'La question de HAL 9000 est plus tranchante aujourd\'hui à l\'ère de ChatGPT, 60 ans plus tard.',
+        c6title:'The Grand Budapest Hotel — Architecture du Style', c6desc:'Le crépuscule de la civilisation européenne dans les compositions symétriques de Wes Anderson.',
+        b1title:'Sapiens — Reconstruire le Récit Humain', b1desc:'De la révolution cognitive il y a 70 000 ans à l\'IA. L\'épopée d\'Homo sapiens par Yuval Harari.',
+        b2title:'Cosmos — Humilité Cosmique', b2desc:'Le cadeau de Carl Sagan d\'une perspective cosmique. Réfléchir à nous-mêmes sur un point bleu pâle.',
+        b3title:'De l\'inégalité parmi les sociétés — Géographie de la Civilisation', b3desc:'Pourquoi l\'Eurasie a-t-elle conquis les Amériques ? L\'équation de la civilisation de Jared Diamond.',
+        b4title:'Le Petit Prince — Optique de l\'Essentiel', b4desc:'"L\'essentiel est invisible pour les yeux." Saint-Exupéry relu en tant qu\'adulte.',
+        b5title:'Factfulness — Corriger le Prisme sur le Monde', b5desc:'Les données prouvent que le monde s\'améliore plus que vous ne le pensez.',
+        b6title:'La Maison de l\'Épicier Namiya — Lettres à Travers le Temps', b6desc:'L\'histoire la plus chaleureuse de Keigo Higashino. Une boîte aux lettres reliant le passé et l\'avenir.',
+        o1title:'Black Mirror — Là où la Technologie Rencontre l\'Humanité', o1desc:'Guide des épisodes essentiels par saison. Les 5 plus choquants et les 2 plus touchants.',
+        o2title:'Severance — Séparation Totale du Travail et de la Vie', o2desc:'Et si les souvenirs pouvaient être divisés chirurgicalement ? L\'expérience de pensée extrême sur l\'équilibre vie professionnelle-vie privée.',
+        o3title:'Mon journal de libération — En Quête de Libération', o3desc:'Le sommet du k-drama guérisseur. Des dialogues lents mais profondément résonnants.',
+        o4title:'Ted Lasso — Leadership par la Positivité', o4desc:'Leçons de vie d\'un entraîneur qui ne connaît pas le football. Trois saisons de rires et d\'émotion.',
+        o5title:'Notre planète — Le Souffle de la Terre', o5desc:'Un documentaire naturel à couper le souffle narré par David Attenborough.',
+        o6title:'Shōgun — Épopée Historique Est-Ouest', o6desc:'Japon, 1600. Lauréat de 18 Emmy Awards avec une échelle et des détails écrasants.',
+        h1title:'L\'Ascension et la Chute de l\'Empire Romain — Motifs Répétés', h1desc:'Pourquoi un empire de 1 000 ans s\'est-il effondré ? Lire l\'avertissement pour la civilisation moderne.',
+        h2title:'La Route de la Soie — Un Monde Fait par le Commerce', h2desc:'De Chang\'an à Rome. Civilisation, religion et peste ont coulé ensemble sur la Route de la Soie.',
+        h3title:'500 Ans de la Dynastie Joseon — Le Pouvoir des Institutions', h3desc:'Le secret derrière une dynastie qui a duré 500 ans. Le système des historiens royaux, des lectures royales et de la censure.',
+        h4title:'La Renaissance — Où l\'Art et la Science Convergent', h4desc:'Une révolution culturelle commençant à Florence. L\'époque de Léonard de Vinci, Michel-Ange et Galilée.',
+        h5title:'De la Révolution Industrielle à la Révolution de l\'IA', h5desc:'Vapeur → Électricité → Ordinateur → IA. Trouver les lois communes des transitions technologiques.',
+        h6title:'La Guerre Froide — Une Expérience de Deux Systèmes', h6desc:'45 ans de capitalisme contre communisme. De la course spatiale au Mur de Berlin.',
+        s1title:'L\'Angleterre de Newton — De Woolsthorpe à Cambridge', s1desc:'Le manoir de Woolsthorpe avec son pommier, la bibliothèque du Trinity College, la Monnaie Royale. Suivre le voyage solitaire de l\'homme qui a découvert la gravité.',
+        s2title:'La Suisse d\'Einstein — De l\'Office des Brevets de Berne à l\'Espace-Temps', s2desc:'Appartement au Kramgasse 49, Berne ; le bureau d\'un examinateur de brevets de troisième rang. Retracer l\'année miraculeuse 1905 où un jeune inconnu de 26 ans a renversé l\'espace-temps.',
+        s3title:'Le Voyage de Darwin — Du Beagle à Down House', s3desc:'Les pinsons des Galápagos, le Musée d\'Histoire Naturelle de Londres, le "Chemin de la Pensée" à Down House. Vingt ans d\'hésitation avant la naissance de la théorie de l\'évolution.',
+        s4title:'Le Paris de Marie Curie — Le Hangar où le Radium a été Découvert', s4desc:'D\'une fillette de Varsovie à deux Prix Nobel. Le vieux hangar de la Rue Lhomond, le sarcophage au Panthéon, des cahiers souillés de radioactivité.',
+        s5title:'L\'Italie de Galilée — De Pise à Florence, et l\'Assignation à Résidence', s5desc:'L\'expérience de la Tour de Pise (une légende), la salle de cours de Padoue, les télescopes du Musée Galilée. "Et pourtant, elle tourne", même devant l\'Inquisition.',
+        s6title:'Bohr et Heisenberg — La Scène de l\'Interprétation de Copenhague', s6desc:'Institut Niels Bohr, la promenade nocturne à Copenhague en 1941. L\'amitié et la trahison des génies qui ont achevé la mécanique quantique, et l\'ombre de la bombe atomique.',
+        s7title:'Hubble et la NASA — Du Mont Wilson au Centre Spatial Kennedy', s7desc:'Le télescope de 100 pouces de l\'Observatoire du Mont Wilson, l\'Observatoire de Palomar, Cap Canaveral. L\'histoire nocturne de la découverte que l\'univers est en expansion.',
+        s8title:'Le Berlin de Max Planck — La Naissance du Quantum', s8desc:'14 décembre 1900, la salle de conférences de physique. "L\'énergie vient en morceaux discrets, pas en continuum." Vivre le moment où la physique classique s\'est effondrée.',
+        s9title:'Pasteur et Jenner — À la Recherche des Berceaux des Vaccins', s9desc:'Musée Jenner à Berkeley, Institut Pasteur à Paris. Parcourir 300 ans d\'immunologie, de l\'observation d\'une laitière aux vaccins à ARNm.',
+        s10title:'Jang Yeong-sil et le Roi Sejong — La Science de Joseon', s10desc:'Ganuidae de Gyeongbokgung, l\'horloge à eau de Borugak, Tombe Royale du Roi Sejong à Yeoju. Le monarque et technologue qui a construit le meilleur système d\'observation astronomique d\'Asie orientale du XVe siècle.',
+        s11title:'De Turing à Von Neumann — La Naissance de l\'Ordinateur', s11desc:'Salle de déchiffrement Enigma à Bletchley Park, Institut d\'Études Avancées de Princeton, garages de la Silicon Valley. Les traces de personnes qui ont recréé le monde en 0 et 1.',
+        s12title:'Boltzmann et Schrödinger — Physique de l\'École de Vienne', s12desc:'La pierre tombale S=k log W sous l\'arche de l\'Université de Vienne, la scène de la photo de la Conférence Solvay. Le paysage intellectuel de la Vienne fin-de-siècle où la thermodynamique rencontra la mécanique quantique.',
+        t1title:'Kyoto — Esthétique d\'une Capitale Millénaire', t1desc:'Jardins de mousse, forêts de bambous, quartiers des geishas. Marcher dans l\'archétype de l\'esthétique japonaise.',
+        t2title:'Prague — Marcher dans la Ville de Kafka', t2desc:'La capitale bohémienne où la littérature vit dans chaque ruelle. À apprécier avec une bière.',
+        t3title:'Islande — La Terre Brute', t3desc:'Glaciers, volcans, aurores, geysers. Le paysage le plus primitif et le plus impressionnant.',
+        t4title:'Porto — Le Joyau Caché de l\'Europe', t4desc:'Patrie du vin de Porto. Les couleurs créées par les azulejos et le fleuve Douro.',
+        t5title:'Gyeongju — Traces d\'un Royaume Millénaire', t5desc:'Tumuli sous les cerisiers en fleurs, le sourire de Seokguram. Pédaler à travers mille ans de Silla.',
+        t6title:'Patagonie — Au Bout du Monde', t6desc:'Terre de vent et de glaciers. Le paysage le plus austral à voir au moins une fois dans sa vie.',
+        a1title:'Christopher Nolan — Le Réalisateur qui Sculpte le Temps', a1desc:'De Memento à Oppenheimer. Comment le maître du récit non linéaire gère le temps.',
+        a2title:'Bong Joon-ho — Effacer les Frontières des Genres', a2desc:'De Barking Dogs Never Bite à Parasite. Le conteur qui a gravé le cinéma coréen dans le monde.',
+        a3title:'K-POP 4e Génération — La Stratégie de NewJeans et Le Sserafim', a3desc:'Esthétique Y2K, structures de fandom, marketing mondial. Comment le K-POP a conquis le monde.',
+        a4title:'Hans Zimmer — Architecte de la Musique Cinématographique', a4desc:'La basse d\'Inception, la résonance du désert de Dune. Un compositeur qui construit des espaces avec le son.',
+        a5title:'Taylor Swift — Agente du Changement dans l\'Industrie Musicale', a5desc:'Du country à la pop. Le pouvoir artistique qui a secoué l\'industrie avec des albums ré-enregistrés.',
+        a6title:'Ryuichi Sakamoto — Philosophe du Son', a6desc:'De YMO à son dernier concert. Le maestro qui a dissous la frontière entre musique électronique et classique.',
+        splashEnter:'Ouvrir le Magazine'
+    },
+    de: {
+        navCinema:'Kino', navBooks:'Bücher', navOtt:'OTT', navHistory:'Geschichte', navScience:'Wissenschaft', navTravel:'Reisen', navArtists:'Künstler',
+        heroBadge:'Wochenend-Kulturmagazin',
+        heroSubtitle:'Kino · Bücher · OTT · Geschichte · Wissenschaftsreise · Reisen · Künstler',
+        heroVolLabel:'Vol.01 — Erstausgabe',
+        secCinemaTag:'Achse A', secCinemaH2:'Filme die eine Ära Prägen', secCinemaP:'Ein Film kann ein Leben verändern',
+        secBooksTag:'Achse B', secBooksH2:'Bücher die Leben Verändern', secBooksP:'Ein Buch kann die Art verändern, wie man die Welt sieht',
+        secOttTag:'Achse C', secOttH2:'OTT Must-See', secOttP:'Netflix, Apple TV+, Disney+ Binge-Leitfaden',
+        secHistoryTag:'Achse D', secHistoryH2:'Historische Dokumentationen', secHistoryP:'Die Vergangenheit zu kennen, enthüllt die Zukunft',
+        secScienceTag:'Achse G — Spezial', secScienceH2:'Wissenschaftspilgerfahrt', secScienceP:'In den Fußstapfen großer Wissenschaftler um die Welt wandern',
+        secTravelTag:'Achse E', secTravelH2:'Orte für Irgendwann', secTravelP:'Reiseziele, die dich fühlen lassen, als wärst du schon aufgebrochen',
+        secArtistsTag:'Achse F', secArtistsH2:'Künstlergeschichten', secArtistsP:'Regisseure, Schauspieler, Musiker — das Geheimnis des Schaffens erspähen',
+        statusNew:'NEU', statusSoon:'Demnächst',
+        footerQuote:'"Die Welt ist ein Buch, und wer nicht reist, liest nur eine Seite." — Heiliger Augustinus',
+        footerCopy:'Culture Voyager © 2026 | Nakcho Choi',
+        footerTagline:'Jedes Wochenende eine Geschichte',
+        c1title:'Die Verurteilten — Physik der Hoffnung', c1desc:'Ein Mann, der der Entropie im geschlossenen System eines Gefängnisses trotzt. Hoffnung ist wirklich etwas Gutes.',
+        c2title:'Interstellar — Relativität von Zeit und Liebe', c2desc:'Wenn Schwerkraft die Zeit verzerrt, überwindet nur die Liebe Dimensionen. Nolans wärmste Science-Fiction.',
+        c3title:'Parasite — Soziologie der Treppe', c3desc:'Vom Halbkeller in den Keller. Die vertikalen Räume, die Bong Joon-ho entworfen hat, seziert.',
+        c4title:'Cinema Paradiso — Chemie der Erinnerung und Nostalgie', c4desc:'Das Licht der Kindheit auf Zelluloid verewigt. Ennio Morricones Melodie spult die Erinnerung zurück.',
+        c5title:'2001: Odyssee im Weltraum — Die Philosophischen Ursprünge der KI', c5desc:'HAL 9000s Frage ist heute im ChatGPT-Zeitalter, 60 Jahre später, noch schärfer.',
+        c6title:'The Grand Budapest Hotel — Architektur des Stils', c6desc:'Die Dämmerung der europäischen Zivilisation in Wes Andersons symmetrischen Kompositionen.',
+        b1title:'Sapiens — Die Geschichte der Menschheit', b1desc:'Von der kognitiven Revolution vor 70.000 Jahren bis zur KI. Yuval Hararis Epos des Homo sapiens.',
+        b2title:'Kosmos — Kosmische Bescheidenheit', b2desc:'Carl Sagans Geschenk einer kosmischen Perspektive. Über uns selbst auf einem blassen blauen Punkt nachdenken.',
+        b3title:'Arm und Reich — Geographie der Zivilisation', b3desc:'Warum hat Eurasien Amerika erobert? Jared Diamonds Gleichung der Zivilisation.',
+        b4title:'Der kleine Prinz — Optik des Wesentlichen', b4desc:'"Das Wesentliche ist für die Augen unsichtbar." Saint-Exupéry als Erwachsener wiedergelesen.',
+        b5title:'Factfulness — Die Linse auf die Welt Korrigieren', b5desc:'Daten beweisen, dass die Welt sich mehr verbessert, als du denkst.',
+        b6title:'Die Wundersame Reise von Edward Tulane — Briefe durch die Zeit', b6desc:'Keigo Higashinós wärmste Geschichte. Ein Briefkasten, der Vergangenheit und Zukunft verbindet.',
+        o1title:'Black Mirror — Wo Technologie auf Menschheit trifft', o1desc:'Leitfaden für unverzichtbare Episoden nach Staffel. Die 5 schockierendsten und die 2 berührendsten.',
+        o2title:'Severance — Vollständige Trennung von Arbeit und Leben', o2desc:'Was wenn Erinnerungen chirurgisch geteilt werden könnten? Das extreme Gedankenexperiment über Work-Life-Balance.',
+        o3title:'Mein Befreiungstagebuch — Auf der Suche nach Befreiung', o3desc:'Der Gipfel des heilenden K-Dramas. Langsame aber tiefgreifend resonante Dialoge.',
+        o4title:'Ted Lasso — Führung durch Positivität', o4desc:'Lebenslektionen von einem Trainer, der Fußball nicht kennt. Drei Staffeln Lachen und Rühren.',
+        o5title:'Unser Planet — Der Atem der Erde', o5desc:'Ein atemberaubendes Naturdokumentarfilm, erzählt von David Attenborough.',
+        o6title:'Shōgun — Episches Ost-West-Historienspektakel', o6desc:'Japan, 1600. 18-facher Emmy-Preisträger mit überwältigendem Ausmaß und Detail.',
+        h1title:'Aufstieg und Fall des Römischen Reiches — Wiederkehrende Muster', h1desc:'Warum brach ein 1.000 Jahre altes Imperium zusammen? Die Warnung für die moderne Zivilisation lesen.',
+        h2title:'Die Seidenstraße — Eine Welt aus dem Handel', h2desc:'Von Chang\'an bis Rom. Zivilisation, Religion und Pest flossen gemeinsam auf der Seidenstraße.',
+        h3title:'500 Jahre der Joseon-Dynastie — Die Macht der Institutionen', h3desc:'Das Geheimnis einer Dynastie, die 500 Jahre andauerte. Das System der Hofhistoriker, königlichen Vorträge und der Zensur.',
+        h4title:'Die Renaissance — Wo Kunst und Wissenschaft Konvergieren', h4desc:'Eine Kulturrevolution, die in Florenz begann. Das Zeitalter von Da Vinci, Michelangelo und Galileo.',
+        h5title:'Von der Industriellen Revolution zur KI-Revolution', h5desc:'Dampf → Elektrizität → Computer → KI. Die gemeinsamen Gesetze technologischer Übergänge finden.',
+        h6title:'Der Kalte Krieg — Ein Experiment zweier Systeme', h6desc:'45 Jahre Kapitalismus gegen Kommunismus. Vom Wettlauf ins All bis zur Berliner Mauer.',
+        s1title:'Newtons England — Von Woolsthorpe nach Cambridge', s1desc:'Das Woolsthorpe Manor mit seinem Apfelbaum, die Trinity College Bibliothek, der Münzmeister. Dem einsamen Weg des Mannes folgen, der die Schwerkraft entdeckte.',
+        s2title:'Einsteins Schweiz — Vom Berner Patentamt zur Raumzeit', s2desc:'Wohnung am Kramgasse 49, Bern; der Schreibtisch eines Patentprüfers dritter Klasse. Das Wunderjahr 1905 zurückverfolgen, als ein unbekannter 26-Jähriger die Raumzeit umstürzte.',
+        s3title:'Darwins Reise — Von der Beagle zum Down House', s3desc:'Die Finken der Galápagos, das Naturkundemuseum in London, der "Denkweg" in Down House. Zwanzig Jahre Zögern vor der Geburt der Evolutionstheorie.',
+        s4title:'Marie Curies Paris — Der Schuppen, wo Radium Entdeckt Wurde', s4desc:'Von einem Mädchen aus Warschau zu zwei Nobelpreisen. Der alte Schuppen in der Rue Lhomond, der Sarkophag im Panthéon, radioaktiv kontaminierte Notizbücher.',
+        s5title:'Galileos Italien — Von Pisa nach Florenz und Hausarrest', s5desc:'Das Experiment am Schiefen Turm von Pisa (eine Legende), der Hörsaal in Padua, die Teleskope im Galileo-Museum. "Und sie bewegt sich doch", selbst vor der Inquisition.',
+        s6title:'Bohr und Heisenberg — Die Szene der Kopenhagener Deutung', s6desc:'Niels-Bohr-Institut, der nächtliche Spaziergang in Kopenhagen 1941. Die Freundschaft und der Verrat der Genies, die die Quantenmechanik vollendeten, und der Schatten der Atombombe.',
+        s7title:'Hubble und die NASA — Vom Mount Wilson zum Kennedy Space Center', s7desc:'Das 100-Zoll-Teleskop des Mount Wilson Observatoriums, das Palomar Observatorium, Cape Canaveral. Die Nachtgeschichte der Entdeckung, dass das Universum expandiert.',
+        s8title:'Max Plancks Berlin — Die Geburt des Quantums', s8desc:'14. Dezember 1900, der Physikvortragssaal. "Energie kommt in diskreten Paketen, nicht als Kontinuum." Den Moment erleben, als die klassische Physik zusammenbrach.',
+        s9title:'Pasteur und Jenner — Auf der Suche nach den Geburtsorten der Impfstoffe', s9desc:'Jenner-Museum in Berkeley, Pasteur-Institut in Paris. 300 Jahre Immunologie abgehen, von der Beobachtung einer Melkerin bis zu mRNA-Impfstoffen.',
+        s10title:'Jang Yeong-sil und König Sejong — Die Wissenschaft von Joseon', s10desc:'Ganuidae des Gyeongbokgung, die Wasseruhr von Borugak, Königsgrab von König Sejong in Yeoju. Der Monarch und Technologe, der im 15. Jahrhundert Ostasiens bestes astronomisches Beobachtungssystem baute.',
+        s11title:'Von Turing bis Von Neumann — Die Geburt des Computers', s11desc:'Enigma-Entschlüsselungsraum in Bletchley Park, Princetons Institut für Höhere Studien, Silicon Valley Garagen. Die Spuren von Menschen, die die Welt in 0en und 1en neu erschufen.',
+        s12title:'Boltzmann und Schrödinger — Physik der Wiener Schule', s12desc:'Der Grabstein S=k log W unter dem Bogen der Universität Wien, die Szene des Solvay-Konferenzfotos. Die intellektuelle Landschaft des Wien der Jahrhundertwende, wo Thermodynamik auf Quantenmechanik traf.',
+        t1title:'Kyoto — Ästhetik einer Jahrtausendhauptstadt', t1desc:'Moosgärten, Bambuswälder, Geisha-Viertel. Den Archetypus japanischer Ästhetik abgehen.',
+        t2title:'Prag — Kafkas Stadt Durchwandern', t2desc:'Die böhmische Hauptstadt, wo Literatur in jeder Gasse lebt. Am besten mit einem Bier.',
+        t3title:'Island — Die Rohe Erde', t3desc:'Gletscher, Vulkane, Polarlichter, Geysire. Die ursprünglichste und beeindruckendste Landschaft.',
+        t4title:'Porto — Europas Verstecktes Juwel', t4desc:'Heimat des Portwein. Die Farben, die durch Azulejos und den Douro-Fluss entstehen.',
+        t5title:'Gyeongju — Spuren eines Jahrtausendkönigreichs', t5desc:'Hügelgräber unter Kirschblüten, das Lächeln von Seokguram. Durch tausend Jahre Silla radeln.',
+        t6title:'Patagonien — Am Ende der Welt', t6desc:'Land des Windes und der Gletscher. Die südlichste Landschaft, die man mindestens einmal im Leben sehen muss.',
+        a1title:'Christopher Nolan — Regisseur, der die Zeit Sculpiert', a1desc:'Von Memento bis Oppenheimer. Wie der Meister der nichtlinearen Erzählung Zeit handhabt.',
+        a2title:'Bong Joon-ho — Genregrenzen Überwinden', a2desc:'Von Barking Dogs Never Bite bis Parasite. Der Geschichtenerzähler, der das koreanische Kino in die Welt gravierte.',
+        a3title:'K-POP 4. Generation — Die Strategie von NewJeans und Le Sserafim', a3desc:'Y2K-Ästhetik, Fandam-Strukturen, globales Marketing. Wie K-POP die Welt eroberte.',
+        a4title:'Hans Zimmer — Architekt der Filmmusik', a4desc:'Der Bass von Inception, die Wüstenresonanz von Dune. Ein Komponist, der Räume mit Klang baut.',
+        a5title:'Taylor Swift — Game Changer der Musikindustrie', a5desc:'Vom Country zum Pop. Die Künstlerkraft, die die Industrie mit neu aufgenommenen Alben erschütterte.',
+        a6title:'Ryuichi Sakamoto — Philosoph des Klangs', a6desc:'Von YMO bis zu seinem letzten Konzert. Der Maestro, der die Grenze zwischen elektronischer Musik und Klassik auflöste.',
+        splashEnter:'Magazin öffnen'
+    }
 };
+
 function setLang(l) {
     const t = CV_TRANS[l] || CV_TRANS.ko;
+    // Nav links
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (t[key]) el.textContent = t[key];
+        if (t[key] !== undefined) el.textContent = t[key];
     });
+    // Hero badge, subtitle, vol label
+    const heroBadgeEl = document.querySelector('.hero-badge');
+    if (heroBadgeEl) heroBadgeEl.textContent = t.heroBadge;
+    const heroSubEl = document.querySelector('.hero-subtitle');
+    if (heroSubEl) heroSubEl.textContent = t.heroSubtitle;
+    const heroVolEl = document.querySelector('.hero-thisweek span');
+    if (heroVolEl) heroVolEl.textContent = t.heroVolLabel;
+    // Splash enter button
+    const enterBtnEl = document.getElementById('enterBtn');
+    if (enterBtnEl) {
+        // preserve the SVG child
+        const svg = enterBtnEl.querySelector('svg');
+        enterBtnEl.firstChild.textContent = t.splashEnter + ' ';
+        if (svg) enterBtnEl.appendChild(svg);
+    }
+    // Section headers
+    const sectionMap = [
+        { id:'cinema', tag:'secCinemaTag', h2:'secCinemaH2', p:'secCinemaP' },
+        { id:'books',  tag:'secBooksTag',  h2:'secBooksH2',  p:'secBooksP'  },
+        { id:'ott',    tag:'secOttTag',    h2:'secOttH2',    p:'secOttP'    },
+        { id:'history',tag:'secHistoryTag',h2:'secHistoryH2',p:'secHistoryP'},
+        { id:'science',tag:'secScienceTag',h2:'secScienceH2',p:'secScienceP'},
+        { id:'travel', tag:'secTravelTag', h2:'secTravelH2', p:'secTravelP' },
+        { id:'artists',tag:'secArtistsTag',h2:'secArtistsH2',p:'secArtistsP'}
+    ];
+    sectionMap.forEach(({ id, tag, h2, p }) => {
+        const sec = document.getElementById(id);
+        if (!sec) return;
+        const tagEl = sec.querySelector('.axis-tag');
+        if (tagEl && t[tag]) tagEl.textContent = t[tag];
+        const h2El = sec.querySelector('h2');
+        if (h2El && t[h2]) h2El.textContent = t[h2];
+        const pEl = sec.querySelector('.section-header > p');
+        if (pEl && t[p]) pEl.textContent = t[p];
+    });
+    // Card titles and descriptions
+    const cardKeys = [
+        // cinema
+        ['c1','cinema'],['c2','cinema'],['c3','cinema'],['c4','cinema'],['c5','cinema'],['c6','cinema'],
+        // books
+        ['b1','books'],['b2','books'],['b3','books'],['b4','books'],['b5','books'],['b6','books'],
+        // ott
+        ['o1','ott'],['o2','ott'],['o3','ott'],['o4','ott'],['o5','ott'],['o6','ott'],
+        // history
+        ['h1','history'],['h2','history'],['h3','history'],['h4','history'],['h5','history'],['h6','history'],
+        // science
+        ['s1','science'],['s2','science'],['s3','science'],['s4','science'],['s5','science'],['s6','science'],
+        ['s7','science'],['s8','science'],['s9','science'],['s10','science'],['s11','science'],['s12','science'],
+        // travel
+        ['t1','travel'],['t2','travel'],['t3','travel'],['t4','travel'],['t5','travel'],['t6','travel'],
+        // artists
+        ['a1','artists'],['a2','artists'],['a3','artists'],['a4','artists'],['a5','artists'],['a6','artists']
+    ];
+    const sectionCards = {};
+    cardKeys.forEach(([key, sec]) => {
+        if (!sectionCards[sec]) sectionCards[sec] = [];
+        sectionCards[sec].push(key);
+    });
+    Object.entries(sectionCards).forEach(([secId, keys]) => {
+        const secEl = document.getElementById(secId);
+        if (!secEl) return;
+        const cards = secEl.querySelectorAll('.card');
+        cards.forEach((card, i) => {
+            const key = keys[i];
+            if (!key) return;
+            const titleEl = card.querySelector('.card-title');
+            if (titleEl && t[key+'title']) titleEl.textContent = t[key+'title'];
+            const descEl = card.querySelector('.card-desc');
+            if (descEl && t[key+'desc']) descEl.textContent = t[key+'desc'];
+        });
+    });
+    // Status badges (NEW / Coming Soon)
+    document.querySelectorAll('.card-status').forEach(el => {
+        const dot = el.querySelector('.status-dot');
+        if (!dot) return;
+        if (dot.classList.contains('status-new')) {
+            el.innerHTML = '';
+            el.appendChild(dot);
+            el.appendChild(document.createTextNode(' ' + t.statusNew));
+        } else if (dot.classList.contains('status-soon')) {
+            el.innerHTML = '';
+            el.appendChild(dot);
+            el.appendChild(document.createTextNode(' ' + t.statusSoon));
+        }
+    });
+    // Footer
+    const fqEl = document.querySelector('.footer-quote');
+    if (fqEl) fqEl.innerHTML = t.footerQuote.replace('— ', '<br>— ');
+    const footerPs = document.querySelectorAll('.footer > p:not(.footer-quote)');
+    if (footerPs[0]) footerPs[0].textContent = t.footerCopy;
+    if (footerPs[1]) footerPs[1].textContent = t.footerTagline;
     localStorage.setItem('cv-lang', l);
 }
 (function() {
