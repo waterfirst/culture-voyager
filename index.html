@@ -458,6 +458,19 @@
             align-items: center;
             justify-content: center;
             font-size: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.05);
         }
 
         .card-body {
@@ -687,7 +700,7 @@
     </div>
     <div class="cards-grid">
         <a class="card" href="output/a1_shawshank.html">
-            <div class="card-image">🎬</div>
+            <div class="card-image"><img src="assets/a1_shawshank.jpg" alt="쇼생크 탈출" loading="lazy"></div>
             <div class="card-body">
                 <span class="card-tag tag-cinema">Cinema Review</span>
                 <div class="card-title">쇼생크 탈출 — 희망의 물리학</div>
