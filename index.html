@@ -481,6 +481,8 @@
             font-weight: 700;
             margin-bottom: 0.5rem;
             line-height: 1.5;
+            word-wrap: break-word;
+            overflow-wrap: anywhere;
         }
 
         .card-desc {
@@ -488,6 +490,8 @@
             color: var(--text-secondary);
             line-height: 1.7;
             margin-bottom: 1rem;
+            word-wrap: break-word;
+            overflow-wrap: anywhere;
         }
 
         .card-meta {
@@ -574,8 +578,17 @@
             .nav-links { display: none; }
             .cards-grid { grid-template-columns: 1fr; }
             .section { padding: 3rem 1.5rem; }
-            .lang-sel { display: none; }
         }
+
+        /* Non-CJK language: reduce card title font size to prevent overflow */
+        html[lang=en] .card-title,
+        html[lang=de] .card-title,
+        html[lang=fr] .card-title,
+        html[lang=es] .card-title { font-size: 1rem; }
+        html[lang=en] .card-desc,
+        html[lang=de] .card-desc,
+        html[lang=fr] .card-desc,
+        html[lang=es] .card-desc { font-size: 0.82rem; }
     </style>
 </head>
 <body>

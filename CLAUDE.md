@@ -88,7 +88,7 @@ Quarto (.qmd)로 보고서를 렌더링하며, 아래 설정을 따른다:
 - `dev: ragg_png` — CJK 폰트 렌더링에 필요
 - 폰트: `"Noto Sans CJK KR"` 시스템 폰트를 직접 사용한다. showtext는 Quarto knitr 환경에서 충돌하므로 사용하지 않는다.
 - 색상: 6자리 hex만 사용한다 (`"#aaaaaa"`). 3자리 hex(`"#aaa"`)는 Quarto+ragg 조합에서 에러를 발생시킨다.
-- 테마: flatly (밝은 따뜻한 톤) — darkly는 사용하지 않음
+- 테마: `theme: dark: darkly, light: flatly` — Quarto 내장 다크/라이트 토글 버튼을 활성화한다
 
 ## 멀티미디어 요소
 

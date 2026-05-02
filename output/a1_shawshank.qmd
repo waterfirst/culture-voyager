@@ -5,7 +5,9 @@ author: "Nakcho Choi"
 date: "2026-05-02"
 format:
   html:
-    theme: flatly
+    theme:
+      dark: darkly
+      light: flatly
     toc: true
     toc-depth: 2
     lightbox: true
