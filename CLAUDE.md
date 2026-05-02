@@ -94,8 +94,10 @@ Quarto (.qmd)로 보고서를 렌더링하며, 아래 설정을 따른다:
 
 ### 이미지 (GPT Image API)
 - 매주 커버 이미지를 GPT Image API(gpt-image-1)로 생성하여 assets/splash_cover.webp 교체
-- 프롬프트 패턴: "Warm cinematic magazine cover, [주제], editorial style, soft lighting, film grain"
-- 콘텐츠별 삽화도 GPT Image로 생성 가능 (output/assets/ 하위)
+- **각 토픽 카드 이미지**: assets/{축코드}_{번호}_{이름}.jpg 형식으로 저장. index.html의 card-image 안에 `<img src="assets/..." alt="..." loading="lazy">` 태그로 삽입
+- 프롬프트 패턴: "Cinematic magazine cover, Korean text '제목', editorial style, [주제 맞춤 설명], film grain, warm tones"
+- 이모지 대신 GPT 생성 매거진 커버 스타일 이미지 사용
+- 이미지가 없는 카드는 이모지 유지 (점진적 교체)
 
 ### 오디오 (Gemini TTS)
 - 에세이 내레이션을 Gemini Text-to-Speech로 생성하여 각 콘텐츠에 오디오 플레이어 삽입
