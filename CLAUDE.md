@@ -50,9 +50,20 @@ Quarto (.qmd)로 보고서를 렌더링하며, 아래 설정을 따른다:
 
 ## 멀티미디어 요소
 
-- 유튜브/Spotify 임베드로 OST, 인터뷰, 트레일러 삽입
-- 이미지: 영화 스틸컷, 책 표지, 여행 사진 (저작권 주의, Unsplash/Wikimedia 활용)
-- Audio: Spotify 플레이리스트 임베드 또는 추천 링크
+### 이미지 (GPT Image API)
+- 매주 커버 이미지를 GPT Image API(gpt-image-1)로 생성하여 assets/splash_cover.webp 교체
+- 프롬프트 패턴: "Warm cinematic magazine cover, [주제], editorial style, soft lighting, film grain"
+- 콘텐츠별 삽화도 GPT Image로 생성 가능 (output/assets/ 하위)
+
+### 오디오 (Gemini TTS)
+- 에세이 내레이션을 Gemini Text-to-Speech로 생성하여 각 콘텐츠에 오디오 플레이어 삽입
+- 배경 앰비언트: assets/ambient.mp3 (저작권 프리 소스 사용)
+- 추천 소스: Pixabay Music, Mixkit, Freesound.org
+
+### 임베드
+- YouTube: 트레일러, 인터뷰, 다큐멘터리 클립
+- Spotify: OST 플레이리스트 (iframe 임베드)
+- 이미지: Unsplash/Wikimedia (저작권 프리)
 
 </technical_stack>
 

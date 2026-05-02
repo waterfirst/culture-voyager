@@ -35,11 +35,177 @@
             font-weight: 300;
         }
 
-        /* Header */
+        /* Splash Screen */
+        .splash {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a1a;
+            transition: opacity 1.2s ease, visibility 1.2s ease;
+        }
+
+        .splash.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .splash-image {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('assets/splash_cover.webp') center/cover no-repeat;
+            filter: brightness(0.6) saturate(1.2);
+            animation: splashZoom 8s ease-out forwards;
+        }
+
+        @keyframes splashZoom {
+            0% { transform: scale(1.1); filter: brightness(0.3) saturate(1.2); }
+            100% { transform: scale(1.0); filter: brightness(0.55) saturate(1.2); }
+        }
+
+        .splash-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: splashFadeIn 2s ease-out 0.5s both;
+        }
+
+        @keyframes splashFadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .splash-issue {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1.5rem;
+        }
+
+        .splash-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            color: #ffffff;
+            font-weight: 400;
+            line-height: 1.0;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+
+        .splash-title em {
+            font-style: italic;
+            color: #e8a87c;
+        }
+
+        .splash-tagline {
+            font-family: 'Noto Serif KR', serif;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+            margin: 1.5rem auto 3rem;
+            max-width: 550px;
+            line-height: 1.8;
+        }
+
+        .splash-enter {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 0.85rem;
+            font-family: 'Noto Sans KR', sans-serif;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+        }
+
+        .splash-enter:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.7);
+            transform: translateY(-2px);
+        }
+
+        .splash-enter svg {
+            width: 16px; height: 16px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(4px); }
+        }
+
+        /* Audio control on splash */
+        .splash-audio {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .splash-audio:hover {
+            background: rgba(0,0,0,0.6);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .splash-audio span {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+
+        .audio-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 14px;
+        }
+
+        .audio-bars .bar {
+            width: 3px;
+            background: #e8a87c;
+            border-radius: 2px;
+            animation: audioBar 1s ease-in-out infinite;
+        }
+
+        .audio-bars .bar:nth-child(1) { height: 40%; animation-delay: 0s; }
+        .audio-bars .bar:nth-child(2) { height: 70%; animation-delay: 0.2s; }
+        .audio-bars .bar:nth-child(3) { height: 50%; animation-delay: 0.4s; }
+        .audio-bars .bar:nth-child(4) { height: 80%; animation-delay: 0.1s; }
+        .audio-bars .bar:nth-child(5) { height: 30%; animation-delay: 0.3s; }
+
+        .audio-bars.paused .bar { animation: none; height: 30%; }
+
+        @keyframes audioBar {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.4); }
+        }
+
+        /* Hero (visible after splash) */
         .hero {
             position: relative;
-            height: 100vh;
-            min-height: 700px;
+            height: 60vh;
+            min-height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -78,7 +244,7 @@
 
         .hero h1 {
             font-family: 'Playfair Display', 'Noto Serif KR', serif;
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             color: #fff;
             font-weight: 400;
             letter-spacing: -1px;
@@ -92,27 +258,35 @@
 
         .hero-subtitle {
             font-family: 'Noto Serif KR', serif;
-            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
             color: rgba(255,255,255,0.6);
             font-weight: 300;
             max-width: 600px;
-            margin: 0 auto 3rem;
+            margin: 0 auto;
         }
 
-        .hero-scroll {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255,255,255,0.4);
-            font-size: 0.75rem;
+        .hero-thisweek {
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            display: inline-block;
+        }
+
+        .hero-thisweek span {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.7rem;
             letter-spacing: 2px;
-            animation: pulse 2s ease-in-out infinite;
+            text-transform: uppercase;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
-            50% { opacity: 0.8; transform: translateX(-50%) translateY(5px); }
+        .hero-thisweek p {
+            color: #e8a87c;
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1rem;
+            margin-top: 0.3rem;
         }
 
         /* Navigation */
@@ -348,17 +522,54 @@
 </head>
 <body>
 
-<!-- Hero -->
+<!-- Splash Screen (Magazine Cover) -->
+<div class="splash" id="splash">
+    <div class="splash-image"></div>
+    <div class="splash-content">
+        <div class="splash-issue">Vol. 01 — May 2026</div>
+        <h1 class="splash-title">Culture<br><em>Voyager</em></h1>
+        <p class="splash-tagline">
+            시대를 관통하는 영화, 삶을 바꾸는 책,<br>
+            과학자의 발자취를 따라 떠나는 여행.<br>
+            주말, 한 편의 이야기로 쉬어가세요.
+        </p>
+        <a class="splash-enter" id="enterBtn">
+            매거진 열기
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </a>
+    </div>
+    <div class="splash-audio" id="audioToggle">
+        <div class="audio-bars paused" id="audioBars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <span>AMBIENT</span>
+    </div>
+</div>
+
+<!-- Background Audio (Ambient) -->
+<audio id="bgAudio" loop preload="none">
+    <source src="assets/ambient.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Hero (after splash) -->
 <section class="hero">
     <div class="hero-content">
         <div class="hero-badge">Weekend Culture Magazine</div>
         <h1>Culture <em>Voyager</em></h1>
         <p class="hero-subtitle">
-            시대를 관통하는 영화, 삶을 바꾸는 책, 언젠가 떠날 여행.<br>
-            주말, 한 편의 이야기로 쉬어가세요.
+            영화 · 책 · OTT · 역사 · 과학 순례 · 여행 · 아티스트
         </p>
+        <div class="hero-thisweek">
+            <span>This Week's Pick</span>
+            <p>이번 주 새 콘텐츠가 곧 업데이트됩니다</p>
+        </div>
     </div>
-    <div class="hero-scroll">SCROLL</div>
 </section>
 
 <!-- Navigation -->
@@ -1012,6 +1223,59 @@
     <p>Culture Voyager &copy; 2026 | Nakcho Choi</p>
     <p style="margin-top:0.5rem;">주말마다 한 편의 이야기를 전합니다</p>
 </footer>
+
+<script>
+// Splash → Main transition
+const splash = document.getElementById('splash');
+const enterBtn = document.getElementById('enterBtn');
+const bgAudio = document.getElementById('bgAudio');
+const audioToggle = document.getElementById('audioToggle');
+const audioBars = document.getElementById('audioBars');
+
+let audioPlaying = false;
+
+enterBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    splash.classList.add('fade-out');
+    document.body.style.overflow = 'auto';
+    setTimeout(() => { splash.style.display = 'none'; }, 1200);
+});
+
+// Audio toggle
+audioToggle.addEventListener('click', () => {
+    if (audioPlaying) {
+        bgAudio.pause();
+        audioBars.classList.add('paused');
+        audioPlaying = false;
+    } else {
+        bgAudio.volume = 0.3;
+        bgAudio.play().catch(() => {});
+        audioBars.classList.remove('paused');
+        audioPlaying = true;
+    }
+});
+
+// Prevent scroll while splash is visible
+document.body.style.overflow = 'hidden';
+
+// Allow keyboard Enter or scroll to dismiss splash
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        if (!splash.classList.contains('fade-out')) {
+            enterBtn.click();
+        }
+    }
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+</script>
 
 </body>
 </html>
