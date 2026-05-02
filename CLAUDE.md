@@ -80,7 +80,14 @@ GitHub Pages로 배포: https://waterfirst.github.io/culture-voyager/
 
 ## 기술 스택
 
-R + ggplot2로 차트(별점, 흥행 추이, 여행 비용 비교 등)를 생성한다. Plotly는 파일 용량이 비대해지므로 사용하지 않는다.
+R + ggplot2로 차트를 생성한다. Plotly는 파일 용량이 비대해지므로 사용하지 않는다.
+시계열/그룹 비교 시각화는 tidyplots 패키지를 우선 사용한다 (ggplot2 래퍼, 코드가 간결하고 출판 품질):
+```r
+library(tidyplots)
+tidyplot(data, x = time, y = score, color = group) %>%
+  add_mean_line() %>% add_mean_dot() %>% add_sem_ribbon()
+```
+tidyplots가 적합하지 않은 복잡한 커스텀 차트는 ggplot2 직접 사용.
 Quarto (.qmd)로 보고서를 렌더링하며, 아래 설정을 따른다:
 
 - `lightbox: true` — 이미지 클릭 시 줌인 가능
