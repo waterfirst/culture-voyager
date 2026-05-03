@@ -15,6 +15,7 @@ format:
     dev: ragg_png
     page-layout: article
     mainfont: "Noto Sans CJK KR"
+    include-before-body: _nav_back.html
 ---
 
 ```{r setup, include=FALSE}
@@ -104,6 +105,93 @@ theme_voyager <- function() {
 **오전**: 우지(宇治)로 이동. 뵤도인(平等院) — 10엔 동전 뒷면에 그려진 그 건물. 말차의 고장에서 진짜 말차 한 잔.
 
 **오후**: 코케데라(苔寺) 방문 — 사전 예약 필수(엽서 또는 온라인). 3,000엔 입장료지만, 그 값어치를 한다. 사경(写経)부터 시작해서 정원 산책. 인원 제한 덕에 고요함이 보장된다.
+
+---
+
+## 교토 여행 지도: 3일 궤적
+
+3일간의 동선을 지도 위에 표시했다. 각 핀을 클릭하면 명소 정보를 볼 수 있다.
+
+<div id="kyoto-map" style="width:100%;height:520px;border-radius:12px;overflow:hidden;margin:1rem 0;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var map = L.map('kyoto-map').setView([35.003, 135.745], 12);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap',
+    maxZoom: 18
+  }).addTo(map);
+
+  var dayColors = { 1: '#e74c3c', 2: '#2ecc71', 3: '#3498db' };
+
+  var spots = [
+    {lat:34.9948, lng:135.7850, name:'기요미즈데라 (清水寺)', day:1, info:'새벽 6시 개장. 청수의 무대에서 교토 시가지 조망'},
+    {lat:35.0050, lng:135.7644, name:'니시키 시장 (錦市場)', day:1, info:'400m 아케이드 — 다시마키 타마고, 하모 텐푸라'},
+    {lat:35.0228, lng:135.7941, name:'철학의 길 (哲学の道)', day:1, info:'2km 수로변 산책. 봄 벚꽃, 가을 단풍'},
+    {lat:35.0037, lng:135.7755, name:'기온 하나미코지 (祇園)', day:1, info:'마이코 거리. 폰토초 골목 저녁'},
+    {lat:35.0170, lng:135.6713, name:'대나무 숲 (竹林の小径)', day:2, info:'반드시 8시 이전 도착. 100대 소리 풍경'},
+    {lat:35.0154, lng:135.6745, name:'텐류지 (天龍寺)', day:2, info:'무소 소세키의 차경 정원'},
+    {lat:35.0118, lng:135.6778, name:'도게츠교 (渡月橋)', day:2, info:'아라시야마 상징. 소바 맛집 요시무라'},
+    {lat:34.9671, lng:135.7727, name:'후시미 이나리 (伏見稲荷大社)', day:3, info:'만 개의 도리이. 24시간 무료. 왕복 2시간'},
+    {lat:34.8893, lng:135.8076, name:'뵤도인 (平等院)', day:3, info:'10엔 동전의 건물. 우지 말차의 고장'},
+    {lat:35.0003, lng:135.6843, name:'코케데라 (苔寺)', day:3, info:'사전 예약 필수. 120종 이끼 정원. 3000엔'}
+  ];
+
+  var dayRoutes = {1:[], 2:[], 3:[]};
+
+  spots.forEach(function(s) {
+    var marker = L.circleMarker([s.lat, s.lng], {
+      radius: 9, fillColor: dayColors[s.day], color: '#fff',
+      weight: 2, opacity: 1, fillOpacity: 0.85
+    }).addTo(map);
+    marker.bindPopup('<b style="font-size:14px;">Day ' + s.day + ' — ' + s.name + '</b><br><span style="font-size:12px;color:#555;">' + s.info + '</span>');
+    dayRoutes[s.day].push([s.lat, s.lng]);
+  });
+
+  for (var d in dayRoutes) {
+    L.polyline(dayRoutes[d], {
+      color: dayColors[d], weight: 3, opacity: 0.6, dashArray: '8,6'
+    }).addTo(map);
+  }
+
+  var legend = L.control({position:'bottomright'});
+  legend.onAdd = function() {
+    var div = L.DomUtil.create('div');
+    div.style.cssText = 'background:rgba(255,255,255,0.92);padding:10px 14px;border-radius:8px;font-size:12px;line-height:1.8;box-shadow:0 2px 8px rgba(0,0,0,0.15);';
+    div.innerHTML = '<b>3일 코스</b><br>' +
+      '<span style="color:#e74c3c;">●</span> Day 1 히가시야마<br>' +
+      '<span style="color:#2ecc71;">●</span> Day 2 아라시야마<br>' +
+      '<span style="color:#3498db;">●</span> Day 3 후시미·우지';
+    return div;
+  };
+  legend.addTo(map);
+});
+</script>
+
+::: {.callout-note}
+## 핵심 명소 좌표
+
+**Day 1 — 히가시야마**
+
+- 기요미즈데라 (清水寺): 34.9948°N, 135.7850°E — 새벽 6시 개장, 청수의 무대에서 시가지 조망
+- 니시키 시장 (錦市場): 35.0050°N, 135.7644°E — 400m 아케이드, 교토의 부엌
+- 철학의 길 (哲学の道): 35.0228°N, 135.7941°E — 벚꽃/단풍 수로변 산책길 2km
+- 기온 하나미코지 (祇園): 35.0037°N, 135.7755°E — 마이코 거리, 폰토초 저녁
+
+**Day 2 — 아라시야마**
+
+- 대나무 숲 (竹林の小径): 35.0170°N, 135.6713°E — 반드시 8시 이전 도착
+- 텐류지 (天龍寺): 35.0154°N, 135.6745°E — 차경 정원의 걸작
+- 도게츠교 (渡月橋): 35.0118°N, 135.6778°E — 아라시야마 상징
+
+**Day 3 — 후시미 & 남부**
+
+- 후시미 이나리 (伏見稲荷大社): 34.9671°N, 135.7727°E — 만 개의 도리이, 24시간 무료
+- 뵤도인 (平等院): 34.8893°N, 135.8076°E — 10엔 동전의 건물, 우지 말차
+- 코케데라 (苔寺): 35.0003°N, 135.6843°E — 사전 예약 필수, 120종 이끼 정원
+:::
 
 ---
 
@@ -235,11 +323,15 @@ ggplot(spots, aes(x = best_hour, y = satisfaction)) +
 
 ### 아라시야마 대나무 숲 — 새벽의 고요
 
-{{< video https://www.youtube.com/watch?v=MXYjGMhV_lg >}}
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:1rem 0;">
+<iframe src="https://www.youtube.com/embed/MXYjGMhV_lg" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+</div>
 
 ### 후시미 이나리 — 만 개의 도리이를 걷다
 
-{{< video https://www.youtube.com/watch?v=wMaHnfIbXSA >}}
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:1rem 0;">
+<iframe src="https://www.youtube.com/embed/wMaHnfIbXSA" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+</div>
 
 ---
 
@@ -283,3 +375,15 @@ ggplot(spots, aes(x = best_hour, y = satisfaction)) +
 
 *Culture Voyager — 주말마다 한 편의 이야기를 전합니다.*
 *다음 여행지는 어디일까요? 프라하의 카프카, 아이슬란드의 빙하가 기다리고 있습니다.*
+
+<div style="text-align:center;margin:2rem 0;">
+<a href="https://waterfirst.github.io/culture-voyager/"
+   style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;
+          background:linear-gradient(135deg,#c4703f,#b8860b);color:#fff;
+          border-radius:28px;text-decoration:none;font-size:15px;font-weight:700;
+          box-shadow:0 4px 16px rgba(196,112,63,0.3);transition:all 0.3s;"
+   onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 24px rgba(196,112,63,0.4)'"
+   onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 16px rgba(196,112,63,0.3)'">
+  ← Culture Voyager 목차로 돌아가기
+</a>
+</div>
