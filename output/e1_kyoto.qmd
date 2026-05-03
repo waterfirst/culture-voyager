@@ -112,63 +112,77 @@ theme_voyager <- function() {
 
 3일간의 동선을 지도 위에 표시했다. 각 핀을 클릭하면 명소 정보를 볼 수 있다.
 
-<div id="kyoto-map" style="width:100%;height:520px;border-radius:12px;overflow:hidden;margin:1rem 0;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
+```{r kyoto-map}
+library(leaflet)
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var map = L.map('kyoto-map').setView([35.003, 135.745], 12);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap',
-    maxZoom: 18
-  }).addTo(map);
+spots <- data.frame(
+  name = c("기요미즈데라 (清水寺)", "니시키 시장 (錦市場)", "철학의 길 (哲学の道)",
+           "기온 하나미코지 (祇園)", "대나무 숲 (竹林の小径)", "텐류지 (天龍寺)",
+           "도게츠교 (渡月橋)", "후시미 이나리 (伏見稲荷大社)", "뵤도인 (平等院)",
+           "코케데라 (苔寺)"),
+  lat = c(34.9948, 35.0050, 35.0228, 35.0037, 35.0170, 35.0154,
+          35.0118, 34.9671, 34.8893, 35.0003),
+  lng = c(135.7850, 135.7644, 135.7941, 135.7755, 135.6713, 135.6745,
+          135.6778, 135.7727, 135.8076, 135.6843),
+  day = c(1, 1, 1, 1, 2, 2, 2, 3, 3, 3),
+  info = c("새벽 6시 개장. 청수의 무대에서 교토 시가지 조망",
+           "400m 아케이드 — 다시마키 타마고, 하모 텐푸라",
+           "2km 수로변 산책. 봄 벚꽃, 가을 단풍",
+           "마이코 거리. 폰토초 골목 저녁",
+           "반드시 8시 이전 도착. 100대 소리 풍경",
+           "무소 소세키의 차경 정원",
+           "아라시야마 상징. 소바 맛집 요시무라",
+           "만 개의 도리이. 24시간 무료. 왕복 2시간",
+           "10엔 동전의 건물. 우지 말차의 고장",
+           "사전 예약 필수. 120종 이끼 정원. 3000엔"),
+  stringsAsFactors = FALSE
+)
 
-  var dayColors = { 1: '#e74c3c', 2: '#2ecc71', 3: '#3498db' };
+day_colors <- c("1" = "#e74c3c", "2" = "#2ecc71", "3" = "#3498db")
+day_labels <- c("1" = "Day 1 히가시야마", "2" = "Day 2 아라시야마", "3" = "Day 3 후시미·우지")
 
-  var spots = [
-    {lat:34.9948, lng:135.7850, name:'기요미즈데라 (清水寺)', day:1, info:'새벽 6시 개장. 청수의 무대에서 교토 시가지 조망'},
-    {lat:35.0050, lng:135.7644, name:'니시키 시장 (錦市場)', day:1, info:'400m 아케이드 — 다시마키 타마고, 하모 텐푸라'},
-    {lat:35.0228, lng:135.7941, name:'철학의 길 (哲学の道)', day:1, info:'2km 수로변 산책. 봄 벚꽃, 가을 단풍'},
-    {lat:35.0037, lng:135.7755, name:'기온 하나미코지 (祇園)', day:1, info:'마이코 거리. 폰토초 골목 저녁'},
-    {lat:35.0170, lng:135.6713, name:'대나무 숲 (竹林の小径)', day:2, info:'반드시 8시 이전 도착. 100대 소리 풍경'},
-    {lat:35.0154, lng:135.6745, name:'텐류지 (天龍寺)', day:2, info:'무소 소세키의 차경 정원'},
-    {lat:35.0118, lng:135.6778, name:'도게츠교 (渡月橋)', day:2, info:'아라시야마 상징. 소바 맛집 요시무라'},
-    {lat:34.9671, lng:135.7727, name:'후시미 이나리 (伏見稲荷大社)', day:3, info:'만 개의 도리이. 24시간 무료. 왕복 2시간'},
-    {lat:34.8893, lng:135.8076, name:'뵤도인 (平等院)', day:3, info:'10엔 동전의 건물. 우지 말차의 고장'},
-    {lat:35.0003, lng:135.6843, name:'코케데라 (苔寺)', day:3, info:'사전 예약 필수. 120종 이끼 정원. 3000엔'}
-  ];
+spots$color <- day_colors[as.character(spots$day)]
+spots$popup <- paste0(
+  "<b style='font-size:14px;'>Day ", spots$day, " — ", spots$name, "</b><br>",
+  "<span style='font-size:12px;color:#555;'>", spots$info, "</span>"
+)
 
-  var dayRoutes = {1:[], 2:[], 3:[]};
+m <- leaflet(spots, width = "100%", height = 520) %>%
+  addTiles() %>%
+  setView(lng = 135.745, lat = 35.003, zoom = 12)
 
-  spots.forEach(function(s) {
-    var marker = L.circleMarker([s.lat, s.lng], {
-      radius: 9, fillColor: dayColors[s.day], color: '#fff',
-      weight: 2, opacity: 1, fillOpacity: 0.85
-    }).addTo(map);
-    marker.bindPopup('<b style="font-size:14px;">Day ' + s.day + ' — ' + s.name + '</b><br><span style="font-size:12px;color:#555;">' + s.info + '</span>');
-    dayRoutes[s.day].push([s.lat, s.lng]);
-  });
+# Day별 경로 추가
+for (d in 1:3) {
+  day_spots <- spots[spots$day == d, ]
+  m <- m %>% addPolylines(
+    lng = day_spots$lng, lat = day_spots$lat,
+    color = day_colors[as.character(d)],
+    weight = 3, opacity = 0.6, dashArray = "8,6",
+    group = day_labels[as.character(d)]
+  )
+}
 
-  for (var d in dayRoutes) {
-    L.polyline(dayRoutes[d], {
-      color: dayColors[d], weight: 3, opacity: 0.6, dashArray: '8,6'
-    }).addTo(map);
-  }
+# 마커 추가
+m <- m %>% addCircleMarkers(
+  lng = ~lng, lat = ~lat,
+  radius = 9, color = "#ffffff", weight = 2,
+  fillColor = ~color, fillOpacity = 0.85,
+  popup = ~popup,
+  label = ~name,
+  labelOptions = labelOptions(
+    style = list("font-size" = "12px", "font-weight" = "bold")
+  )
+)
 
-  var legend = L.control({position:'bottomright'});
-  legend.onAdd = function() {
-    var div = L.DomUtil.create('div');
-    div.style.cssText = 'background:rgba(255,255,255,0.92);padding:10px 14px;border-radius:8px;font-size:12px;line-height:1.8;box-shadow:0 2px 8px rgba(0,0,0,0.15);';
-    div.innerHTML = '<b>3일 코스</b><br>' +
-      '<span style="color:#e74c3c;">●</span> Day 1 히가시야마<br>' +
-      '<span style="color:#2ecc71;">●</span> Day 2 아라시야마<br>' +
-      '<span style="color:#3498db;">●</span> Day 3 후시미·우지';
-    return div;
-  };
-  legend.addTo(map);
-});
-</script>
+# 범례 추가
+m %>% addLegend(
+  position = "bottomright",
+  colors = unname(day_colors),
+  labels = unname(day_labels),
+  title = "3일 코스",
+  opacity = 0.85
+)
+```
 
 ::: {.callout-note}
 ## 핵심 명소 좌표
