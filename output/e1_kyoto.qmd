@@ -1,0 +1,285 @@
+---
+title: "교토 — 천년 고도의 미학"
+subtitle: "Culture Voyager | 이끼 정원, 대나무 숲, 게이샤 거리. 일본 미의식의 원형을 걷는다"
+author: "Nakcho Choi"
+date: "2026-05-04"
+format:
+  html:
+    theme:
+      dark: darkly
+      light: flatly
+    toc: true
+    toc-depth: 2
+    lightbox: true
+    self-contained: true
+    dev: ragg_png
+    page-layout: article
+    mainfont: "Noto Sans CJK KR"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, warning = FALSE, message = FALSE,
+  fig.width = 10, fig.height = 5.5, dpi = 150
+)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+theme_voyager <- function() {
+  theme_minimal(base_size = 14, base_family = "Noto Sans CJK KR") +
+    theme(
+      plot.title = element_text(face = "bold", size = 16, color = "#2c2c2c"),
+      plot.subtitle = element_text(size = 11, color = "#5a5a5a", lineheight = 1.4),
+      plot.background = element_rect(fill = "#faf7f2", color = NA),
+      panel.background = element_rect(fill = "#faf7f2", color = NA),
+      panel.grid.major = element_line(color = "#e8e2d9", linewidth = 0.3),
+      panel.grid.minor = element_blank(),
+      axis.text = element_text(color = "#5a5a5a"),
+      legend.position = "bottom"
+    )
+}
+```
+
+## 블랙홀 한 장면: 이끼 위의 빗방울
+
+사이호지(西芳寺), 이른바 '코케데라(苔寺)'. 120종의 이끼가 덮은 정원.
+
+빗방울이 이끼 위에 떨어지는 순간 — 그 소리를 들어본 적 있는가? 수백 년 된 이끼 융단이 빗물을 머금는 소리. 그건 소리가 아니라 **침묵이 스며드는 과정**이다.
+
+무소 소세키(夢窓疎石)라는 14세기 선승이 이 정원을 설계했다. 그런데 설계라고 하기엔 어폐가 있다. 이건 "자연이 알아서 아름다워지도록 조건을 배치한 것"이니까. 정원사가 아니라 **시간에게 일을 시킨** 거다.
+
+교토라는 도시 전체가 그렇다. 천 년 동안 수도였고, 천 년 동안 **아무것도 서두르지 않았다.** 그래서 이 도시를 걷는 건 단순한 여행이 아니라, 내 안의 속도를 재설정하는 일이다.
+
+---
+
+## 왜 교토인가: 미의식의 원형
+
+### 와비사비(侘寂) — 불완전함의 아름다움
+
+서양에서 아름다움이란 "완벽한 대칭"이다. 파르테논 신전, 베르사유 궁전. 하지만 교토가 말하는 아름다움은 정반대다.
+
+금이 간 찻잔을 금으로 이어 더 아름답게 만드는 킨츠기(金繕い). 시간이 묻은 나무 기둥을 광을 내지 않고 그대로 두는 감각. **노화가 곧 성숙**이라는 미학.
+
+이걸 몸으로 느끼려면 교토에 가야 한다. 책으로는 안 된다. 적어도 발바닥으로 자갈 깔린 참배길을 밟아봐야 안다.
+
+### 사계절의 설계
+
+교토 사람들은 "계절을 먹는다"고 말한다. 봄에는 벚꽃떡(사쿠라모치), 여름엔 유리처럼 투명한 와라비모치, 가을엔 단풍 모양 과자, 겨울엔 따뜻한 유도후.
+
+풍경도 마찬가지다. **같은 장소를 네 번 가야 교토를 한 번 본 것**이다.
+
+---
+
+## 3일 추천 코스
+
+### Day 1: 히가시야마 — 역사의 켜를 걷다
+
+**아침**: 기요미즈데라(清水寺)에서 시작. 새벽 6시 개장이니 일찍 가자. 관광객이 밀려오기 전 청수의 무대(清水の舞台)에서 교토 시가지가 내려다보이는 순간 — 그게 이 도시와의 첫 인사다.
+
+**오전**: 니넨자카 → 산넨자카 내려오기. 경사진 돌길 양편의 마치야(町家) 건물들. 100년 된 과자 가게에서 야츠하시(八ツ橋) 하나 집어먹으며.
+
+**점심**: 니시키 시장(錦市場). '교토의 부엌'이라 불리는 400미터 아케이드. 다시마키 타마고(두꺼운 달걀말이), 하모(갯장어) 텐푸라, 두유 도넛. 한 끼가 아니라 열 끼를 조금씩.
+
+**오후**: 철학의 길(哲学の道). 니시다 키타로 교수가 매일 걸으며 명상했다는 수로변 산책길. 봄이면 벚꽃이 수면에 떨어지고, 가을이면 단풍이 물 위를 흐른다.
+
+**저녁**: 기온(祇園) 하나미코지도리. 운이 좋으면 마이코(무용수습생)가 지나가는 걸 볼 수 있다. 폰토초(先斗町) 골목에서 가모가와 강가를 보며 저녁.
+
+### Day 2: 아라시야마 — 자연의 설계
+
+**아침**: 대나무 숲(竹林の小径). 반드시 8시 이전에 도착할 것. 대나무 사이로 빛이 스며드는 시간. 바람이 대나무를 흔들면 그 소리가 일본 환경청이 선정한 '100대 소리 풍경' 중 하나다.
+
+**오전**: 텐류지(天龍寺) 정원. 무소 소세키가 설계한 또 하나의 걸작. 아라시야마 산을 배경으로 삼은 차경(借景) 기법 — 정원의 경계 너머 산까지 정원에 포함시키는 발상.
+
+**점심**: 아라시야마 요시무라(嵐山よしむら)에서 소바. 도게츠교(渡月橋) 건너편에서 산 풍경을 보며.
+
+**오후**: 사가노 토롯코 열차. 호즈강(保津川) 계곡을 따라 25분 달리는 관광열차. 창밖 풍경이 엽서 그 자체.
+
+**저녁**: 교토역 근처 이자카야에서 오반자이(おばんざい, 교토 가정식). 두부, 절임채소, 삶은 유바(두부 껍데기) — 소박하지만 깊은 맛.
+
+### Day 3: 후시미 & 남부 — 신비의 영역
+
+**새벽**: 후시미 이나리 신사(伏見稲荷大社). 만 개의 주황색 도리이(鳥居). 무료, 24시간 개방. 정상까지 왕복 2시간. 새벽에 가면 거의 혼자 걸을 수 있다. 도리이 터널 사이로 새벽빛이 스며드는 순간 — **이건 종교가 아니라 조형예술**이다.
+
+**오전**: 우지(宇治)로 이동. 뵤도인(平等院) — 10엔 동전 뒷면에 그려진 그 건물. 말차의 고장에서 진짜 말차 한 잔.
+
+**오후**: 코케데라(苔寺) 방문 — 사전 예약 필수(엽서 또는 온라인). 3,000엔 입장료지만, 그 값어치를 한다. 사경(写経)부터 시작해서 정원 산책. 인원 제한 덕에 고요함이 보장된다.
+
+---
+
+## 먹어야 할 것들
+
+| 교토의 맛은 "담백함의 극치"다. 화려하지 않지만 깊다.
+
+- **유도후(湯豆腐)**: 난젠지 근처 '오쿠탄(奥丹)'은 380년 역사. 두부를 다시마 국물에 데워 먹는 것 — 이게 뭐가 맛있냐고? 가보면 안다.
+- **가이세키(懐石)**: 한 끼에 2~5만 원대부터. 계절 식재료로 코스를 짜는데, 접시 하나하나가 작품.
+- **말차 디저트**: 나카무라 토키치(中村藤吉) 우지 본점. 말차 파르페의 원조.
+- **니시키 시장 먹거리**: 다코타마고(문어 달걀말이), 아부리모치(구운 떡), 두유도넛.
+
+---
+
+## 교토 여행, 시즌별 풍경
+
+```{r season-chart}
+seasons <- data.frame(
+  month = factor(month.abb, levels = month.abb),
+  temperature = c(4.6, 5.4, 9.0, 14.8, 19.8, 23.7, 27.5, 28.6, 24.5, 18.3, 12.4, 7.0),
+  rainfall_mm = c(50, 68, 113, 116, 161, 214, 220, 132, 176, 121, 71, 48),
+  visitors_index = c(40, 45, 85, 100, 70, 55, 50, 60, 65, 90, 95, 50)
+)
+
+ggplot(seasons) +
+  geom_col(aes(x = month, y = visitors_index), fill = "#c4703f", alpha = 0.3, width = 0.6) +
+  geom_line(aes(x = month, y = temperature * 3.5, group = 1), color = "#b8860b", linewidth = 1.2) +
+  geom_point(aes(x = month, y = temperature * 3.5), color = "#b8860b", size = 2.5) +
+  scale_y_continuous(
+    name = "관광 매력도 지수",
+    sec.axis = sec_axis(~ . / 3.5, name = "평균 기온 (°C)")
+  ) +
+  annotate("rect", xmin = 3.5, xmax = 4.5, ymin = 0, ymax = 105,
+           fill = "#ffb7c5", alpha = 0.2) +
+  annotate("text", x = 4, y = 100, label = "벚꽃", size = 3.5, color = "#c4703f") +
+  annotate("rect", xmin = 10.5, xmax = 11.5, ymin = 0, ymax = 105,
+           fill = "#ff6b35", alpha = 0.15) +
+  annotate("text", x = 11, y = 100, label = "단풍", size = 3.5, color = "#c4703f") +
+  labs(
+    title = "교토의 사계절: 언제 가도 좋지만, 특별한 순간이 있다",
+    subtitle = "막대: 관광 매력도 | 선: 평균 기온 — 봄(4월)과 가을(11월)이 절정"
+  ) +
+  theme_voyager()
+```
+
+---
+
+## 예산 가이드: 현실적으로 얼마?
+
+```{r budget-chart}
+budget <- data.frame(
+  category = c("항공권\n(왕복)", "숙소\n(1박)", "식비\n(1일)", "교통\n(1일)", "입장료\n(1일)", "기념품\n(총)"),
+  budget_low = c(200000, 40000, 15000, 5000, 3000, 30000),
+  budget_mid = c(350000, 80000, 35000, 12000, 8000, 80000),
+  budget_high = c(600000, 200000, 80000, 20000, 15000, 200000)
+)
+
+budget_long <- budget %>%
+  pivot_longer(cols = starts_with("budget"), names_to = "level", values_to = "won") %>%
+  mutate(
+    level = factor(level,
+                   levels = c("budget_low", "budget_mid", "budget_high"),
+                   labels = c("알뜰 여행", "적정 여행", "럭셔리")),
+    category = factor(category, levels = budget$category)
+  )
+
+ggplot(budget_long, aes(x = category, y = won / 10000, fill = level)) +
+  geom_col(position = position_dodge(width = 0.7), width = 0.6, alpha = 0.85) +
+  scale_fill_manual(values = c("#6b8f71", "#4a7c9b", "#8b5e83")) +
+  scale_y_continuous(labels = function(x) paste0(x, "만")) +
+  labs(
+    title = "교토 3박 4일, 지갑은 얼마나 열어야 할까?",
+    subtitle = "2025-2026 기준 한국 출발 1인 예산 (원화)",
+    x = NULL, y = "비용 (만원)", fill = NULL
+  ) +
+  theme_voyager() +
+  theme(axis.text.x = element_text(size = 11))
+```
+
+::: {.callout-tip}
+## 예산 꿀팁
+
+- **알뜰 여행 (3박 4일 총 50~70만 원)**: 게스트하우스, 편의점+시장 먹거리, 버스 1일권(1,100엔), 무료 명소 중심
+- **적정 여행 (3박 4일 총 100~130만 원)**: 비즈니스 호텔, 가이세키 1회 포함, 교통 패스
+- **럭셔리 (3박 4일 총 200만 원~)**: 료칸, 가이세키 매일, 택시 이동, 프라이빗 투어
+:::
+
+---
+
+## 교토 명소별 추천 시간대
+
+```{r time-chart}
+spots <- data.frame(
+  name = c("후시미 이나리", "대나무 숲", "기요미즈데라", "킨카쿠지", "코케데라", "기온 거리"),
+  best_hour = c(5.5, 7, 6, 9, 13, 18),
+  crowd_level = c(2, 3, 4, 8, 2, 6),
+  satisfaction = c(9.5, 8.8, 8.5, 7.5, 9.8, 8.0)
+)
+
+ggplot(spots, aes(x = best_hour, y = satisfaction)) +
+  geom_point(aes(size = crowd_level), color = "#c4703f", alpha = 0.7) +
+  geom_text(aes(label = name), vjust = -1.5, size = 4, family = "Noto Sans CJK KR", color = "#2c2c2c") +
+  scale_x_continuous(
+    breaks = seq(4, 20, 2),
+    labels = paste0(seq(4, 20, 2), ":00"),
+    limits = c(4, 20)
+  ) +
+  scale_size_continuous(range = c(3, 12), name = "혼잡도 (10=최고혼잡)") +
+  labs(
+    title = "이른 아침이 답이다: 명소별 추천 방문 시간",
+    subtitle = "X축: 추천 도착 시간 | Y축: 만족도 | 원 크기: 혼잡도 (작을수록 한적)",
+    x = "추천 도착 시간", y = "만족도 (10점 만점)"
+  ) +
+  theme_voyager() +
+  coord_cartesian(ylim = c(7, 10.5))
+```
+
+---
+
+## 교토를 듣다: 추천 플레이리스트
+
+교토를 걸을 때 어울리는 음악이 있다. 사카모토 류이치의 피아노, 하루오미 호소노의 앰비언트, 유키 카지우라의 선율.
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX5Ejj0EkURtP?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+---
+
+## 교토를 보다: 영상으로 미리 걷기
+
+### 아라시야마 대나무 숲 — 새벽의 고요
+
+{{< video https://www.youtube.com/watch?v=MXYjGMhV_lg >}}
+
+### 후시미 이나리 — 만 개의 도리이를 걷다
+
+{{< video https://www.youtube.com/watch?v=wMaHnfIbXSA >}}
+
+---
+
+## 교토가 가르쳐주는 것
+
+여행지에서 "뭘 보느냐"보다 **"어떤 속도로 보느냐"**가 중요하다는 걸 교토에서 배운다.
+
+서울에서 우리는 하루에 만 보를 걷지만 아무것도 보지 못한다. 교토에서는 백 보를 걸어도 세 가지를 발견한다. 이끼의 색이 바뀌는 것, 물이 흐르는 방향, 돌 하나의 배치.
+
+일본인들은 이걸 **'마(間)'**라고 부른다. 비어있는 공간, 침묵의 시간, 아무것도 하지 않는 순간 — 그게 오히려 가장 충만한 순간이라는 역설.
+
+여행을 떠나기 전에 질문 하나만 던져보자:
+
+> "내가 마지막으로 아무것도 하지 않으면서 충만했던 순간은 언제였을까?"
+
+그 답이 떠오르지 않는다면 — 교토에 가야 할 이유가 하나 더 생긴 거다.
+
+---
+
+## 실전 팁 모음
+
+::: {.callout-note}
+## 교토 여행 체크리스트
+
+- **교통**: 간사이공항 → 교토 하루카 특급 (75분, 3,640엔). 시내는 버스 1일권 (1,100엔)
+- **예약 필수**: 코케데라(온라인 예약), 가이세키 레스토랑, 마이코 체험
+- **현금 준비**: 작은 가게, 신사 입장료는 현금만 가능한 곳 많음
+- **구글맵 오프라인**: 교토 지하 구간에서도 길 찾기 가능하도록
+- **에티켓**: 대나무 숲에서 대나무 만지지 않기, 게이샤/마이코 사진 무단촬영 금지
+- **최적 시기**: 벚꽃 3월 말~4월 초, 단풍 11월 중순~12월 초
+:::
+
+---
+
+::: {.callout-tip appearance="minimal"}
+*"여행은 도착하는 것이 아니라 걷는 것이다."*
+— 그리고 교토는 **느리게 걷는 법**을 가르쳐주는 유일한 도시다.
+:::
+
+---
+
+*Culture Voyager — 주말마다 한 편의 이야기를 전합니다.*
+*다음 여행지는 어디일까요? 프라하의 카프카, 아이슬란드의 빙하가 기다리고 있습니다.*
