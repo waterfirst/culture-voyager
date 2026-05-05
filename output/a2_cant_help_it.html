@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Nakcho Choi">
+<meta name="dcterms.date" content="2026-05-05">
+<title>어쩔 수가 없다 — 노동이라는 종교의 최후 신자</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --surface-hover: #1c2129;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --warm-accent: #c4703f;
+  --warm-gold: #b8860b;
+  --border: #30363d;
+  --divider: #21262d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 17px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Navigation */
+.nav-back {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(13, 17, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+
+.nav-back a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--warm-accent);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.nav-back a:hover {
+  opacity: 0.75;
+}
+
+/* Header */
+.article-header {
+  padding: 80px 0 48px;
+  text-align: center;
+}
+
+.article-category {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--warm-gold);
+  margin-bottom: 20px;
+}
+
+.article-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.article-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--warm-accent);
+  margin-bottom: 32px;
+}
+
+.article-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.article-meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Film Info Box */
+.film-info {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin: 40px 0 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.film-info-item {
+  text-align: center;
+}
+
+.film-info-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.film-info-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* Content sections */
+.section {
+  margin-bottom: 64px;
+}
+
+.section-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--warm-gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+
+.section p {
+  margin-bottom: 20px;
+  color: var(--text);
+  font-weight: 300;
+}
+
+.section p strong {
+  font-weight: 700;
+  color: var(--warm-accent);
+}
+
+/* Pull quote */
+.pull-quote {
+  border-left: 3px solid var(--warm-accent);
+  padding: 20px 28px;
+  margin: 36px 0;
+  background: var(--surface);
+  border-radius: 0 8px 8px 0;
+}
+
+.pull-quote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.pull-quote .attribution {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  color: var(--text-muted);
+}
+
+/* Divider */
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--warm-accent), var(--warm-gold));
+  margin: 56px auto;
+  border-radius: 1px;
+}
+
+/* Verdict box */
+.verdict-box {
+  background: linear-gradient(135deg, rgba(196, 112, 63, 0.08), rgba(184, 134, 11, 0.08));
+  border: 1px solid var(--warm-accent);
+  border-radius: 12px;
+  padding: 36px;
+  margin: 48px 0;
+  text-align: center;
+}
+
+.verdict-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--warm-gold);
+  margin-bottom: 16px;
+}
+
+.verdict-box p {
+  font-size: 16px;
+  color: var(--text);
+}
+
+/* Footer nav */
+.footer-nav {
+  border-top: 1px solid var(--border);
+  padding: 40px 0 80px;
+  text-align: center;
+}
+
+.footer-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--warm-accent);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.footer-nav a:hover {
+  background: var(--surface-hover);
+  border-color: var(--warm-accent);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .container { padding: 0 16px; }
+  .article-header { padding: 48px 0 32px; }
+  .film-info { padding: 20px; grid-template-columns: 1fr 1fr; }
+  .pull-quote { padding: 16px 20px; }
+  .verdict-box { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top Navigation -->
+<nav class="nav-back">
+  <div class="container">
+    <a href="../index.html">&larr; 목차로 돌아가기</a>
+  </div>
+</nav>
+
+<!-- Article Header -->
+<header class="article-header">
+  <div class="container">
+    <div class="article-category">A축 &mdash; Timeless Cinema</div>
+    <h1 class="article-title">어쩔 수가 없다</h1>
+    <p class="article-subtitle">노동이라는 종교의 최후 신자</p>
+    <div class="article-meta">
+      <span>Nakcho Choi</span>
+      <span>&bull;</span>
+      <span>2026.05.05</span>
+      <span>&bull;</span>
+      <span>Culture Voyager #A2</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Film Info Box -->
+  <div class="film-info">
+    <div class="film-info-item">
+      <div class="film-info-label">Director</div>
+      <div class="film-info-value">박찬욱 (Park Chan-wook)</div>
+    </div>
+    <div class="film-info-item">
+      <div class="film-info-label">Year</div>
+      <div class="film-info-value">2025</div>
+    </div>
+    <div class="film-info-item">
+      <div class="film-info-label">Genre</div>
+      <div class="film-info-value">드라마 / 블랙코미디</div>
+    </div>
+    <div class="film-info-item">
+      <div class="film-info-label">Runtime</div>
+      <div class="film-info-value">132분</div>
+    </div>
+  </div>
+
+  <!-- Section 1: Black Hole Scene -->
+  <section class="section">
+    <div class="section-number">Chapter 01</div>
+    <h2>블랙홀 장면 &mdash; 출근하는 실업자</h2>
+
+    <p>만수는 해고됐다. 하지만 아침 6시에 눈이 떠진다. 면도를 하고, 와이셔츠를 다리고, 도시락을 싼다. 현관문을 나선다. 버스를 탄다. <strong>아무도 기다리지 않는 곳을 향해.</strong></p>
+
+    <p>이 한 장면에 영화의 모든 것이 들어있다. 블랙홀이다. 서사 전체가 이 장면 안에 접혀 있다.</p>
+
+    <p>만수가 출근 의식(ritual)을 수행하는 동안 카메라는 미동도 하지 않는다. 박찬욱 특유의 과잉 미학은 사라졌다. 대신 무심한 관찰만 남았다. 인간이 습관으로 해체되는 과정을 보는 것은, 공포영화보다 더 무서운 경험이다.</p>
+
+    <p>왜 이 장면이 블랙홀인가? 노동이 정체성이 된 인간에게 실직은 물리적 죽음이 아니라 <strong>존재론적 죽음</strong>이기 때문이다. 만수는 몸은 살아있지만 '자기'를 잃었다. 그리고 그 사실을 자신만 모른다. 아내도 모른다. 정확히 말하면, 안다. 하지만 어쩔 수가 없다.</p>
+
+    <div class="pull-quote">
+      <p>"어쩔 수가 없다"는 체념이 아니다. 그것은 시스템이 개인에게 내리는 판결이다.</p>
+    </div>
+
+    <p>제목부터가 판결문이다. 영화가 관객에게 묻는 것은 "만수가 불쌍하지 않냐"가 아니다. "너도 만수 아니냐"다. 이 질문을 비행기 안에서 받았을 때, 나는 잠을 잘 수 없었다.</p>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Section 2: Surface Reading -->
+  <section class="section">
+    <div class="section-number">Chapter 02</div>
+    <h2>표면 독해 &mdash; 한 남자의 몰락, 혹은 성실함의 파산</h2>
+
+    <p>표면만 보면 이건 뻔한 영화다. 성실한 남자가 구조조정으로 잘리고, 가족이 흔들리고, 자존감이 무너지고, 결국 어떤 선택을 한다. 한국영화가 수십 번 해먹은 소재다.</p>
+
+    <p>그런데 박찬욱이 만들면 다르다. 이 감독은 '뻔한 소재'를 고르는 법이 없다. 정확히 말하면, 뻔한 소재를 골라놓고 <strong>뻔하지 않은 질문</strong>을 던지는 사람이다.</p>
+
+    <p>만수의 이력서를 보자. 고졸, 1988년 입사, 35년 근속. IMF를 견뎠다. 글로벌 금융위기를 버텼다. 코로나도 살아남았다. 그리고 2025년, AI 자동화 구조조정에 걸렸다. 아이러니하게도 그를 해고한 것은 불황이 아니라 '효율'이었다.</p>
+
+    <p>만수의 서사를 따라가다 보면 한 가지 불편한 사실을 마주한다. <strong>성실함은 미덕이지만, 전략이 아니다.</strong> 만수는 35년간 "열심히"만 했다. 아무도 그에게 "왜?"라고 묻지 않았다. 회사도 묻지 않았고, 가족도 묻지 않았고, 만수 자신도 묻지 않았다.</p>
+
+    <p>"왜 일하는가?" 이 질문을 하지 않은 채 35년을 보내면, 일이 사라졌을 때 남는 것은 아무것도 없다. 빈 껍데기. 만수가 해고 후에도 출근 의식을 반복하는 이유가 여기에 있다. 그것이 유일하게 자기가 '존재한다'고 느끼는 방법이니까.</p>
+
+    <div class="pull-quote">
+      <p>"성실함이 미덕이던 시대의 마지막 세대. 그들은 성실하게 퇴장당했다."</p>
+    </div>
+
+    <p>만수의 세대는 특이한 세대다. IMF 이전에 입사해서, "회사가 나를 지켜줄 것"이라 믿은 마지막 사람들. 그 믿음은 종교와 같았다. 교리를 의심하지 않았다. 출근이 예배였고, 야근이 헌금이었고, 승진이 구원이었다. 그리고 신은 그들을 버렸다.</p>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Section 3: Design Reading -->
+  <section class="section">
+    <div class="section-number">Chapter 03</div>
+    <h2>설계 독해 &mdash; 박찬욱은 왜 이 소재를 골랐는가</h2>
+
+    <p>박찬욱의 필모그래피를 떠올려보자. 복수 3부작(복수는 나의 것, 올드보이, 친절한 금자씨), 박쥐, 아가씨, 헤어질 결심. 이 감독은 인간의 <strong>집착</strong>에 매혹된 사람이다. 복수에 집착하는 인간, 욕망에 집착하는 인간, 사랑에 집착하는 인간.</p>
+
+    <p>그런데 '어쩔 수가 없다'에서 그가 주목한 집착은 <strong>노동</strong>이다. 노동에 집착하는 인간. 언뜻 보면 복수나 욕망보다 덜 극적이다. 하지만 박찬욱은 정확히 그 점을 간파했다. 노동 집착은 가장 보이지 않는 집착이다. 왜? 사회가 그것을 "미덕"이라 부르니까.</p>
+
+    <p><strong>영화의 설계가 천재적인 이유가 여기에 있다.</strong> 복수 집착은 누가 봐도 병리적이다. 하지만 노동 집착은? "성실하다", "책임감 있다", "대단하다"라는 칭찬을 받는다. 사회 전체가 공모하는 집착. 그래서 더 무섭다.</p>
+
+    <p>박찬욱은 이 영화에서 자신의 미학적 과잉을 의도적으로 억제했다. 올드보이의 복도 액션신 같은 건 없다. 아가씨의 화려한 미장센도 없다. 대신 그는 <strong>일상의 반복</strong>을 무기로 쓴다. 만수가 매일 같은 시간에 일어나고, 같은 동선으로 움직이고, 같은 표정을 짓는 것. 이 반복이 120분간 쌓이면, 관객은 질식한다.</p>
+
+    <p>형식이 내용을 증명하는 영화. 반복의 지옥을 반복의 형식으로 보여준다. 이게 연출이다. 이명세 감독이 말한 "한 장면에 모든 것을 숨긴다"를 박찬욱은 "한 리듬에 모든 것을 숨긴다"로 변주했다.</p>
+
+    <div class="pull-quote">
+      <p>"사회가 칭찬하는 집착이 가장 위험하다. 왜냐하면, 벗어날 이유를 아무도 주지 않으니까."</p>
+    </div>
+
+    <p>카메라 워크도 의도적이다. 만수의 시점 쇼트(POV)가 거의 없다. 관객은 만수를 '관찰'하지, 만수가 '되지' 않는다. 왜? 만수 안에는 관객이 들어갈 내면이 없기 때문이다. 노동으로 채워졌던 내면은, 노동이 사라지자 진공이 됐다. 빈 공간에는 시점을 둘 수 없다.</p>
+
+    <p>이 연출적 결정 하나로 박찬욱은 관객에게 불편함을 선사한다. 우리는 만수에게 감정이입할 수 없다. 동정할 수는 있지만 '되어볼' 수는 없다. 그리고 바로 그 불편함이 영화의 진짜 메시지다. "너는 만수와 다르다고 생각하지? 정말?"</p>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Section 4: Philosophical Reading -->
+  <section class="section">
+    <div class="section-number">Chapter 04</div>
+    <h2>철학적 독해 &mdash; 노동의 종교, 혹은 명함이 존재를 대체한 사회</h2>
+
+    <p>한국에서 처음 만나는 사람에게 물어보라. 첫 질문이 뭔가? <strong>"뭐하세요?"</strong></p>
+
+    <p>이것은 "What do you do?"의 번역이 아니다. 한국어에서 "뭐하세요?"는 "누구세요?"를 대체한 질문이다. 직업이 정체성이다. 명함이 존재증명이다. 명함을 잃으면 존재를 잃는다. 만수가 정확히 그 상태다.</p>
+
+    <p>스피노자를 끌어오자. 스피노자는 자유를 "자기 본성의 필연에 의해 행동하는 것"이라 정의했다. 자유 행위란 외부 원인이 아닌 내적 필연에서 나오는 것. 그렇다면 만수의 노동은 자유 행위였는가?</p>
+
+    <p>답은 분명하다. <strong>아니다.</strong> 만수는 한 번도 노동을 선택한 적이 없다. 고졸이니까 취직해야 했고, 결혼했으니까 돈을 벌어야 했고, 아이가 생겼으니까 잘릴 수 없었다. 만수의 노동은 외부 원인(가족, 사회, 생존)에 의한 것이었지, 내적 필연이 아니었다. 스피노자의 정의에 따르면, 만수는 35년간 자유로운 적이 한 번도 없었다.</p>
+
+    <p>그런데 여기서 비틀기가 온다. 만수는 자기가 자유롭다고 믿었다. "나는 일을 좋아해", "나는 직장에서 인정받아", "나는 능력 있는 사람이야." 이 믿음이 종교다. 스피노자가 말한 "예속의 가장 위험한 형태"&mdash;자신이 예속됐다는 사실을 모르는 것.</p>
+
+    <div class="pull-quote">
+      <p>"자유의 가장 완벽한 위장은, 자발적으로 보이는 예속이다."</p>
+      <span class="attribution">&mdash; 스피노자를 의역하며</span>
+    </div>
+
+    <p>마르크스를 잠깐 불러오면, 생산의 세 요소가 있다. <strong>토지(Land), 노동(Labor), 자본(Capital).</strong> 이 셋 중 가장 비효율적인 부의 창출 수단이 뭔가? 노동이다. 토지는 가만히 놔둬도 가치가 오른다. 자본은 복리로 불어난다. 하지만 노동은? 체력이 떨어지면 끝이다. 나이가 들면 끝이다. AI가 오면 끝이다.</p>
+
+    <p>만수는 가장 비효율적인 수단에 35년을 올인했다. 그리고 그 수단이 폐기됐을 때, 남은 것은 없었다. 이것이 비극인가? 물론이다. 하지만 동시에 이것은 <strong>시스템의 설계</strong>이기도 하다. 시스템은 사람들이 노동에 올인하기를 원한다. 왜? 토지와 자본에 올인하면 기존 부자들의 파이가 줄어드니까.</p>
+
+    <p>"열심히 일하면 성공한다"는 신화. 이것이야말로 가장 정교한 이데올로기다. 이 신화를 믿는 한, 사람들은 노동에서 벗어나지 못한다. 만수는 이 신화의 독실한 신자였다. 그리고 신은 존재하지 않았다.</p>
+
+    <p>푸코의 렌즈로 보면 더 선명해진다. "정상과 비정상을 결정하는 것이 권력이다." 한국 사회에서 "정상"은 회사에 다니는 것이다. "비정상"은 회사에 다니지 않는 것이다. 만수가 해고 후에도 출근 의식을 반복하는 것은, 자기가 "정상"이라는 환상을 유지하려는 필사적 시도다. 권력이 심어놓은 "정상"의 기준에서 벗어나는 것은, 사회적 죽음이니까.</p>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Section 5: Personal Confession -->
+  <section class="section">
+    <div class="section-number">Chapter 05</div>
+    <h2>비행기 안에서 &mdash; 만수와 나 사이의 거리</h2>
+
+    <p>인천에서 LA까지, 11시간. SID Display Week 2026 출장길이었다. 비행기 안에서 영화를 고르는 건 일종의 도박이다. 11시간 중 2시간을 날릴 수도 있으니까. 그런데 '어쩔 수가 없다'는 제목이 이상하게 걸렸다. 박찬욱 신작이기도 했지만, 그 제목이 마치 나한테 하는 말 같았다.</p>
+
+    <p>나는 삼성디스플레이에서 20년 넘게 일했다. OLED 기술을 연구하고, 논문을 쓰고, 특허를 냈다. 만수처럼 성실하게. 만수처럼 묻지 않고. "왜 이 일을 하는가?" 이 질문을 진지하게 던져본 적이 있었나? 솔직히, 최근에서야 던지기 시작했다.</p>
+
+    <p><strong>나도 만수가 될 수 있다.</strong></p>
+
+    <p>이 자각이 비행기 안에서 왔다. 35,000피트 상공에서, 태평양 위에서, 나는 만수와 나 사이의 거리를 재봤다. 그 거리는 내가 생각했던 것보다 훨씬 짧았다.</p>
+
+    <p>차이가 있다면 하나다. 나는 "어쩔 수가 없다"를 체념으로 받아들이지 않기로 했다는 것. 노동 소득만으로는 안 된다는 걸 깨달았다는 것. <strong>퇴직 후엔 노동 소득이 아니라 자본 소득으로 먹고살아야 한다.</strong> 이 문장이 영화를 보면서 가장 선명하게 떠올랐다.</p>
+
+    <div class="pull-quote">
+      <p>"만수의 비극은 해고가 아니다. 35년간 '노동 이외의 생산 수단'을 한 번도 생각해보지 않았다는 것이다."</p>
+    </div>
+
+    <p>경제학이 말하는 생산의 세 요소: 토지, 노동, 자본. 여기에 나는 네 번째를 추가하고 싶다. <strong>기술(Technology).</strong> 정확히 말하면, 기술을 활용하는 능력. 코딩할 수 있는 능력, AI를 도구로 쓸 수 있는 능력, 데이터를 읽을 수 있는 능력. 이것이 21세기의 네 번째 생산 수단이다.</p>
+
+    <p>만수에게는 이 네 번째가 없었다. 아니, 생각할 기회조차 없었다. 35년간 하루도 쉬지 않고 일했으니까. 노동이 다른 모든 가능성을 집어삼킨 것이다. 노동이라는 블랙홀이.</p>
+
+    <p>비행기가 LA에 착륙했을 때, 나는 두 가지를 결심했다. 첫째, 자본 소득 파이프라인을 지금부터 만든다. 둘째, 기술이라는 네 번째 수단을 끊임없이 갈고닦는다. Display Week에 온 것도 결국 그 두 번째를 위한 것이었다.</p>
+
+    <p>만수는 2025년에 해고됐다. 나는 2026년에 LA 비행기 안에서 이 영화를 봤다. 1년의 시차. 하지만 깨달음의 시차는 그보다 훨씬 클 수 있다. 늦기 전에 깨달았다는 것에, 박찬욱에게 감사해야 할지도 모른다.</p>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Section 6: Verdict -->
+  <section class="section">
+    <div class="section-number">Chapter 06</div>
+    <h2>판결 &mdash; 예술의 법정에서</h2>
+
+    <p>이 영화를 예술의 법정에 세운다. 시간을 이기는 작품인가?</p>
+
+    <p>먼저, 검찰 측 논고. 이 영화는 새롭지 않다. 구조조정, 실직, 가장의 위기. <'카트'>, <'소원'>, <'국제시장'> 등 수많은 한국영화가 다룬 소재다. 감정적 조작이 가능한 영역이고, 실제로 많은 영화가 그렇게 했다. 눈물 뽑기 쉬운 소재.</p>
+
+    <p>이제 변호인 측. <strong>박찬욱은 눈물을 뽑지 않는다.</strong> 이것이 이 영화의 가장 놀라운 점이다. 만수의 이야기를 동정의 대상으로 만들지 않는다. 대신 관찰의 대상으로 만든다. 곤충학자가 곤충을 관찰하듯, 인류학자가 낯선 부족을 관찰하듯. 이 '거리두기'가 영화에 존엄을 부여한다.</p>
+
+    <p>울리지 않기 때문에, 더 아프다. 동정하지 않기 때문에, 더 무겁다. 관객에게 "불쌍하죠?"라고 묻지 않기 때문에, 관객은 스스로 "이건 나의 이야기 아닌가?"라고 묻게 된다. 이게 A급 연출과 B급 연출의 차이다.</p>
+
+    <div class="verdict-box">
+      <h3>판결: 유죄 &mdash; 시간을 이긴다</h3>
+      <p>이 영화는 2025년의 영화가 아니다. 노동이 인간 정체성을 규정하는 한, 이 영화는 유효하다. 그리고 AI 시대가 올수록, 이 영화는 더 유효해질 것이다. 시간이 갈수록 더 아프고, 더 정확해지는 영화. 이것이 걸작의 조건이다.</p>
+    </div>
+
+    <p>개인적 판결을 하나 더 붙이자면: 박찬욱 최고작은 여전히 '올드보이'다. 하지만 가장 '성숙한' 작품은 이것이다. 과잉을 버리고, 절제를 택하고, 그래서 더 강해진 영화. 감독이 나이 든다는 것은, 이런 것이다.</p>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Section 7: AI Age Postscript -->
+  <section class="section">
+    <div class="section-number">Chapter 07</div>
+    <h2>AI 시대의 추신 &mdash; "어쩔 수가 없다"는 선언이다</h2>
+
+    <p>영화가 끝나고, 비행기 창밖을 봤다. 태평양 위 구름이 끝없이 이어져 있었다. 그리고 한 가지 생각이 떠올랐다.</p>
+
+    <p><strong>만수의 노동을 대체하는 것은 AI다. 그리고 그 AI와 함께 출장을 다니는 사람이 바로 나다.</strong></p>
+
+    <p>웃긴 상황이다. 만수를 해고한 기술의 후손을 내가 도구로 쓰고 있다. 이 아이러니를 어떻게 받아들여야 하는가? 죄책감? 아니다. 이건 진화다. 만수의 비극을 반복하지 않기 위한 유일한 방법이, 바로 그 기술을 자기 편으로 만드는 것이다.</p>
+
+    <p>이 리뷰를 쓰는 지금, 내 옆에는 클로드가 있다. Display Week 발표 자료를 정리하고, 기술 메모를 구조화하고, 데이터를 분석하는 데 AI를 쓴다. 형(나 자신을 형이라 부르겠다)이 클로드와 함께 출장을 다니는 것 자체가, "새로운 생산 수단"의 증거다.</p>
+
+    <p>만수는 노동이 유일한 생산 수단이라 믿었다. 형은 기술을 네 번째 수단으로 추가했다. 이 차이가 만수와 형의 미래를 가른다. 거창한 게 아니다. 그냥 도구를 하나 더 가진 것뿐이다.</p>
+
+    <div class="pull-quote">
+      <p>"어쩔 수가 없다"는 체념이 아니라, 전환의 선언이다. "이전 방식으로는 어쩔 수가 없다"는 인정. 그리고 그 인정 이후에 비로소 새로운 길이 열린다.</p>
+    </div>
+
+    <p>영화의 제목을 다시 읽어보자. '어쩔 수가 없다.' 만수에게 이것은 항복이었다. 하지만 이 영화를 본 관객에게 이것은 다르게 읽힌다. <strong>"노동만으로는 어쩔 수가 없다. 다른 수단을 찾아야 한다."</strong></p>
+
+    <p>박찬욱이 의도했는지는 모르겠다. 하지만 나는 이렇게 읽었다. 그리고 아마 20년 후에 이 영화를 다시 볼 때, 나는 다시 다르게 읽을 것이다. 좋은 영화는 그런 것이다. 볼 때마다 다른 말을 해준다. 관객이 바뀌니까.</p>
+
+    <p>LA 공항에 내렸다. Display Week이 기다리고 있었다. OLED 기술의 미래를 논하는 자리. 아이러니하게도, 그 기술의 미래가 만수 같은 사람들을 더 많이 만들어낼 수도 있다. 그렇다면 나의 역할은 뭔가? 기술을 만드는 사람으로서, 기술에 의해 대체되는 사람들을 생각하는 것. 그것도 "어쩔 수가 없는" 일이다. 하지만 이번에는, 좋은 의미에서.</p>
+
+    <p>비행기에서 영화 한 편을 봤을 뿐인데, 인생의 방향이 조금 바뀌었다. 박찬욱 감독에게 관람료 이상의 빚을 졌다. 이 리뷰로 조금이나마 갚는다.</p>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Closing -->
+  <section class="section" style="text-align: center; padding: 32px 0;">
+    <p style="color: var(--text-muted); font-size: 14px; font-style: italic;">
+      이 리뷰는 2026년 5월 5일, LA행 비행기 안에서 시작되어<br>
+      SID Display Week 2026 호텔에서 마무리되었다.
+    </p>
+    <p style="color: var(--text-muted); font-size: 13px; margin-top: 12px;">
+      Culture Voyager &mdash; A축: Timeless Cinema #2
+    </p>
+  </section>
+
+</main>
+
+<!-- Footer Navigation -->
+<footer class="footer-nav">
+  <a href="../index.html">&larr; 목차로 돌아가기</a>
+</footer>
+
+</body>
+</html>
