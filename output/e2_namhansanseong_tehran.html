@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Nakcho Choi">
+<meta name="dcterms.date" content="2026-05-14">
+<title>남한산성에서 테헤란까지 — 강대국의 문법은 변하지 않는다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --text: #e4e4ec;
+    --text-sub: #a0a0b0;
+    --text-dim: #6a6a80;
+    --accent: #e8a87c;
+    --accent2: #c4703f;
+    --border: #30363d;
+    --indigo: #4a7c9b;
+    --sienna: #c4703f;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family: 'Noto Serif KR', serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 2.0;
+    font-weight: 300;
+}
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+}
+.hero-img {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('../assets/e2_namhansanseong_cover.jpg') center/cover no-repeat;
+    filter: brightness(0.55) saturate(1.1);
+}
+.hero-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60%;
+    background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 2rem 4rem;
+    max-width: 800px;
+}
+.hero-tag {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+.hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.3;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+}
+.hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+}
+.hero-meta {
+    margin-top: 1.5rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+}
+
+article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+}
+
+h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 3.5rem 0 1.5rem;
+    color: var(--accent);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1rem;
+    color: var(--text);
+}
+
+p {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    color: var(--text-sub);
+}
+
+blockquote {
+    border-left: 3px solid var(--sienna);
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+    background: rgba(196,112,63,0.08);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: var(--text);
+    font-size: 1.1rem;
+    line-height: 1.9;
+}
+
+.comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+@media (max-width: 600px) {
+    .comparison { grid-template-columns: 1fr; }
+}
+.comp-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+.comp-card h4 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+}
+.comp-card.left h4 { color: var(--indigo); }
+.comp-card.right h4 { color: var(--sienna); }
+.comp-card p {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-sub);
+}
+
+.emphasis {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 2.5rem 0;
+    padding: 1.5rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.epilogue {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-style: italic;
+    color: var(--text-dim);
+    text-align: center;
+}
+
+.sources {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: var(--card);
+    border-radius: 8px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+.sources a {
+    color: var(--indigo);
+    text-decoration: none;
+}
+.sources a:hover { text-decoration: underline; }
+
+.cta-bottom {
+    text-align: center;
+    margin-top: 4rem;
+}
+.cta-bottom a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: rgba(232,168,124,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(232,168,124,0.3);
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+.cta-bottom a:hover {
+    background: rgba(232,168,124,0.2);
+    border-color: var(--accent);
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div style="position:fixed;top:16px;left:16px;z-index:9999;">
+  <a href="https://waterfirst.github.io/culture-voyager/"
+     style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;
+            background:rgba(30,30,30,0.85);color:#e8a87c;border:1px solid rgba(232,168,124,0.3);
+            border-radius:24px;text-decoration:none;font-size:13px;font-weight:600;
+            backdrop-filter:blur(10px);transition:all 0.2s;"
+     onmouseover="this.style.background='rgba(232,168,124,0.2)'"
+     onmouseout="this.style.background='rgba(30,30,30,0.85)'">
+    &#8592; Culture Voyager 목차
+  </a>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+    <div class="hero-img"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-tag">Essay &middot; Geopolitics &middot; Cinema</div>
+        <h1 class="hero-title">남한산성에서 테헤란까지</h1>
+        <div class="hero-subtitle">강대국의 문법은 변하지 않는다</div>
+        <div class="hero-meta">Nakcho Choi &middot; 2026.05.14 &middot; LA &rarr; 인천 기내에서</div>
+    </div>
+</div>
+
+<!-- Article -->
+<article>
+
+<h2>프롤로그</h2>
+
+<p>LA에서 인천으로 향하는 비행기 안. SID Display Week을 마치고 돌아오는 길이었다. 기내 스크린에서 흘러나오는 영화 한 편이 눈에 들어왔다. 황동혁 감독의 <strong>'남한산성'</strong>. 1636년 겨울, 남한산성에 갇힌 인조와 조정의 47일을 그린 영화다.</p>
+
+<p>스크린 속 청 태종이 조선에 보낸 국서를 읽는 장면에서 문득 폰을 꺼내 뉴스를 확인했다. <strong>"트럼프, 이란 답변 절대 용납 못해"</strong>. 순간 소름이 돋았다. 388년의 시차를 두고, 놀라울 만큼 같은 장면이 반복되고 있었다.</p>
+
+<h2>1. 국서 — 그때나 지금이나</h2>
+
+<div class="comparison">
+    <div class="comp-card left">
+        <h4>1636년 &middot; 청 &rarr; 조선</h4>
+        <p>"조선 왕은 성문을 열고 나와 삼궤구고두례를 행하라."</p>
+        <p>"세자를 인질로 보내라."</p>
+        <p>"명과의 관계를 끊어라."</p>
+    </div>
+    <div class="comp-card right">
+        <h4>2026년 &middot; 미국 &rarr; 이란</h4>
+        <p>"고농축 우라늄 440kg 전량을 미국으로 반출하라."</p>
+        <p>"나탄즈&middot;이스파한&middot;포르도 핵시설을 해체하라."</p>
+        <p>"30일 안에 합의하라."</p>
+    </div>
+</div>
+
+<p>청 태종은 조선에 요구했다. 왕이 직접 나와 세 번 무릎 꿇고 아홉 번 머리를 땅에 찧으라고. 정문이 아닌 <strong>서문</strong>으로 나오라고. 왕이되 왕의 체면을 허락하지 않겠다는 의도적 모욕이었다.</p>
+
+<p>트럼프는 이란에 MOU를 보냈다. 핵 프로그램의 상징인 우라늄을 <strong>미국 본토로 가져오겠다</strong>고. 수십 년간 쌓아올린 핵 역량을 스스로 해체하라고. 그리고 기한은 <strong>30일</strong>.</p>
+
+<div class="emphasis">"네 자존심의 핵심을 내놓아라." — 양쪽 모두 요구하는 것은 같다.</div>
+
+<h2>2. 주화파와 척화파 — 테헤란에도 있다</h2>
+
+<p>영화 속 남한산성 안에는 두 목소리가 있었다.</p>
+
+<blockquote>
+<strong>최명길 (주화파):</strong> "치욕을 참고 살아야 합니다. 백성이 얼어 죽고 있습니다."<br>
+<strong>김상헌 (척화파):</strong> "치욕을 견디고 사느니 끝까지 싸워 죽읍시다."
+</blockquote>
+
+<p>2026년 테헤란에도 똑같은 구도가 있다.</p>
+
+<div class="comparison">
+    <div class="comp-card left">
+        <h4>이란 외교파 (주화)</h4>
+        <p>"우라늄 일부를 반출하고 30일간 협상하자. 제재를 풀 기회다."</p>
+    </div>
+    <div class="comp-card right">
+        <h4>이란 강경파 (척화)</h4>
+        <p>"미국에 굴복하는 건 체제의 죽음이다. 핵은 포기할 수 없다."</p>
+    </div>
+</div>
+
+<p>이란은 답변서에서 <strong>우라늄 일부 반출에는 동의</strong>했다. 하지만 조건을 붙였다. "협상이 결렬되면 우라늄을 되돌려달라." 이것은 최명길의 국서와 닮았다. 항복의 형식을 취하되, 실리를 지키려는 마지막 줄다리기.</p>
+
+<p>그러나 트럼프의 답은 청 태종과 같았다. <strong>"절대 받아들일 수 없다."</strong></p>
+
+<h2>3. 서문으로 나오라 — 굴욕의 형식</h2>
+
+<p>청 태종이 인조에게 요구한 것 중 가장 잔인한 것은 <strong>서문으로 나오라</strong>는 것이었다. 정문도 아니고, 뒷문도 아니고, 옆문. 왕이되 왕의 체면을 허락하지 않겠다는 의도적 모욕이었다.</p>
+
+<p>트럼프가 이란에 요구하는 것도 같은 문법이다. 우라늄을 제3국이 아닌 <strong>미국 본토</strong>로 보내라는 것. 핵 물질이 어디로 가느냐의 문제가 아니다. <strong>"네 가장 소중한 것을 내 손에 직접 건네라"</strong>는 것이다. 이것은 안보 논리가 아니라 <strong>복종의 제스처</strong>를 요구하는 것이다.</p>
+
+<h2>4. 그런데 결정적 차이가 하나 있다</h2>
+
+<p>1636년 조선에는 <strong>선택지가 없었다</strong>. 성 안의 군사는 얼어 죽고, 식량은 바닥났고, 원군은 오지 않았다. 인조는 결국 서문을 나서 삼전도에서 머리를 찧었다.</p>
+
+<p>2026년 이란에는 <strong>선택지가 있다</strong>. 그것이 바로 중국이다.</p>
+
+<p>이란의 최대 원유 수입국은 중국이다. 트럼프가 베이징에서 시진핑을 만나는 이유 중 하나도 바로 이것이다. "이란 원유 수입을 줄여라." 만약 중국이 미국 편에 서면 이란은 진짜로 남한산성에 갇힌 인조가 된다. 하지만 중국이 이란을 계속 지원하면, 이란의 척화파는 버틸 명분을 얻는다.</p>
+
+<div class="emphasis">1636년 조선에게 명나라는 이미 무너지고 있었다.<br>2026년 이란에게 중국은 아직 건재하다.<br>이것이 결말을 바꿀 수 있는 유일한 변수다.</div>
+
+<h2>5. 그리고 우리는 어디에 서 있는가</h2>
+
+<p>비행기 창밖으로 태평양이 보였다. SID에서 확인한 현실이 겹쳤다.</p>
+
+<p>BOE가 삼성보다 먼저 8.6세대 OLED 양산에 돌입했다. Visionox가 FMM-less 워치를 양산 출하했다. CSOT가 MicroLED HUD 14만 니트를 찍었다. <strong>열세 8건, 동등 3건, 우위 1건.</strong></p>
+
+<p>디스플레이 산업에서 한국의 위치도 어쩌면 남한산성이다. 성 안에서 "기술 초격차"를 외치는 동안, 성 밖에서는 중국이 속도와 물량으로 포위망을 좁히고 있다.</p>
+
+<blockquote>"나라가 치욕을 당했으되 나라는 남았습니다." — 영화 속 김상헌</blockquote>
+
+<p>디스플레이도, 반도체도, 외교도 마찬가지다. 치욕을 인정하는 데서 전략이 시작된다. 중국의 추격을 부정하는 것이 아니라, 인정한 위에서 다음 수를 두는 것. 그것이 최명길이 국서를 쓰면서도 눈물을 흘린 이유였을 것이다.</p>
+
+<h2>에필로그</h2>
+
+<div class="epilogue">
+<p>LAX에서 이 영화를 골라 재생 버튼을 누른 건 우연이었다.<br>
+하지만 스크린 속 1636년과 스마트폰 속 2026년이<br>
+이렇게까지 겹칠 줄은 몰랐다.</p>
+
+<p>강대국의 문법은 388년이 지나도 변하지 않는다.<br>
+<strong>"네 자존심의 핵심을 내놓아라. 그래야 살려주겠다."</strong><br>
+달라진 건 무대와 배우뿐이다.<br>
+남한산성이 테헤란으로, 청 태종이 트럼프로,<br>
+국서가 MOU로 바뀌었을 뿐.</p>
+
+<p>그리고 그 사이 어딘가에서,<br>
+누군가는 최명길처럼 국서를 쓰고,<br>
+누군가는 김상헌처럼 붓을 꺾고 있다.</p>
+
+<p style="margin-top:2rem;color:var(--text-dim);font-size:0.9rem;">2026년 5월, LA &rarr; 인천 기내에서</p>
+</div>
+
+<div class="sources">
+    <strong>References</strong><br>
+    <a href="https://seoul.co.kr/news/international/2026/05/11/20260511500005" target="_blank">트럼프 "이란 답변 도저히 용납 못해" — 서울신문</a><br>
+    <a href="https://www.mt.co.kr/world/2026/05/11/2026051107054572208" target="_blank">종전 협상 좌초 위기 — 머니투데이</a><br>
+    <a href="https://namu.wiki/w/%EB%82%A8%ED%95%9C%EC%82%B0%EC%84%B1(%EC%98%81%ED%99%94)" target="_blank">남한산성(영화) — 나무위키</a><br>
+    <a href="https://www.fnnews.com/news/202605111743155675" target="_blank">이란 "핵협상 나중에" 버티기 — 파이낸셜뉴스</a>
+</div>
+
+<div class="cta-bottom">
+    <a href="https://waterfirst.github.io/culture-voyager/">&#8592; Culture Voyager 목차로 돌아가기</a>
+</div>
+
+</article>
+
+</body>
+</html>
