@@ -548,6 +548,95 @@
         .axis-artist { background: rgba(139,94,131,0.1); color: var(--warm-plum); }
         .axis-science { background: rgba(70,100,120,0.1); color: #46647a; }
 
+        /* Quick TOC Icons */
+        .quick-toc {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 1rem;
+        }
+
+        .quick-toc-label {
+            text-align: center;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .quick-toc-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .quick-toc-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            padding: 1rem 0.8rem;
+            border-radius: 16px;
+            background: var(--warm-card);
+            border: 1px solid var(--border);
+            min-width: 100px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .quick-toc-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--warm-accent);
+        }
+
+        .quick-toc-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .quick-toc-item:hover .quick-toc-icon {
+            transform: scale(1.1);
+        }
+
+        .quick-toc-title {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .quick-toc-sub {
+            font-size: 0.6rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .quick-toc-grid {
+                gap: 0.6rem;
+            }
+            .quick-toc-item {
+                min-width: 80px;
+                padding: 0.8rem 0.5rem;
+            }
+            .quick-toc-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1.3rem;
+            }
+        }
+
         /* Divider */
         .section-divider {
             max-width: 1200px;
@@ -692,6 +781,53 @@
         </div>
     </div>
 </nav>
+
+<!-- Quick TOC — 매거진 목차 아이콘 -->
+<div class="quick-toc">
+    <div class="quick-toc-label">Magazine Contents</div>
+    <div class="quick-toc-grid">
+        <a class="quick-toc-item" href="output/d1_rome.html">
+            <div class="quick-toc-icon" style="background:rgba(123,107,90,0.12);">🏛️</div>
+            <div class="quick-toc-title">로마 제국의 흥망</div>
+            <div class="quick-toc-sub">History</div>
+        </a>
+        <a class="quick-toc-item" href="output/e2_namhansanseong_tehran.html">
+            <div class="quick-toc-icon" style="background:rgba(196,112,63,0.12);">🏰</div>
+            <div class="quick-toc-title">남한산성에서<br>테헤란까지</div>
+            <div class="quick-toc-sub">Essay</div>
+        </a>
+        <a class="quick-toc-item" href="output/f1_ryuichi_sakamoto.html">
+            <div class="quick-toc-icon" style="background:rgba(139,94,131,0.12);">🎹</div>
+            <div class="quick-toc-title">사카모토 류이치</div>
+            <div class="quick-toc-sub">Artist</div>
+        </a>
+        <a class="quick-toc-item" href="output/a3_ran_123.html">
+            <div class="quick-toc-icon" style="background:rgba(196,112,63,0.12);">🎬</div>
+            <div class="quick-toc-title">란 12.3</div>
+            <div class="quick-toc-sub">Cinema</div>
+        </a>
+        <a class="quick-toc-item" href="output/a2_cant_help_it.html">
+            <div class="quick-toc-icon" style="background:rgba(196,112,63,0.12);">🎥</div>
+            <div class="quick-toc-title">어쩔 수 없잖아</div>
+            <div class="quick-toc-sub">Cinema</div>
+        </a>
+        <a class="quick-toc-item" href="output/e1_kyoto.html">
+            <div class="quick-toc-icon" style="background:rgba(184,134,11,0.12);">⛩️</div>
+            <div class="quick-toc-title">교토</div>
+            <div class="quick-toc-sub">Travel</div>
+        </a>
+        <a class="quick-toc-item" href="output/a1_shawshank.html">
+            <div class="quick-toc-icon" style="background:rgba(196,112,63,0.12);">🔗</div>
+            <div class="quick-toc-title">쇼생크 탈출</div>
+            <div class="quick-toc-sub">Cinema</div>
+        </a>
+        <a class="quick-toc-item" href="output/b1_sapiens.html">
+            <div class="quick-toc-icon" style="background:rgba(107,143,113,0.12);">📖</div>
+            <div class="quick-toc-title">사피엔스</div>
+            <div class="quick-toc-sub">Books</div>
+        </a>
+    </div>
+</div>
 
 <!-- ★ Published — 발행일 순 -->
 <section class="section" id="published">
