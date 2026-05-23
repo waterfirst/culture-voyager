@@ -118,6 +118,14 @@ Quarto (.qmd)로 보고서를 렌더링하며, 아래 설정을 따른다:
 - Spotify: OST 플레이리스트 (iframe 임베드)
 - 이미지: Unsplash/Wikimedia (저작권 프리)
 
+### YouTube URL 사전 검증 (필수)
+QMD 파일에 YouTube 임베드를 넣기 전에 반드시 아래 검증을 수행하라:
+1. oembed API 호출: `curl -s "https://www.youtube.com/oembed?url=https://youtu.be/{VIDEO_ID}&format=json"` — 200 응답이면 유효
+2. 한국 지역 제한 확인: WebFetch로 해당 영상 페이지에 접근하여 "이 동영상은 사용할 수 없습니다" 또는 "Video unavailable" 메시지가 없는지 확인
+3. 한국어 자막 버전이 있으면 우선 선택
+4. 검증 실패 시: 같은 주제의 대체 영상을 웹검색하여 교체. 먹통 URL을 절대 그대로 두지 마라
+5. quarto render 전에 QMD 내 모든 YouTube embed URL을 일괄 검증하라
+
 </technical_stack>
 
 <investigate_before_answering>
