@@ -74,7 +74,7 @@ theme_voyager <- function() {
 ## 13부작 — 6억 명의 시선을 옮기다
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1.5em 0;border-radius:12px;">
-<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/GO5FwsblpT8" title="Carl Sagan - Pale Blue Dot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/CkgMEbUBPWI" title="Carl Sagan - Pale Blue Dot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <p style="text-align:center;color:#888;font-size:0.85em;">칼 세이건의 '창백한 푸른 점' 연설 — 보이저 1호 사진에서 시작된 우주적 겸손</p>
 
@@ -277,7 +277,7 @@ ggplot(threats, aes(x = reorder(threat, urgency), y = urgency, fill = category))
 **《코스모스 TV 시리즈》(1980)** — 책과 동시에 제작된 13부작 다큐멘터리. IMDB 평점 9.3. 반겔리스의 음악과 세이건의 내레이션이 어우러진, 교양 과학 다큐의 영원한 기준점.
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1.5em 0;border-radius:12px;">
-<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/wupToqz1e2g" title="Carl Sagan - Pale Blue Dot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/4bCsiVU1DGM" title="Carl Sagan - Pale Blue Dot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <p style="text-align:center;color:#888;font-size:0.85em;">칼 세이건 — 우리는 별의 재료로 만들어졌다</p>
 
