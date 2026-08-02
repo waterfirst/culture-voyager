@@ -1,0 +1,63 @@
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 1.9;
+}
+
+.nav-back {
+  padding: 1rem 0;
+}
+
+.nav-back a {
+  color: #c4703f;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-back a:hover {
+  color: #e8905f;
+}
+
+.pullquote {
+  border-left: 4px solid #c4703f;
+  font-size: 1.1rem;
+  font-style: italic;
+  margin: 2rem 0;
+  opacity: 0.9;
+  padding: 1rem 1.5rem;
+}
+
+.city-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.3rem;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.story-photo {
+  border-radius: 18px;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.22);
+  display: block;
+  height: auto;
+  margin: 2.25rem auto 0.6rem;
+  max-height: 620px;
+  object-fit: cover;
+  width: 100%;
+}
+
+figure figcaption {
+  font-size: 0.84rem;
+  margin-top: 0.55rem;
+  opacity: 0.72;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 3rem;
+}
+
+h3 {
+  color: #c4703f;
+  margin-top: 2rem;
+}

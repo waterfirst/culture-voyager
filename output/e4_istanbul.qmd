@@ -4,6 +4,7 @@ subtitle: "동과 서가 만나는 도시의 1,500년"
 author: "Culture Voyager"
 date: "2026-06-06"
 lang: ko
+image: ../assets/e4_istanbul_bosphorus.webp
 format:
   html:
     theme:
@@ -14,23 +15,16 @@ format:
     number-sections: false
     self-contained: true
     lightbox: true
-    css: |
-      body { font-family: 'Noto Sans KR', sans-serif; line-height: 1.9; }
-      .nav-back { padding: 1rem 0; }
-      .nav-back a { text-decoration: none; color: #c4703f; font-size: 0.9rem; font-weight: 600; }
-      .nav-back a:hover { color: #e8905f; }
-      .pullquote { border-left: 4px solid #c4703f; padding: 1rem 1.5rem; margin: 2rem 0; font-style: italic; font-size: 1.1rem; opacity: 0.9; }
-      .city-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.6; margin-bottom: 0.3rem; }
-      h2 { margin-top: 3rem; }
-      h3 { margin-top: 2rem; color: #c4703f; }
+    css: e4_istanbul.css
 knitr:
   opts_chunk:
-    dev: ragg_png
+    dev: png
     fig.width: 10
     fig.height: 6
     dpi: 150
     warning: false
     message: false
+    echo: false
 ---
 
 <div class="nav-back">← [Culture Voyager 목록으로](../index.html)</div>
@@ -40,6 +34,8 @@ knitr:
 ---
 
 페리가 보스포루스 해협을 가로지르는 순간, 아시아에서 유럽으로 넘어가는 그 15분 동안, 나는 인생에서 가장 저렴한 대륙 이동을 경험한다는 상상을 한다. 티켓 값은 몇 리라. 그리고 창밖으로는 노을이 타는 미나레트 첨탑들이 있다.
+
+![보스포루스의 저녁 페리. 이스탄불에서는 평범한 퇴근길이 대륙을 건너는 여행이 된다.](../assets/e4_istanbul_bosphorus.webp){.story-photo fig-alt="노을이 비치는 보스포루스 페리에서 차이를 든 승객과 이스탄불의 미나레트가 보이는 풍경"}
 
 ---
 
@@ -74,6 +70,8 @@ knitr:
 그리고 2020년, 터키 정부는 아야소피아를 다시 모스크로 전환했다.
 
 이 건물의 역사는 단순한 건축 기록이 아니다. 그것은 문명의 밀물과 썰물을 물리적으로 기록한 일지다. 비잔티움 제국의 영광, 오스만의 정복, 세속 공화국의 탄생, 그리고 다시 이슬람 국가로의 선회. 하나의 건물이 그 모든 것을 피부로 겪었다. 석회로 덮이고, 다시 복원되고, 다시 덮이면서.
+
+![황금 모자이크와 미나레트가 한 시야에 겹치는 아야소피아. 건축은 지워진 역사까지 품는다.](../assets/e4_istanbul_hagia_sophia.webp){.story-photo fig-alt="비잔티움 황금 모자이크와 오스만 미나레트가 함께 보이는 아야소피아의 겹친 역사" loading="lazy"}
 
 ```{r}
 #| label: fig-hagia-timeline
@@ -165,6 +163,8 @@ ggplot() +
 상인들은 단순히 물건만 교환하지 않았다. 언어, 요리법, 종교 이야기, 정치적 소문. 카라반세라이(대상여관)에 모여든 상인들 사이에서 세계는 교환되었다. 지금 우리가 "글로벌화"라고 부르는 것의 전근대적 버전이 바자르에서 이미 작동하고 있었다.
 
 나는 이 공간을 상상할 때 냄새부터 생각한다. 향신료, 가죽, 사람 냄새, 그리고 어딘가에서 끓고 있을 차이의 향. 시각적 화려함보다 먼저 후각이 도착할 것 같은 그런 공간. 서울의 광장시장도 비슷한 냄새를 가지고 있지만, 600년의 두께는 없다.
+
+![그랜드 바자르의 차이와 시밋, 그리고 자리를 먼저 차지한 고양이. 도시의 문화는 거창한 기념물보다 일상에 오래 남는다.](../assets/e4_istanbul_bazaar.webp){.story-photo fig-alt="그랜드 바자르의 따뜻한 등불 아래 차이와 시밋, 고양이가 놓인 일상 풍경" loading="lazy"}
 
 ```{r}
 #| label: fig-istanbul-tourism
@@ -291,7 +291,6 @@ ggplot(tourism, aes(x = year, y = visitors_m)) +
 
 library(ggplot2)
 library(dplyr)
-library(tidyr)
 
 # 각 지표에서 이스탄불, 도쿄(동양 기준), 파리(서양 기준)의 위치 (0=동, 100=서)
 spectrum_data <- data.frame(
@@ -309,9 +308,14 @@ spectrum_data <- data.frame(
   seoul    = c(60, 75, 65, 70, 50, 45)
 )
 
-long_data <- spectrum_data %>%
-  pivot_longer(cols = c(istanbul, tokyo, paris, seoul),
-               names_to = "city", values_to = "score") %>%
+long_data <- reshape(
+  spectrum_data,
+  varying = c("istanbul", "tokyo", "paris", "seoul"),
+  v.names = "score",
+  timevar = "city",
+  times = c("istanbul", "tokyo", "paris", "seoul"),
+  direction = "long"
+) %>%
   mutate(
     city_label = recode(city,
                         "istanbul" = "이스탄불",
@@ -370,6 +374,8 @@ ggplot(long_data, aes(x = score, y = dimension, color = city_color, group = city
 이 터키어 단어는 단순히 "슬픔"으로 번역되지 않는다. 개인의 슬픔이 아니라 집단적 멜랑콜리. 한때 위대했던 것을 잃은 도시, 제국의 영광이 물러간 자리에 남은 쓸쓸함. 이스탄불 태생의 소설가는 자신의 회고록에서 이 감정이 이스탄불의 공기 속에 녹아 있다고 썼다. 무너지는 오스만 저택들, 빈 보스포루스 페리들, 겨울 안개 속에 잠긴 해협.
 
 그런데 흥미로운 것은, 휘준이 단순한 비통함이 아니라 일종의 자부심을 동반한다는 점이다. 이스탄불 사람들은 자신들의 도시가 가진 멜랑콜리를 부끄럽게 여기지 않는다. 그것은 깊이의 증거다. 실패를 경험한 사람만이 가질 수 있는 두께.
+
+![비가 그친 저녁, 보스포루스를 멀어지는 페리. 휘준은 혼자만의 슬픔이 아니라 도시가 함께 간직한 기억에 가깝다.](../assets/e4_istanbul_huzun.webp){.story-photo fig-alt="비 내린 저녁 보스포루스의 불빛과 멀어지는 페리가 만드는 잔잔한 도시의 우울" loading="lazy"}
 
 여기서 나는 한국의 한(恨)을 생각한다. 직접적인 등가물은 아니다. 한은 더 개인적이고, 더 뜨겁고, 더 직접적으로 억울함과 연결된다. 반면 휘준은 더 도시적이고, 더 차갑고, 더 집단적이다. 그러나 둘 다 같은 방향을 향한다 — 상실을 감정의 자원으로 전환하는 능력.
 
