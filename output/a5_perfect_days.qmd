@@ -1,0 +1,161 @@
+---
+title: "퍼펙트 데이즈 — 반복은 어떻게 하루를 새롭게 만드는가"
+subtitle: "노동·도시·아날로그 기억·고모레비로 읽는 인간의 시간"
+author: "Nakcho Choi · Culture Voyager"
+date: "2026-08-16"
+lang: ko
+format:
+  html:
+    theme:
+      dark: darkly
+      light: flatly
+    toc: true
+    toc-title: "목차"
+    toc-depth: 2
+    number-sections: false
+    embed-resources: true
+    smooth-scroll: true
+    page-layout: article
+    mainfont: "Noto Sans CJK KR"
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{=html}
+<style>
+body { font-family: 'Noto Sans KR', sans-serif; }
+.nav-back { padding: 1rem 0 .5rem; }
+.nav-back a { color: #a55c3b; text-decoration: none; font-weight: 600; }
+.scene { margin: 1.5rem 0; padding: 1.2rem 1.4rem; border-left: 5px solid #b86b43; border-radius: 0 12px 12px 0; background: rgba(184,107,67,.08); }
+.scene strong { color: #9b4f31; }
+.counter { margin: 1.5rem 0; padding: 1.2rem 1.4rem; border: 1px solid #d8c9b7; border-radius: 12px; background: rgba(235,226,211,.18); }
+.thesis { font-size: 1.15rem; line-height: 1.8; padding: 1.2rem 1.4rem; margin: 1.5rem 0; border-radius: 14px; background: linear-gradient(135deg,rgba(184,107,67,.10),rgba(93,112,77,.08)); }
+</style>
+```
+
+::: nav-back
+[← Culture Voyager 목차로 돌아가기](../index.html)
+:::
+
+::: {.thesis}
+*퍼펙트 데이즈*가 보여주는 행복은 결핍을 아름답게 포장한 상태가 아니다. 그것은 **반복을 없애는 대신, 반복 안에서 차이를 감지하는 능력**에 가깝다.
+:::
+
+## 장면 하나 — 웃음과 눈물이 동시에 머무는 얼굴
+
+영화의 마지막, 히라야마는 운전석에 앉아 아침의 도쿄를 달린다. 카메라는 도로보다 그의 얼굴을 오래 바라본다. 웃음이 번지다가 눈물이 차오르고, 눈물은 다시 미소와 겹친다. 어느 한쪽도 다른 쪽을 지우지 않는다.
+
+이 장면은 그가 행복한지 불행한지를 판정해주지 않는다. 오히려 그런 판정을 서두르는 관객의 습관을 멈춰 세운다. 삶은 만족과 상실, 평온과 피로가 한 얼굴에 동시에 머무를 수 있는 것이라고 말하는 듯하다.
+
+::: scene
+**핵심 장면의 질문**  
+완벽한 하루란 고통이 없는 하루인가, 아니면 서로 모순되는 감정을 밀어내지 않고 견디는 하루인가?
+:::
+
+## 같은 하루는 정말 같은가
+
+히라야마의 아침은 거의 같은 순서로 시작된다. 이불을 갠다. 화분에 물을 준다. 작업복을 입는다. 자판기에서 캔커피를 사고, 카세트테이프를 넣은 뒤 공공화장실로 향한다. 변기를 닦고, 거울을 닦고, 바닥을 닦는다.
+
+줄거리만 적으면 변화가 없는 영화다. 그러나 화면을 오래 보고 있으면 반복보다 미세한 차이가 먼저 보이기 시작한다. 햇빛의 각도, 나뭇잎 사이의 흔들림, 화장실을 사용하는 사람의 태도, 동료의 지각, 조카의 방문, 오래된 가족 관계의 흔적. 사건은 루틴 밖에서만 생기지 않는다. **루틴이 안정되어 있기 때문에 작은 변화가 사건으로 감지된다.**
+
+```{python}
+#| label: fig-week-rhythm
+#| fig-cap: "같은 루틴 위에 나타나는 작은 차이 — 영화의 시간 구조를 설명하기 위한 편집적 도식이며, 실측 데이터가 아니다."
+#| fig-height: 5.2
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+days = ["월", "화", "수", "목", "금", "토", "일"]
+routines = ["기상", "식물", "운전", "청소", "목욕", "독서"]
+base = np.arange(len(routines))
+deviation = np.array([0.08, 0.18, 0.10, 0.62, 0.24, 0.82, 0.38])
+
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 5.2), height_ratios=[2.4, 1.2], facecolor="#fbf7ef")
+for ax in (ax1, ax2):
+    ax.set_facecolor("#fbf7ef")
+
+for x in range(len(days)):
+    ax1.scatter([x]*len(routines), base, s=76, color="#657a5a", alpha=.88, edgecolor="white", linewidth=.7)
+ax1.set_yticks(base, routines)
+ax1.set_xticks(range(len(days)), days)
+ax1.set_title("행동의 골격은 반복된다", loc="left", weight="bold", color="#47362d")
+ax1.grid(axis="x", color="#ded4c5", linewidth=.7)
+ax1.spines[["top","right","left","bottom"]].set_visible(False)
+
+ax2.fill_between(range(len(days)), deviation, color="#c87a50", alpha=.28)
+ax2.plot(range(len(days)), deviation, color="#a75936", marker="o", linewidth=2.2)
+ax2.set_xticks(range(len(days)), days)
+ax2.set_yticks([])
+ax2.set_ylim(0, 1)
+ax2.set_title("그러나 만남·빛·감정의 편차는 매일 다르다", loc="left", weight="bold", color="#47362d")
+ax2.spines[["top","right","left","bottom"]].set_visible(False)
+
+plt.tight_layout()
+plt.show()
+```
+
+이 도식의 위쪽은 생활의 골격, 아래쪽은 감정과 관계의 편차다. 영화가 발견하는 것은 ‘반복 대 변화’의 대립이 아니다. 변화가 보이게 만드는 반복의 기능이다.
+
+## 청소라는 보이지 않는 노동
+
+히라야마가 관리하는 곳은 도쿄의 공공화장실이다. 세계적인 건축가들이 설계한 장소이지만, 영화의 관심은 건축물의 명성보다 그 공간을 매일 사용 가능하게 만드는 손에 머문다. 이용자는 잠시 머물고 떠난다. 깨끗함은 당연한 상태처럼 소비된다. 누가 그 상태를 복구했는지는 쉽게 사라진다.
+
+그래서 영화 속 청소는 단순한 직업 배경이 아니다. 도시는 눈에 띄는 건물만으로 유지되지 않는다. 남이 남긴 흔적을 지우고, 다음 사람에게 다시 공용의 상태로 돌려놓는 반복 노동이 도시의 신뢰를 만든다.
+
+히라야마는 누가 보지 않아도 손거울로 변기 아래를 확인한다. 이 정밀함은 승진이나 평가를 위한 몸짓으로 제시되지 않는다. **일을 잘한다는 것이 타인의 박수보다 자기 기준에 먼저 연결될 수 있는가**라는 질문이 된다.
+
+## 카세트테이프와 필름카메라 — 느림을 선택하는 도구
+
+카세트테이프, 종이책, 필름카메라는 그를 과거에 가둔 소품처럼 보이기 쉽다. 하지만 영화는 최신 기술을 악으로 만들지 않는다. 중요한 것은 매체의 연식보다 사용 방식이다.
+
+스트리밍은 원하는 노래로 즉시 건너갈 수 있게 한다. 카세트는 순서를 받아들이게 한다. 스마트폰 사진은 곧바로 확인하고 지울 수 있지만, 필름은 결과를 기다리게 한다. 종이책은 알림 없이 한 문장에 머무르게 한다. 이 도구들은 불편해서 가치 있는 것이 아니라, **선택과 기다림 사이에 마찰을 남기기 때문에** 히라야마의 주의를 한곳에 묶는다.
+
+효율은 시간을 절약한다. 그러나 절약된 시간이 반드시 주의 깊은 삶으로 돌아오지는 않는다. 영화는 더 빠른 도구를 버리라고 말하기보다, 속도를 선택할 권리만큼 느림을 선택할 권리도 남아 있는지 묻는다.
+
+## 고모레비 — 빛은 반복되지만 같은 무늬는 없다
+
+나뭇잎 사이로 스며드는 빛을 가리키는 ‘고모레비’는 영화의 구조를 압축한다. 태양과 나무와 바람은 계속 존재하지만 바닥에 맺히는 무늬는 한 번도 완전히 같지 않다. 히라야마가 쉬는 시간마다 나무를 올려다보고 사진을 찍는 이유도 여기에 있다.
+
+그는 특별한 사건을 수집하지 않는다. 반복되는 조건 속에서 다시 오지 않을 배열을 채집한다. 그의 사진은 성취의 증명서가 아니라 주의력의 기록이다.
+
+## 반론 — 가난을 낭만화하는 영화인가
+
+::: counter
+히라야마의 단정한 방과 평온한 표정만 보면 “적게 가져도 마음만 바꾸면 행복하다”는 위안으로 읽힐 수 있다. 그런 독해는 위험하다. 불안정한 노동, 낮은 임금, 주거 격차는 태도의 문제만으로 해결되지 않기 때문이다.
+:::
+
+영화는 그 위험을 완전히 벗어나지 못한다. 다만 조카와 여동생의 등장은 그의 삶이 단순히 선택지가 없어서 굳어진 결과만은 아니라는 흔적을 남긴다. 운전기사가 딸을 데리러 오는 장면에서 두 세계의 계급적 거리는 선명해진다. 히라야마의 침묵에는 평온뿐 아니라 가족사와 상실도 숨어 있다.
+
+따라서 이 영화를 ‘가난해도 행복할 수 있다’는 처방으로 읽는 것은 너무 쉽다. 더 설득력 있는 독해는 이렇다. **구조적 불평등을 지우지 않으면서도, 인간의 존엄을 소득과 직함만으로 환원하지 않을 방법은 있는가.** 영화는 정책의 답을 주지 않지만, 그 질문을 한 사람의 하루 안에 붙잡아 둔다.
+
+## 도시가 허락하는 익명성과 관계
+
+히라야마는 혼자지만 완전히 고립되어 있지는 않다. 목욕탕 직원, 단골 식당 주인, 공원에서 샌드위치를 먹는 여성, 낯선 노인, 조카와의 만남이 느슨한 연결망을 만든다. 서로의 전부를 알지 못해도 반복되는 인사가 관계를 만든다.
+
+대도시는 익명성을 제공한다. 익명성은 외로움을 만들지만, 동시에 과거의 설명 없이 오늘의 역할을 수행할 자유도 준다. 영화 속 도쿄는 사람을 압도하는 미래 도시가 아니라, 서로 다른 삶이 잠시 스쳐도 무너지지 않게 하는 생활의 그릇이다.
+
+## 완벽함은 최적화가 아니다
+
+‘퍼펙트’라는 말은 보통 결함이 제거된 상태를 뜻한다. 그러나 이 영화의 하루에는 고장과 지각, 불쾌한 손님, 가족의 상처, 예기치 않은 이별이 계속 들어온다. 완벽함이 있다면 그것은 통제의 성공이 아니다.
+
+히라야마는 하루를 최적화하지 않는다. 그는 같은 동작을 반복하면서도 오늘 들어온 차이를 삭제하지 않는다. 마지막 얼굴의 웃음과 눈물이 그 태도를 완성한다. 좋은 감정만 남기는 것도, 슬픔을 삶의 전부로 만드는 것도 거부한다.
+
+우리의 하루가 견디기 어려운 까닭은 반복 때문만이 아닐지 모른다. 반복 속 차이를 알아볼 만큼 오래 바라보지 못하기 때문일 수도 있다. 완벽한 하루는 다시 오지 않는다. 다만 **오늘이라는 반복 불가능한 변형**이 매번 한 번씩 주어진다.
+
+---
+
+## 작품·자료
+
+- [칸영화제, Wim Wenders 인터뷰](https://www.festival-cannes.com/en/2023/perfect-days-interview-with-wim-wenders/)
+- [Criterion Collection, *Perfect Days*](https://www.criterion.com/films/34274-perfect-days)
+- [The Tokyo Toilet × *Perfect Days* 공식 자료](https://tokyotoilet.jp/downloads/PERFECTDAYS_EN_230516.pdf)
+- [영화 공식 사이트](https://www.perfectdays-movie.jp/)
+
+> 이 글의 도식은 작품 구조를 설명하기 위한 편집적 시각화다. 관객 조사나 장면별 정량 측정 결과가 아니다.
+
+::: nav-back
+[← Culture Voyager 목차로 돌아가기](../index.html)
+:::
