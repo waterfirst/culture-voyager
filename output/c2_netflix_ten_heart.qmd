@@ -1,0 +1,272 @@
+---
+title: "넷플릭스에서 마음을 건져 올리는 10편"
+subtitle: "울리기보다 오래 남는 영화와 시리즈 — Culture Voyager 특별편"
+author: "Nakcho Choi · Culture Voyager"
+date: "2026-08-21"
+lang: ko
+format:
+  html:
+    theme:
+      dark: darkly
+      light: flatly
+    toc: true
+    toc-title: "목차"
+    toc-depth: 2
+    number-sections: false
+    embed-resources: true
+    smooth-scroll: true
+    page-layout: article
+    mainfont: "Noto Sans CJK KR"
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{=html}
+<style>
+body { font-family:'Noto Sans CJK KR','Noto Sans KR',sans-serif; }
+.nav-back { padding:1rem 0 .5rem; }
+.nav-back a { color:#b05f38;text-decoration:none;font-weight:700; }
+.dek {font-size:1.12rem;line-height:1.85;padding:1.25rem 1.45rem;margin:1.4rem 0;border-radius:16px;background:linear-gradient(135deg,rgba(196,112,63,.13),rgba(107,143,113,.09));}
+.notice {padding:1rem 1.2rem;border:1px solid rgba(128,128,128,.34);border-radius:12px;background:rgba(128,128,128,.07);font-size:.91rem;line-height:1.7;}
+.pick {margin:2rem 0;padding:1.35rem 1.4rem;border-radius:18px;border:1px solid rgba(128,128,128,.28);box-shadow:0 10px 30px rgba(0,0,0,.07);}
+.pick h3 {margin-top:.2rem}.rank {display:inline-block;padding:.24rem .68rem;border-radius:999px;background:#b45f37;color:#fff;font-size:.78rem;font-weight:800;letter-spacing:.06em}.score {float:right;color:#8b5e3c;font-weight:800}.mini {display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-top:1rem}.mini div {padding:.8rem;border-radius:10px;background:rgba(107,143,113,.09);font-size:.86rem;line-height:1.55}.mini b {display:block;color:#6b7654;margin-bottom:.25rem}.award {font-size:.88rem;color:#69615a;border-left:3px solid #b8860b;padding-left:.8rem;margin-top:.9rem}.figure-map {margin:2rem 0;padding:1rem;border:1px solid rgba(128,128,128,.28);border-radius:18px;background:#fbf6ee;box-shadow:0 15px 38px rgba(0,0,0,.10)}.figure-map svg{width:100%;height:auto;display:block}.figure-map figcaption{color:#635f59;font-size:.82rem;line-height:1.55;padding:.8rem .2rem .1rem}.source-list li{margin-bottom:.55rem}@media(max-width:700px){.mini{grid-template-columns:1fr}.score{float:none;display:block;margin-top:.45rem}.pick{padding:1.1rem}.figure-map{padding:.45rem}}
+</style>
+```
+
+::: nav-back
+[← Culture Voyager 목차로 돌아가기](../index.html)
+:::
+
+::: dek
+추천 알고리즘은 “다음에 볼 것”을 잘 안다. 그러나 **오늘의 내가 견딜 수 있는 감정**까지 알지는 못한다. 이 목록은 많이 본 순서가 아니라, 한 사람을 조금 다르게 돌려보내는 힘으로 골랐다.
+:::
+
+## 먼저, 이 목록을 읽는 법
+
+선정 기준은 **영화적 완성도 35점, 감정의 깊이 30점, 문화적 의미 20점, 접근성 15점**이다. 점수는 관객 평점이나 넷플릭스 순위가 아니라 Culture Voyager 편집부의 비교용 평가다. 수상 경력은 완성도의 근거이지 감동의 보증서로 쓰지 않았다. 슬픔이 크다고 높은 점수를 주지도 않았다. 울음은 수도꼭지가 아니고, 작품은 수압 검사가 아니니까.
+
+::: notice
+**한국 제공 확인** · 2026년 8월 21일, 넷플릭스의 `/kr/title/` 공식 공개 페이지에서 작품명과 상세 정보를 확인했다. 다만 실제 재생 권한은 로그인 계정, 프로필 연령, 요금제, 현재 위치와 라이선스 변경에 따라 달라질 수 있다. 한국어 자막·더빙 정보도 기기별로 다를 수 있으므로 재생 전에 앱에서 다시 확인하기 바란다.
+:::
+
+<figure class="figure-map">
+<svg viewBox="0 0 980 610" role="img" aria-label="선정작 10편의 감정 깊이와 접근성을 배치한 편집 지도">
+<rect width="980" height="610" rx="24" fill="#fbf6ee"/>
+<text x="54" y="52" font-size="27" font-weight="800" fill="#392f2a">오늘의 마음으로 고르는 감정 지도</text>
+<text x="54" y="80" font-size="14" fill="#766c64">오른쪽일수록 접근이 쉽고, 위쪽일수록 정서적 파고가 깊다 · 편집부 평가</text>
+<line x1="105" y1="520" x2="920" y2="520" stroke="#9f9388" stroke-width="2"/><line x1="105" y1="520" x2="105" y2="112" stroke="#9f9388" stroke-width="2"/>
+<text x="510" y="570" text-anchor="middle" font-size="15" fill="#655b54">접근성 — 천천히  ←　　　　　　　　　→  편하게</text>
+<text x="35" y="315" transform="rotate(-90 35 315)" text-anchor="middle" font-size="15" fill="#655b54">감정의 깊이</text>
+<g font-size="13" font-weight="700" fill="#fff">
+<circle cx="400" cy="145" r="34" fill="#8b5e83"/><text x="400" y="150" text-anchor="middle">로마</text>
+<circle cx="675" cy="160" r="42" fill="#c4703f"/><text x="675" y="157" text-anchor="middle">폭싹</text><text x="675" y="174" text-anchor="middle">속았수다</text>
+<circle cx="535" cy="205" r="38" fill="#9d6653"/><text x="535" y="202" text-anchor="middle">결혼</text><text x="535" y="219" text-anchor="middle">이야기</text>
+<circle cx="305" cy="230" r="39" fill="#4a7c9b"/><text x="305" y="227" text-anchor="middle">안데스</text><text x="305" y="244" text-anchor="middle">설원</text>
+<circle cx="745" cy="255" r="39" fill="#6b8f71"/><text x="745" y="252" text-anchor="middle">피노키오</text>
+<circle cx="615" cy="305" r="41" fill="#527f76"/><text x="615" y="302" text-anchor="middle">문어</text><text x="615" y="319" text-anchor="middle">선생님</text>
+<circle cx="835" cy="330" r="35" fill="#b8860b"/><text x="835" y="335" text-anchor="middle">클라우스</text>
+<circle cx="470" cy="345" r="42" fill="#a56a5c"/><text x="470" y="342" text-anchor="middle">무브 투</text><text x="470" y="359" text-anchor="middle">헤븐</text>
+<circle cx="720" cy="405" r="38" fill="#776d9b"/><text x="720" y="410" text-anchor="middle">두 교황</text>
+<circle cx="575" cy="450" r="43" fill="#668158"/><text x="575" y="447" text-anchor="middle">풍차</text><text x="575" y="464" text-anchor="middle">소년</text>
+</g>
+</svg>
+<figcaption>수치 좌표는 흥행 데이터가 아닌 편집 판단을 시각화한 것이다. 같은 작품도 보는 사람의 경험과 그날의 마음에 따라 완전히 다른 자리에 놓일 수 있다. Culture Voyager 자체 제작 SVG.</figcaption>
+</figure>
+
+## 1. 《로마》 — 기억은 누구의 얼굴을 중심에 놓는가
+
+::: pick
+<span class="rank">01 · 영화</span><span class="score">편집 점수 95 / 100</span>
+
+### 파도가 밀려온 뒤에도 가족은 같은 모양일까
+
+알폰소 쿠아론은 1970년대 멕시코시티의 한 가정을 흑백의 긴 호흡으로 바라본다. 카메라는 사건을 쫓기보다 집 안 바닥을 닦는 물, 거리의 소음, 말없이 감당하는 노동을 기다린다. 그 기다림 덕분에 가족사진의 가장자리로 밀려났던 가사노동자 클레오가 화면의 중심으로 들어온다.
+
+**왜 감동적인가.** 사랑한다는 말과 한 사람에게 모든 돌봄을 떠맡기는 일은 함께 존재할 수 있다. 영화는 그 불편한 공존을 지우지 않으면서도, 위기의 순간 서로를 붙드는 몸의 기억을 보여준다.
+
+<div class="mini"><div><b>어떤 날</b>가족에게 고마우면서도 미안한 날</div><div><b>정서 주의</b>임신 상실, 계급 차별, 가족 해체</div><div><b>공식 보기</b><a href="https://www.netflix.com/kr/title/80240715">Netflix 한국 페이지</a></div></div>
+
+<p class="award">아카데미 공식 기록: 감독상·촬영상·외국어영화상 수상, 작품상 포함 주요 부문 후보. <a href="https://www.oscars.org/oscars/ceremonies/2019">제91회 아카데미 기록</a></p>
+:::
+
+## 2. 《폭싹 속았수다》 — 거창하지 않은 사랑의 연대기
+
+::: pick
+<span class="rank">02 · 리미티드 시리즈</span><span class="score">편집 점수 93 / 100</span>
+
+### 한 사람의 꿈이 다음 세대의 평범함이 되기까지
+
+제주에서 시작된 애순과 관식의 생을 네 계절처럼 나눠 따라간다. 이 작품의 진짜 주인공은 운명적 사랑만이 아니다. 딸에게 자신보다 넓은 선택지를 주고 싶은 부모, 말보다 밥과 노동으로 마음을 건네는 사람들이다. 제주어와 해녀 공동체, 가부장적 시대의 여성 경험이 개인의 추억 속에서 살아 움직인다.
+
+**왜 감동적인가.** 우리가 당연하게 누리는 하루가 앞세대의 포기와 버팀 위에 놓였다는 사실을 뒤늦게 알아차리게 한다. 부모에게 전화하고 싶게 만들지만, 전화하라고 협박하지 않는 드라마다.
+
+<div class="mini"><div><b>어떤 날</b>긴 주말, 부모의 젊은 날이 궁금할 때</div><div><b>정서 주의</b>가난, 사별과 가족의 죽음, 가부장제</div><div><b>공식 보기</b><a href="https://www.netflix.com/kr/title/81681535">Netflix 한국 페이지</a></div></div>
+
+<p class="award">넷플릭스 Tudum은 제61회 백상예술대상 드라마 작품상·극본상 등 4관왕을 기록한다. <a href="https://www.netflix.com/tudum/articles/when-life-gives-you-tangerines-release-date-news">Tudum 작품·수상 안내</a></p>
+:::
+
+## 3. 《결혼 이야기》 — 헤어지는 기술에도 사랑이 남는다
+
+::: pick
+<span class="rank">03 · 영화</span><span class="score">편집 점수 91 / 100</span>
+
+### 가장 가까웠던 두 사람이 서로의 통역을 잃을 때
+
+파경을 다루지만 악당을 만들지 않는다. 카메라는 니콜과 찰리의 관점을 번갈아 건너며, 좋은 기억과 나쁜 절차가 어떻게 한 관계 안에 동시에 들어 있는지 보여준다. 법률의 언어가 두 사람의 상처를 대신 말하기 시작할수록 정작 당사자의 목소리는 작아진다.
+
+**왜 감동적인가.** 관계가 끝났다고 함께 만든 시간이 거짓이 되는 것은 아니다. 영화는 화해보다 어려운 것, 즉 상대를 완전히 이해하지 못한 채 아이의 부모로 계속 살아가는 일을 바라본다.
+
+<div class="mini"><div><b>어떤 날</b>누가 옳은지보다 무엇을 잃었는지 보고 싶은 날</div><div><b>정서 주의</b>격한 부부 갈등, 이혼, 거친 언어</div><div><b>공식 보기</b><a href="https://www.netflix.com/kr/title/80223779">Netflix 한국 페이지</a></div></div>
+
+<p class="award">로라 던이 아카데미 여우조연상을 받았고 작품은 작품상·각본상·남녀주연상 등 후보에 올랐다. <a href="https://www.oscars.org/oscars/ceremonies/2020">제92회 아카데미 기록</a></p>
+:::
+
+## 4. 《안데스 설원의 생존자들》 — 살아남음은 개인기가 아니다
+
+::: pick
+<span class="rank">04 · 영화</span><span class="score">편집 점수 90 / 100</span>
+
+### 생존담이 아니라 공동체의 윤리에 관한 영화
+
+1972년 안데스 산맥 항공기 사고의 실화를 생존 영웅 한 명의 무용담으로 좁히지 않는다. 눈과 바람, 숨소리가 육체의 한계를 체감하게 하고, 이름을 가진 여러 사람이 서로의 가능성을 조금씩 이어 준다. 원제 ‘눈의 사회’가 정확하다. 이곳에서 생존은 혼자 얻는 훈장이 아니다.
+
+**왜 감동적인가.** 떠난 사람과 살아남은 사람을 경쟁시키지 않는다. 누군가의 몸과 기억이 다른 사람의 귀환 속에서 계속된다는 공동체적 존엄을 끝까지 지킨다.
+
+<div class="mini"><div><b>어떤 날</b>인간에 대한 믿음을 극한에서 확인하고 싶은 날</div><div><b>정서 주의</b>항공 사고, 시신, 부상, 죽음·식인 생존 상황</div><div><b>공식 보기</b><a href="https://www.netflix.com/kr/title/81268316">Netflix 한국 페이지</a></div></div>
+
+<p class="award">아카데미 국제장편영화상과 분장상 후보. <a href="https://www.oscars.org/oscars/ceremonies/2024">제96회 아카데미 기록</a></p>
+:::
+
+## 5. 《기예르모 델토로의 피노키오》 — 순종보다 사랑을 배우는 인형
+
+::: pick
+<span class="rank">05 · 영화</span><span class="score">편집 점수 89 / 100</span>
+
+### 착한 아이가 아니라 자기 삶을 선택하는 아이
+
+나무 인형의 모험을 파시즘 시대 이탈리아로 옮긴 스톱모션 뮤지컬이다. 손으로 빚은 인형의 미세한 흔들림은 매끈한 디지털 이미지보다 더 살아 있다. 영화가 묻는 것은 “말을 잘 듣는가”가 아니라 “불완전한 존재를 있는 그대로 사랑할 수 있는가”다.
+
+**왜 감동적인가.** 죽음을 피하는 능력이 삶의 가치가 아니라는 역설에 도착한다. 유한하기 때문에 한 번의 선택과 한 번의 작별이 소중해진다.
+
+<div class="mini"><div><b>어떤 날</b>어른과 아이가 함께 보고 다른 이야기를 나누고 싶은 날</div><div><b>정서 주의</b>전쟁·파시즘, 아동 착취, 죽음과 애도</div><div><b>공식 보기</b><a href="https://www.netflix.com/kr/title/80218455">Netflix 한국 페이지</a></div></div>
+
+<p class="award">제95회 아카데미 장편애니메이션상 수상. <a href="https://www.oscars.org/oscars/ceremonies/95th-oscars-winner-portraits">아카데미 수상 기록</a></p>
+:::
+
+## 6. 《나의 문어 선생님》 — 관찰이 관계가 되는 시간
+
+::: pick
+<span class="rank">06 · 다큐멘터리 영화</span><span class="score">편집 점수 87 / 100</span>
+
+### 이해하려면 먼저 매일 찾아가야 한다
+
+번아웃을 겪던 영화 제작자가 남아프리카의 다시마 숲에서 문어 한 마리를 관찰한다. 설명을 서두르지 않고, 인간이 자연의 주인이라는 익숙한 구도를 내려놓는다. 가장 아름다운 순간은 문어가 사람처럼 보여서가 아니라 인간이 잠시 인간 중심의 시선을 멈출 때 온다.
+
+**왜 감동적인가.** 친밀함이 소유가 아니라 반복해서 주의를 기울이는 일임을 보여준다. 자연 다큐이면서 회복에 관한 아주 사적인 일기다.
+
+<div class="mini"><div><b>어떤 날</b>화면과 소음에서 벗어나 천천히 숨 쉬고 싶은 날</div><div><b>정서 주의</b>포식 장면, 동물의 부상과 죽음</div><div><b>공식 보기</b><a href="https://www.netflix.com/kr/title/81045007">Netflix 한국 페이지</a></div></div>
+
+<p class="award">제93회 아카데미 장편다큐멘터리상 수상. <a href="https://www.oscars.org/oscars/ceremonies/2021">아카데미 공식 기록</a></p>
+:::
+
+## 7. 《클라우스》 — 친절도 전염될 수 있다
+
+::: pick
+<span class="rank">07 · 애니메이션 영화</span><span class="score">편집 점수 85 / 100</span>
+
+### 계산으로 시작한 선행이 진심이 될 수 있을까
+
+게으른 우체부가 실적을 채우려 벌인 일이 아이들의 편지와 장난감 장인의 손을 만나 마을의 오래된 적대감을 흔든다. 익숙한 산타 전설을 기원담으로 바꾸면서, 빛과 질감을 살린 2D 애니메이션으로 손맛을 되살린다.
+
+**왜 감동적인가.** 선한 행동의 첫 동기가 순수하지 않아도 그 결과가 다음 행동을 바꿀 수 있다고 말한다. 사람은 완성된 인격으로 태어나는 게 아니라, 자기가 반복한 행동 쪽으로 조금씩 이동한다.
+
+<div class="mini"><div><b>어떤 날</b>가족과 따뜻하고 영리한 한 편이 필요한 날</div><div><b>정서 주의</b>집단 다툼, 위협, 상실의 암시</div><div><b>공식 보기</b><a href="https://www.netflix.com/kr/title/80183187">Netflix 한국 페이지</a></div></div>
+
+<p class="award">2020년 BAFTA 장편애니메이션상 수상, 아카데미 장편애니메이션상 후보. <a href="https://www.bafta.org/awards/film/?award-year=2020">BAFTA 공식 결과</a></p>
+:::
+
+## 8. 《무브 투 헤븐: 나는 유품정리사입니다》 — 남겨진 물건의 문법
+
+::: pick
+<span class="rank">08 · 시리즈</span><span class="score">편집 점수 84 / 100</span>
+
+### 한 사람의 생은 쓰레기봉투 한 장으로 끝나지 않는다
+
+유품정리사 그루와 갑자기 후견인이 된 삼촌 상구가 고인의 방에 남은 단서를 정리한다. 매 회 죽음이 등장하지만 구경거리로 소비하기보다, 사회가 미처 읽지 못한 삶의 문장을 유족에게 전달한다. 반복 구조가 분명해 접근하기 쉽고, 그 반복 안에서 두 주인공의 애도 방식이 변한다.
+
+**왜 감동적인가.** 기억해 주는 사람이 없을 때도 삶의 존엄은 사라지지 않는다고 믿는다. 정리는 버리는 일이 아니라 마지막으로 제대로 읽어 주는 일이 된다.
+
+<div class="mini"><div><b>어떤 날</b>조금 울더라도 사람의 선의를 믿고 싶은 날</div><div><b>정서 주의</b>매회 죽음·유품, 산업재해, 혐오범죄, 자살 언급</div><div><b>공식 보기</b><a href="https://www.netflix.com/kr/title/80990381">Netflix 한국 페이지</a></div></div>
+
+<p class="award">넷플릭스 공식 페이지가 ‘평단의 찬사를 받은’ 사회 이슈 드라마로 분류한다. 수상 경력보다 소재를 다루는 윤리와 에피소드 설계를 높게 평가했다.</p>
+:::
+
+## 9. 《두 교황》 — 대화는 상대를 이기는 기술이 아니다
+
+::: pick
+<span class="rank">09 · 영화</span><span class="score">편집 점수 82 / 100</span>
+
+### 확신이 다른 두 노인이 같은 식탁에 앉는 법
+
+보수적 베네딕토 16세와 개혁적 베르고글리오 추기경의 만남을 상상해 재구성한다. 신학 토론이지만 영화는 두 사람을 교리의 화신으로 만들지 않는다. 피아노와 축구, 피자와 죄책감 같은 일상의 틈으로 각자의 두려움을 들여다본다.
+
+**왜 감동적인가.** 변화는 논쟁에서 패배한 사람이 굴복하는 순간이 아니라, 서로의 고백을 들은 뒤 자기 확신에 작은 창을 내는 순간부터 시작된다고 말한다.
+
+<div class="mini"><div><b>어떤 날</b>생각이 다른 사람과 다시 말해 보고 싶은 날</div><div><b>정서 주의</b>군사독재와 고문 묘사, 종교 갈등</div><div><b>공식 보기</b><a href="https://www.netflix.com/kr/title/80174451">Netflix 한국 페이지</a></div></div>
+
+<p class="award">아카데미 남우주연·남우조연·각색상 후보, BAFTA 영국영화상·각색상 등 후보. <a href="https://www.oscars.org/oscars/ceremonies/2020">아카데미 공식 기록</a></p>
+:::
+
+## 10. 《바람을 길들인 풍차소년》 — 지식이 생존 도구가 되는 순간
+
+::: pick
+<span class="rank">10 · 영화</span><span class="score">편집 점수 80 / 100</span>
+
+### 학교 밖으로 쫓겨난 소년이 책으로 마을을 살린다
+
+가뭄과 기근에 맞서 고철과 도서관의 과학책으로 풍차를 만든 말라위 소년 윌리엄 캄쾀바의 실화를 극화했다. 발명 천재 신화로만 가지 않고, 토지와 교육, 가족 내 권위, 정치적 무책임이 한 아이의 가능성을 어떻게 가로막는지 함께 본다.
+
+**왜 감동적인가.** 지식이 시험 점수나 계층 표지가 아니라 공동체가 내일을 맞게 하는 실제 힘이 되는 순간을 보여준다. 희망을 말하지만 가난을 아름답게 포장하지 않는다.
+
+<div class="mini"><div><b>어떤 날</b>작은 공부가 무슨 소용인지 의심되는 날</div><div><b>정서 주의</b>기근, 굶주림, 폭력과 동물의 죽음</div><div><b>공식 보기</b><a href="https://www.netflix.com/kr/title/80200047">Netflix 한국 페이지</a></div></div>
+
+<p class="award">추이텔 에지오포의 장편 연출 데뷔작. 넷플릭스 공식 페이지는 실화와 도서에 바탕을 둔 사회 이슈 드라마로 소개한다.</p>
+:::
+
+## 세 가지 처방전
+
+**조용히 회복하고 싶다면** 《나의 문어 선생님》 → 《클라우스》 → 《바람을 길들인 풍차소년》.  
+**깊게 울 준비가 됐다면** 《무브 투 헤븐》 → 《폭싹 속았수다》 → 《로마》.  
+**관계를 다시 생각하고 싶다면** 《두 교황》 → 《결혼 이야기》 → 《피노키오》.
+
+가장 좋은 작품은 가장 많이 울린 작품이 아니다. 엔딩 크레디트가 오른 뒤, 조금 전까지 당연했던 사람과 물건과 하루를 낯설게 보게 한 작품이다. 이 열 편에는 공통점이 있다. 거대한 사건보다 **누군가를 오래 바라보는 시간**을 믿는다는 것. 알고리즘이 다음 작품을 고르는 동안, 우리는 그 시간을 고를 수 있다.
+
+## 출처와 확인 기록
+
+### Netflix 한국 공식 타이틀 페이지
+
+::: {.source-list}
+- [《로마》](https://www.netflix.com/kr/title/80240715) · [《폭싹 속았수다》](https://www.netflix.com/kr/title/81681535)
+- [《결혼 이야기》](https://www.netflix.com/kr/title/80223779) · [《안데스 설원의 생존자들》](https://www.netflix.com/kr/title/81268316)
+- [《기예르모 델토로의 피노키오》](https://www.netflix.com/kr/title/80218455) · [《나의 문어 선생님》](https://www.netflix.com/kr/title/81045007)
+- [《클라우스》](https://www.netflix.com/kr/title/80183187) · [《무브 투 헤븐》](https://www.netflix.com/kr/title/80990381)
+- [《두 교황》](https://www.netflix.com/kr/title/80174451) · [《바람을 길들인 풍차소년》](https://www.netflix.com/kr/title/80200047)
+:::
+
+### 작품성 근거
+
+- [아카데미 제91회 공식 결과 — 《로마》](https://www.oscars.org/oscars/ceremonies/2019)
+- [아카데미 제92회 공식 결과 — 《결혼 이야기》·《두 교황》](https://www.oscars.org/oscars/ceremonies/2020)
+- [아카데미 제93회 공식 결과 — 《나의 문어 선생님》](https://www.oscars.org/oscars/ceremonies/2021)
+- [아카데미 제96회 공식 결과 — 《안데스 설원의 생존자들》](https://www.oscars.org/oscars/ceremonies/2024)
+- [아카데미 제95회 수상 기록 — 《기예르모 델토로의 피노키오》](https://www.oscars.org/oscars/ceremonies/95th-oscars-winner-portraits)
+- [BAFTA 2020 공식 결과 — 《클라우스》·《결혼 이야기》·《두 교황》](https://www.bafta.org/awards/film/?award-year=2020)
+- [Netflix Tudum — 《폭싹 속았수다》 작품 및 백상 수상 안내](https://www.netflix.com/tudum/articles/when-life-gives-you-tangerines-release-date-news)
+
+> 작품 설명은 스포일러를 최소화했으며, 주의 요소는 공식 연령등급을 대신하지 않는다. 제공 여부 최종 확인일: **2026-08-21 (한국 넷플릭스 공개 페이지 기준)**.
+
+::: nav-back
+[← Culture Voyager 목차로 돌아가기](../index.html)
+:::
