@@ -1,0 +1,106 @@
+---
+title: "백남준 — 화면을 켜는 대신, 화면을 흔들다"
+subtitle: "자석 하나와 여러 대의 텔레비전으로 ‘보는 사람’을 다시 만든 예술가"
+author: "Nakcho Choi · Culture Voyager"
+date: "2026-10-04"
+lang: ko
+format:
+  html:
+    theme:
+      dark: darkly
+      light: flatly
+    toc: true
+    toc-title: "목차"
+    toc-depth: 2
+    number-sections: false
+    embed-resources: true
+    smooth-scroll: true
+    page-layout: article
+    mainfont: "Noto Sans CJK KR"
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{=html}
+<style>
+body { font-family:'Noto Sans CJK KR','Noto Sans KR',sans-serif; }
+.nav-back { padding:1rem 0 .5rem; }.nav-back a { color:#b05f38;text-decoration:none;font-weight:700; }
+.dek {font-size:1.12rem;line-height:1.9;padding:1.25rem 1.45rem;margin:1.4rem 0;border-radius:16px;background:linear-gradient(135deg,rgba(44,101,180,.13),rgba(196,112,63,.10));}
+.scene {margin:2rem 0;padding:1.35rem 1.45rem;border-left:4px solid #4a7c9b;border-radius:0 16px 16px 0;background:rgba(74,124,155,.08);line-height:1.85;}
+.signal-map {margin:2rem 0;padding:1rem;border:1px solid rgba(128,128,128,.28);border-radius:18px;background:#0f1924;box-shadow:0 15px 38px rgba(0,0,0,.12);}.signal-map svg{width:100%;height:auto;display:block}.signal-map figcaption{color:#bfc9d3;font-size:.82rem;line-height:1.6;padding:.8rem .2rem .1rem}
+.note {padding:1rem 1.2rem;border:1px solid rgba(128,128,128,.34);border-radius:12px;background:rgba(128,128,128,.07);font-size:.91rem;line-height:1.7;}.sources li{margin-bottom:.7rem;line-height:1.65}@media(max-width:700px){.scene{padding:1.1rem}.signal-map{padding:.45rem}}
+</style>
+```
+
+::: nav-back
+[← Culture Voyager 목차로 돌아가기](../index.html)
+:::
+
+::: dek
+우리는 화면을 보며 ‘무엇을 볼까’를 고른다고 생각한다. 백남준은 한 발 더 뒤로 물었다. **그 화면이 우리에게 무엇을 보라고 훈련시키고 있는가.** 그의 대답은 근엄한 강의가 아니었다. 자석을 텔레비전에 올리고, 신호를 비틀고, 수십 대의 모니터를 피라미드처럼 쌓아 올리는 장난이었다. 그런데 그 장난은 오늘의 피드와 알림창을 유난히 정확하게 비춘다.
+:::
+
+## 자석 하나가 방송을 흔든 날
+
+::: scene
+1965년작 《Magnet TV》에서 화면 위의 산업용 자석은 전자 신호를 간섭해 방송 영상을 추상적인 곡선으로 바꾼다. 자석의 위치가 달라지면 화면도 달라진다. 시청자는 더 이상 프로그램을 받기만 하는 사람이 아니라, 이미지의 모양에 직접 관여하는 사람이 된다.
+:::
+
+이 장면이 중요한 까닭은 기술을 파괴해서가 아니다. 백남준은 텔레비전을 꺼 버리지 않았다. 대신 너무 자연스러워져 투명해진 상자를 다시 낯설게 만들었다. 뉴스와 광고와 예능이 같은 유리창을 통해 들어오던 시대, 그는 “이 창은 누가 만들었고, 왜 한 방향으로만 열려 있지?”라고 물었다.
+
+지금 우리는 손가락으로 넘기는 화면에 더 익숙하다. 참여하고 있다고 느끼지만, 무엇이 다음에 올지는 대개 우리가 정하지 않는다. 《Magnet TV》의 자석은 그래서 작은 수업처럼 보인다. 이미지에 손을 대는 일은 단순히 ‘좋아요’를 누르는 것보다 훨씬 느리고, 그만큼 책임이 따른다는 수업.
+
+<figure class="signal-map">
+<svg viewBox="0 0 980 470" role="img" aria-label="방송 신호가 참여와 되비침의 화면으로 바뀌는 과정을 보여 주는 도식">
+<rect width="980" height="470" rx="22" fill="#0f1924"/>
+<text x="54" y="58" font-size="28" font-weight="800" fill="#f6e9d8">화면을 받는 사람에서, 화면을 의심하는 사람으로</text>
+<text x="54" y="86" font-size="15" fill="#bfc9d3">백남준의 작업을 따라 읽는 세 가지 화면의 태도</text>
+<path d="M280 250H374" stroke="#d88950" stroke-width="5" stroke-linecap="round"/><path d="M605 250H699" stroke="#d88950" stroke-width="5" stroke-linecap="round"/>
+<path d="M365 238l18 12-18 12M690 238l18 12-18 12" fill="none" stroke="#d88950" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="55" y="144" width="220" height="211" rx="18" fill="#1e3244"/><rect x="80" y="171" width="170" height="100" rx="8" fill="#386f8d"/><path d="M88 228c34-50 59 40 91-12s45 29 63-21" fill="none" stroke="#d8efff" stroke-width="5"/><text x="165" y="307" text-anchor="middle" font-size="21" font-weight="700" fill="#f6e9d8">받기</text><text x="165" y="334" text-anchor="middle" font-size="14" fill="#c8d5df">정해진 편성표</text>
+<rect x="380" y="144" width="220" height="211" rx="18" fill="#3a2945"/><rect x="405" y="171" width="170" height="100" rx="8" fill="#633d7b"/><path d="M415 242c31-69 50 45 82-13s51 26 69-30" fill="none" stroke="#ffd4c0" stroke-width="5"/><path d="M466 144c0-42 50-42 50 0" fill="none" stroke="#e59a5f" stroke-width="14"/><text x="490" y="307" text-anchor="middle" font-size="21" font-weight="700" fill="#f6e9d8">흔들기</text><text x="490" y="334" text-anchor="middle" font-size="14" fill="#ddd0e8">자석과 피드백</text>
+<rect x="705" y="144" width="220" height="211" rx="18" fill="#3c3430"/><rect x="730" y="171" width="170" height="100" rx="8" fill="#b65e43"/><circle cx="770" cy="220" r="22" fill="#f2ba5f"/><path d="M802 244l18-47 16 47 17-28 22 28" fill="none" stroke="#ffe3c4" stroke-width="5"/><text x="815" y="307" text-anchor="middle" font-size="21" font-weight="700" fill="#f6e9d8">되비추기</text><text x="815" y="334" text-anchor="middle" font-size="14" fill="#eadbd0">다른 연결을 만들기</text>
+</svg>
+<figcaption>작품의 재현이 아니라, 《Magnet TV》가 던진 질문을 편집해 만든 도식이다. Culture Voyager 자체 제작.</figcaption>
+</figure>
+
+## 여러 대의 화면은 벽이 아니라 광장이 된다
+
+백남준의 대형 설치에서 텔레비전은 집 안 한쪽 벽의 가구 자리를 떠난다. 1982년 《V-yramid》는 크기가 다른 40대의 텔레비전을 피라미드 모양으로 쌓고, 대중음악과 한국 전통음악, 빠르게 변형되는 영상을 한 공간에서 충돌시킨다. 고대 건축의 단단한 형태와 찰나마다 바뀌는 전자 이미지를 맞붙인 구성이다.
+
+여기에는 ‘새 기술은 곧 진보’라는 순진함도, ‘옛것이 더 순수하다’는 향수도 없다. 둘은 부딪히며 계속 조정된다. 같은 화면을 보고도 한 사람은 리듬을, 다른 사람은 소음을, 또 다른 사람은 자신의 고향을 먼저 알아볼 수 있다. 광장은 의견이 하나가 되는 곳이 아니라, 서로 다른 감각이 동시에 자리를 얻는 곳이다.
+
+그래서 그의 화면은 유난히 다정하다. 매끈한 고화질보다 노이즈와 지연, 어긋남을 숨기지 않는다. 기계가 완벽해져야 인간이 자유로워진다는 이야기에 슬쩍 물을 뿌린다. 사람도 시스템도 조금 삐걱거리기에, 다른 사람이 끼어들 틈이 생긴다.
+
+## 자연과 전자 사이에 정원을 심다
+
+1974년의 《TV Garden》은 살아 있는 식물 사이에 모니터를 숨긴다. 각 화면에서는 협업 영상 《Global Groove》가 재생된다. 정원 속 텔레비전은 자연을 기술로 대체하지도, 기술을 자연 밖의 적으로 몰아내지도 않는다. 둘은 서로의 소음을 듣는다.
+
+이 장면은 스크린 타임을 줄이자는 교훈으로 끝나지 않는다. 화면을 닫는 것만으로는 충분하지 않다. 무엇을 연결하고, 누가 말할 기회를 얻고, 어떤 속도로 보게 할지 다시 설계해야 한다. 우리의 디지털 정원이 정말 정원이라면, 모든 꽃이 같은 시간에 피고 같은 방향으로 고개를 돌릴 수는 없다.
+
+## 오늘, 화면 앞에서 해 볼 작은 실험
+
+::: note
+**한 번 멈춰 볼 질문**
+
+- 지금 이 화면은 내 주의를 어디로 옮기고 있는가?
+- 내가 고른 것과, 내게 먼저 배달된 것은 무엇이 다른가?
+- 이 이미지를 다른 사람과 나누면 대화가 넓어질까, 아니면 더 좁아질까?
+
+백남준식 실험은 기기를 부수는 일이 아니다. 익숙한 화면을 잠시 낯설게 보고, 그 틈에서 내가 원하는 연결을 고르는 일에 가깝다.
+:::
+
+그는 텔레비전을 예술로 올려놓으려 했지만, 예술을 높은 선반에 숨기지는 않았다. 화면은 손댈 수 있고, 흔들릴 수 있고, 다른 리듬과 섞일 수 있다고 믿었다. 오늘의 화면은 그때보다 훨씬 얇고 빠르다. 그래서 오히려 자석 하나의 느린 질문이 필요하다. **나는 이 화면을 보고 있는가, 아니면 이 화면이 나를 보고 있는가.**
+
+## 참고한 자료
+
+::: {.sources}
+
+- [Whitney Museum — 《Magnet TV》 작품 해설](https://whitney.org/collection/works/6139): 1965년작의 자석·전자신호 간섭과 관람자 참여 구조.
+- [Whitney Museum — 《V-yramid》 작품 해설](https://whitney.org/collection/works/5459): 1982년작, 40대 모니터와 음악·건축·기술의 긴장.
+- [Guggenheim — 백남준 교육 자료](https://www.guggenheim.org/teaching-materials/teaching-modern-and-contemporary-asian-art/nam-june-paik-%EB%B0%B1%EB%82%A8%EC%A4%80): 《TV Garden》과 《Global Groove》의 구성 및 맥락.
+- [Whitney Museum — 작가 소개](https://whitney.org/artists/986): 1963년 초기 텔레비전 작업과 ‘electronic super highway’의 맥락.
+
+:::
