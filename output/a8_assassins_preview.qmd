@@ -118,6 +118,7 @@ figcaption { font-size: .9rem; color: #8a8178; text-align: center; }
 2. **김학수 검사를 보라.** 실제 수사 검사가 모델이다. 소설 한 권으로 자백을 끌어냈다는 회고가 영화에서 어떻게 재현되는지.
 3. **장봉화를 찾아라.** 기록에서조차 흐릿한 두 번째 희생자를 영화가 기억하는지.
 4. **괄호의 '들'을 끝까지 지켜보라.** 영화가 결말에서 물음표를 지키는지, 답을 써 버리는지.
+5. **연설 장면을 보라.** 1974년 TIME은 "아내가 병원으로 실려 가는 동안 그는 묵묵히 연단으로 돌아가 연설을 이어갔다"고 썼다. <span class="tag t-fact">확인</span> 같은 기사는 그가 그날 밤 아내의 임종을 지켰다고도 적었다. 수행과장은 52년 뒤 총격 직후 대통령이 "이군, 집사람 봐!"라고 외쳤다고 회고했다. <span class="tag t-test">증언</span> 이 장면은 관객에게 가장 이상하게 느껴지지만, 단독범이든 배후가 있든 어느 쪽에서도 일어날 수 있는 행동이라 배후를 가려 주지는 못한다. 영화가 이 장면을 '의심의 증거'로 쓰는지, '그 시대가 국가의 의례를 한 생명보다 앞세운 순간'으로 쓰는지를 보자.
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:1.5rem 0;">
 <iframe src="https://www.youtube.com/embed/SCfUtSUFqPI" title="암살자(들) 메인 예고편" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe>
@@ -133,4 +134,4 @@ figcaption { font-size: .9rem; color: #8a8178; text-align: center; }
 
 ## 참고한 기록
 
-국사편찬위원회 전자사료관 1974 주한미국대사관 문서(2026.8 공개) · 국가기록원 주제설명 · 주간경향 김기춘 미발간 회고록 보도(2026.9) · 중앙일보 '이팩트' · 한국일보 · 뉴시스 · 연합뉴스 · 서울신문 · JBC뉴스 '7발의 미스터리' · 프레시안 · 캐나다 한국일보 · 위키백과 「육영수 저격 사건」·「Mun Se-gwang」.
+TIME 「South Korea: The Accidental Assassination」(1974.8.26) · 국사편찬위원회 전자사료관 1974 주한미국대사관 문서(2026.8 공개) · 국가기록원 주제설명 · 주간경향 김기춘 미발간 회고록 보도(2026.9) · 중앙일보 '이팩트' · 한국일보 · 뉴시스 · 연합뉴스 · 서울신문 · JBC뉴스 '7발의 미스터리' · 프레시안 · 캐나다 한국일보 · 위키백과 「육영수 저격 사건」·「Mun Se-gwang」.
